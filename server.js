@@ -30,7 +30,7 @@ function listening() {
 }
 
 // GET request to receive projectData
-app.get('/', (req, res) => {
+app.get('/all', (req, res) => {
   console.log(projectData);
   res.send(projectData);
 });
@@ -46,5 +46,5 @@ app.post('/addData', (req, res) => {
 
   projectData.data = [];
   projectData.data.push(newData);
-  console.log(newData);
+  console.log('----------', projectData);
 });
