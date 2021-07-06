@@ -2,11 +2,6 @@
 // api.openweathermap.org/data/2.5/weather?zip=94040,us&appid=98c5aefef4bc6527be76b6bf099592ad
 
 /* Global Variables */
-const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const zipCode = document.getElementById('zip').value;
-const apiKey = '98c5aefef4bc6527be76b6bf099592ad';
-
-const feelings = document.getElementById('feelings').value;
 
 /* Helpers */
 const getDate = () => {
@@ -16,22 +11,42 @@ const getDate = () => {
   return newDate;
 };
 
-/* Function to GET Web API Data*/
-const getWeatherByZipcode = async (baseUrl, zipCode, apiKey) => {
-  const url = `${baseUrl + zipCode}&appid=${apiKey}`;
-  const res = await fetch(url);
+/* Function to GET data */
+const getData = async (url = '', data = {}) => {
+  const res = await fetch(url, {
+    method: 'GET',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
   try {
-    const data = await res.json();
-    return data;
+    const newData = await res.json();
+    console.log(newData);
+
+    return newData;
   } catch (error) {
-    console.error(error);
+    console.error('error', error);
   }
 };
 
+/* Function to GET Web API Data*/
+const getWeatherByZipcode = (zipCode) =>
+  postData('/', {}).then(async (data) => {
+    try {
+      const url = `${data.baseUrl + zipCode}&appid=${data.apiKey}`;
+      const res = await fetch(url);
+      const weatherData = res.json();
+
+      return weatherData;
+    } catch (error) {
+      console.error('error', error);
+    }
+  });
+
 /* Function to POST data */
 const postData = async (url = '', data = {}) => {
-  console.log(data);
   const res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
@@ -43,24 +58,40 @@ const postData = async (url = '', data = {}) => {
 
   try {
     const newData = await res.json();
-    console.log(newData);
 
     return newData;
   } catch (error) {
-    console.log('error', error);
+    console.error('error', error);
   }
 };
 
 /* Function to GET Project Data */
-const callGetData = () => {
-  return getWeatherByZipcode(baseUrl, zipCode, apiKey).then((data) => {
+const processData = () => {
+  const zipCode = document.getElementById('zip').value;
+  const feelings = document.getElementById('feelings').value;
+
+  return getWeatherByZipcode(zipCode).then((data) => {
     postData('/addData', {
-      zipCode: data.main.temp,
+      temperature: (data.main && data.main.temp) || data.message,
       date: getDate(),
       userResponse: feelings,
-    });
+    }).then(updateUI());
   });
 };
 
+/* Function to update UI */
+const updateUI = async () => {
+  const request = await fetch('/all');
+  try {
+    const allData = await request.json();
+
+    document.getElementById('date').innerHTML = allData.date;
+    document.getElementById('temp').innerHTML = allData.temperature;
+    document.getElementById('content').innerHTML = allData.userResponse;
+  } catch (error) {
+    console.error('error', error);
+  }
+};
+
 /* Function called by event listener */
-document.getElementById('generate').addEventListener('click', callGetData);
+document.getElementById('generate').addEventListener('click', processData);
