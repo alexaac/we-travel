@@ -7,7 +7,11 @@
 const getDate = () => {
   // Create a new date instance dynamically with JS
   let d = new Date();
-  let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+  let newDate = `${d.toLocaleString('en-us', {
+    weekday: 'long',
+  })}, ${d.getDate()} ${d.toLocaleString('en-us', {
+    month: 'long',
+  })} ${d.getFullYear()}`;
   return newDate;
 };
 
@@ -87,8 +91,9 @@ const updateUI = async (data) => {
       const allData = await request.json();
 
       document.getElementById('date').innerHTML = allData.date;
-      document.getElementById('temp').innerHTML = allData.temperature;
-      document.getElementById('content').innerHTML = allData.userResponse;
+      document.getElementById('temp').innerHTML = allData.temperature + '°F';
+      document.getElementById('content').innerHTML =
+        'You feel ' + allData.userResponse;
       document.getElementById('error').innerHTML = '';
     } catch (error) {
       console.error('error', error);
