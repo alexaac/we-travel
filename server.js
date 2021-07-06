@@ -10,10 +10,6 @@ const routes = require('./routes/index');
 // Start up an instance of app
 const app = express();
 
-// View engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug'); // we use the engine pug
-
 // Initialize the main project folder
 app.use(express.static(path.join(__dirname, 'website')));
 
