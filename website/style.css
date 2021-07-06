@@ -17,6 +17,7 @@ body {
   font-size: 20px;
   font-family: 'Oswald', sans-serif;
   padding: 1rem;
+  width: 100%;
 }
 
 .holder {
@@ -48,7 +49,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 1rem;
+  margin: 0 1rem;
 }
 
 #entryHolder {
@@ -135,6 +136,31 @@ button:focus {
   font-family: 'Oswald', sans-serif;
 }
 
+@media (max-width: 600px) {
+  #app {
+    padding: 0 1rem;
+    grid-template-areas:
+      'headline'
+      'zip'
+      'feel'
+      'entry';
+  }
+
+  .entry {
+    max-width: 300px;
+  }
+
+  .mapholder {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 1200px) {
+  #app {
+    justify-content: initial;
+  }
+}
+
 @media (max-width: 900px) {
   #app {
     height: initial;
@@ -152,19 +178,18 @@ button:focus {
 
   .mapholder {
     min-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 
-@media (max-width: 600px) {
-  #app {
-    justify-content: initial;
-    padding: 0 1rem;
-    grid-template-areas:
-      'headline'
-      'zip'
-      'feel'
-      'entry';
+@media (max-width: 700px) {
+  .holder,
+  .zip input {
+    max-width: 250px;
+  }
+
+  .mapholder {
+    min-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
