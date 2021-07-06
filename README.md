@@ -1,10 +1,52 @@
-# Weather-Journal App Project
+### Date created
 
-## Overview
-This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
+2021-07-05
 
-## Instructions
-This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
+### Project Title
 
-## Extras
-If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
+My Weather-Journal App Project
+
+### Description
+
+Asynchronous web app that uses Web API and user data to dynamically update the UI.
+
+## Project Setup
+
+1. clone the Project - `git clone https://github.com/alexaac/test-weather.git`
+2. `cd test-weather`
+3. install the dependencies - `npm install`
+4. start the project on localhost:7000 - `npm start`
+
+#### References
+
+[Weather-Journal App Project](https://github.com/udacity/fend/tree/refresh-2019/projects/weather-journal-app)
+
+#### Files
+
+```bash
+.
+├── controllers
+│   ├── dataController.js
+│   └── initialController.js
+├── middleware
+│   ├── validateParams.js
+│   └── validation.js
+├── package.json
+├── package-lock.json
+├── README.md
+├── routes
+│   └── index.js
+├── server.js
+├── variables.env
+└── website
+    ├── app.js
+    ├── index.html
+    ├── map.js
+    └── style.css
+```
+
+### TODO: add tests
+
+### Credits
+
+Alexa Cristina | Udacity
