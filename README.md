@@ -26,8 +26,7 @@ Asynchronous web app that uses Web API and user data to dynamically update the U
 ```bash
 .
 ├── controllers
-│   ├── dataController.js
-│   └── initialController.js
+│   └── dataController.js
 ├── middleware
 │   ├── validateParams.js
 │   └── validation.js
