@@ -47,23 +47,30 @@ const postData = async (url = '', data = {}) => {
     console.error('error', error);
   }
 };
-
-let globals = {};
+// Setup empty JS object to act as endpoint for all routes
+let projectData = {};
 
 /* Function to get global variables */
-const getEnvData = () =>
-  postData('/', {}).then((data) => {
-    globals = data;
+const getEnvData = async () => {
+  const request = await fetch('/all');
+
+  try {
+    const allData = await request.json();
+
+    projectData = allData;
 
     setActions();
-  });
+  } catch (error) {
+    console.error('error', error);
+  }
+};
 
 getEnvData();
 
 const setActions = () => {
   // Personal API Key for OpenWeatherMap API and Mapbox
   const { weatherBaseUrl, weatherApiKey, mapboxBaseUrl, mapboxApiKey } =
-    globals;
+    projectData;
 
   /* MapBox map */
   mapboxgl.accessToken = mapboxApiKey;
