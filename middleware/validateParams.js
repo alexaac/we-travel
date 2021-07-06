@@ -2,7 +2,7 @@ const { check } = require('express-validator');
 
 module.exports = {
   // Methods for validating data
-  addData: [
+  setData: [
     check('temperature')
       .not()
       .isEmpty()
