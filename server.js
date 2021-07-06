@@ -2,21 +2,10 @@ const path = require('path');
 const bodyParser = require('body-parser');
 // Require Express to run server and routes
 const express = require('express');
-const { check, validationResult } = require('express-validator');
 // Cors for cross origin allowance
 const cors = require('cors');
-
-// Import environmental variables from our variables.env file
-require('dotenv').config({ path: 'variables.env' });
-
-// Setup empty JS object to act as endpoint for all routes
-projectData = {};
-urlData = {
-  baseUrl: process.env.WEATHER_API,
-  apiKey: process.env.WEATHER_APP_ID,
-};
-
-// console.log('Process: ', process.env);
+const validation = require('./middleware/validation');
+const routes = require('./routes/index');
 
 // Start up an instance of app
 const app = express();
@@ -40,38 +29,8 @@ const server = app.listen(app.get('port'), () => {
   console.log(`running on localhost: ${server.address().port}`);
 });
 
-// GET request to receive url
-app.post('/', (req, res) => {
-  res.send(urlData);
-});
+// Use validation
+app.use(validation);
 
-// GET request to receive projectData
-app.get('/all', (req, res) => {
-  res.send(projectData);
-});
-
-// POST request to add incoming data
-app.post(
-  '/addData',
-  [
-    // Methods for validating data
-    check('temperature')
-      .not()
-      .isEmpty()
-      .withMessage('Temperature must not be empty')
-      .isDecimal(),
-    check('date').not().isEmpty().withMessage('Date must not be empty'),
-    check('date').isDate(),
-    check('userResponse')
-      .not()
-      .isEmpty()
-      .withMessage('Please provide a status'),
-  ],
-  (req, res) => {
-    projectData.temperature = req.body.temperature;
-    projectData.date = req.body.date;
-    projectData.userResponse = req.body.userResponse;
-
-    res.send(projectData);
-  }
-);
+// Use routes
+app.use('/', routes);

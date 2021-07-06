@@ -11,24 +11,18 @@ const getDate = () => {
   return newDate;
 };
 
-/* Function to GET data */
-const getData = async (url = '', data = {}) => {
-  const res = await fetch(url, {
-    method: 'GET',
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+const showErrors = (errors) => {
+  let errorString = '';
+
+  errors.forEach((error) => {
+    errorString =
+      errorString + `${error.param} - ${error.msg}: '${error.value}'<br/> `;
   });
 
-  try {
-    const newData = await res.json();
-    console.log(newData);
-
-    return newData;
-  } catch (error) {
-    console.error('error', error);
-  }
+  document.getElementById('date').innerHTML = '';
+  document.getElementById('temp').innerHTML = '';
+  document.getElementById('content').innerHTML = '';
+  document.getElementById('error').innerHTML = errorString;
 };
 
 /* Function to GET Web API Data*/
@@ -59,6 +53,10 @@ const postData = async (url = '', data = {}) => {
   try {
     const newData = await res.json();
 
+    if (newData.errors) {
+      showErrors(newData.errors);
+    }
+
     return newData;
   } catch (error) {
     console.error('error', error);
@@ -75,21 +73,26 @@ const processData = () => {
       temperature: (data.main && data.main.temp) || data.message,
       date: getDate(),
       userResponse: feelings,
-    }).then(updateUI());
+    }).then((data) => updateUI(data));
   });
 };
 
 /* Function to update UI */
-const updateUI = async () => {
-  const request = await fetch('/all');
-  try {
-    const allData = await request.json();
+const updateUI = async (data) => {
+  if (data.errors) {
+    showErrors(data.errors);
+  } else {
+    const request = await fetch('/all');
+    try {
+      const allData = await request.json();
 
-    document.getElementById('date').innerHTML = allData.date;
-    document.getElementById('temp').innerHTML = allData.temperature;
-    document.getElementById('content').innerHTML = allData.userResponse;
-  } catch (error) {
-    console.error('error', error);
+      document.getElementById('date').innerHTML = allData.date;
+      document.getElementById('temp').innerHTML = allData.temperature;
+      document.getElementById('content').innerHTML = allData.userResponse;
+      document.getElementById('error').innerHTML = '';
+    } catch (error) {
+      console.error('error', error);
+    }
   }
 };
 
