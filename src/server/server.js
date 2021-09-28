@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const express = require('express');
 // Cors for cross origin allowance
 const cors = require('cors');
-const validation = require('./middleware/validation');
-const routes = require('./routes/index');
+const validation = require('../../middleware/validation');
+const routes = require('../../routes/index');
 
 // Import environmental variables from our variables.env file
 require('dotenv').config({ path: 'variables.env' });
@@ -22,7 +22,7 @@ projectData = {
 const app = express();
 
 // Initialize the main project folder
-app.use(express.static(path.join(__dirname, 'website')));
+app.use(express.static('dist'));
 
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
