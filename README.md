@@ -13,7 +13,7 @@ Travel app
 ## Project Setup
 
 1. clone the Project - `git clone https://github.com/alexaac/we-travel.git`
-2. `cd test-weather`
+2. `cd we-travel`
 3. install the dependencies - `npm install`
 4. start the project on localhost:7000 - `npm start`
 
