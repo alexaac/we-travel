@@ -69,8 +69,14 @@ getEnvData();
 
 const setActions = () => {
   // Personal API Key for OpenWeatherMap API and Mapbox
-  const { weatherBaseUrl, weatherApiKey, mapboxBaseUrl, mapboxApiKey } =
-    projectData;
+  const {
+    weatherBaseUrl,
+    weatherApiKey,
+    mapboxBaseUrl,
+    mapboxApiKey,
+    geonamesBaseUrl,
+    geonamesApiKey,
+  } = projectData;
 
   /* MapBox map */
   mapboxgl.accessToken = mapboxApiKey;
@@ -82,13 +88,34 @@ const setActions = () => {
     zoom: 5, // starting zoom
   });
 
-  /* Function to get Web API Data*/
-  const getWeatherByZipcode = async (zipCode) => {
+  /* Function to get Geonames API Data*/
+  const getInfoByCity = async (city) => {
+    console.log(city);
     try {
-      const url = `${weatherBaseUrl + zipCode}&appid=${weatherApiKey}`;
+      const url = `${geonamesBaseUrl}&name=${city}&username=${geonamesApiKey}`;
       const res = await fetch(url);
-      const weatherData = res.json();
+      const cityData = await res.json();
 
+      cityInfo = {
+        lat: cityData.geonames[0].lat,
+        lon: cityData.geonames[0].lng,
+        country: cityData.geonames[0].countryName,
+      };
+
+      console.log(cityInfo);
+      return cityInfo;
+    } catch (error) {
+      console.error('error', error);
+    }
+  };
+
+  /* Function to get Weather API Data*/
+  const getWeatherByLatLon = async (lat, lon) => {
+    try {
+      const url = `${weatherBaseUrl}?units=I&lat=${lat}&lon=${lon}&key=${weatherApiKey}`;
+      const res = await fetch(url);
+      const weatherData = await res.json();
+      console.log(weatherData);
       return weatherData;
     } catch (error) {
       console.error('error', error);
@@ -96,8 +123,8 @@ const setActions = () => {
   };
 
   /* Function to pan map to zipcode */
-  const panToZipcode = async (zipCode) => {
-    const url = `${mapboxBaseUrl}${zipCode}.json?access_token=${mapboxApiKey}&autocomplete=true`;
+  const panToLatLon = async (city, lat, lon) => {
+    const url = `${mapboxBaseUrl}${city}.json?access_token=${mapboxApiKey}&autocomplete=trueproximity=${lon},${lat}`;
     const request = await fetch(url);
 
     try {
@@ -118,15 +145,16 @@ const setActions = () => {
   };
 
   /* Function to GET Project Data */
-  const processData = () => {
-    const zipCode = document.getElementById('zip').value;
+  const processData = async () => {
+    const city = document.getElementById('city').value;
+    const cityInfo = await getInfoByCity(city);
     const feelings = document.getElementById('feelings').value;
 
-    if (zipCode) panToZipcode(zipCode);
+    if (city) panToLatLon(city, cityInfo.lat, cityInfo.lon);
 
-    return getWeatherByZipcode(zipCode).then((data) => {
+    return getWeatherByLatLon(cityInfo.lat, cityInfo.lon).then((data) => {
       postData('/addData', {
-        temperature: (data.main && data.main.temp) || data.message,
+        temperature: (data.data && data.data[0].temp) || data.error,
         date: getDate(),
         userResponse: feelings,
       }).then((data) => updateUI(data));

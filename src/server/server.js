@@ -8,13 +8,16 @@ const validation = require('../../middleware/validation');
 const routes = require('../../routes/index');
 
 // Import environmental variables from our variables.env file
-require('dotenv').config({ path: 'variables.env' });
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Setup JS object to act as endpoint for all routes
 projectData = {
-  weatherBaseUrl: process.env.WEATHER_API,
+  geonamesBaseUrl: 'https://secure.geonames.org/searchJSON?maxRows=10&',
+  geonamesApiKey: process.env.GEONAMES_APP_ID,
+  weatherBaseUrl: 'https://api.weatherbit.io/v2.0/current',
   weatherApiKey: process.env.WEATHER_APP_ID,
-  mapboxBaseUrl: process.env.MAPBOX_API,
+  mapboxBaseUrl: 'https://api.mapbox.com/geocoding/v5/mapbox.places/',
   mapboxApiKey: process.env.MAPBOX_API_KEY,
 };
 
