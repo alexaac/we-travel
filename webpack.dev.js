@@ -19,9 +19,15 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
 
   devServer: {
-    writeToDisk: true,
+    devMiddleware: {
+      writeToDisk: true,
+    },
 
-    contentBase: './dist',
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+
+    port: 8008,
   },
 
   module: {
