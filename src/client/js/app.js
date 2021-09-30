@@ -90,19 +90,17 @@ const setActions = () => {
 
   /* Function to get Geonames API Data*/
   const getInfoByCity = async (city) => {
-    console.log(city);
     try {
       const url = `${geonamesBaseUrl}&name=${city}&username=${geonamesApiKey}`;
       const res = await fetch(url);
       const cityData = await res.json();
 
-      cityInfo = {
+      cityInfo = cityData.geonames[0] && {
         lat: cityData.geonames[0].lat,
         lon: cityData.geonames[0].lng,
         country: cityData.geonames[0].countryName,
       };
 
-      console.log(cityInfo);
       return cityInfo;
     } catch (error) {
       console.error('error', error);
@@ -115,7 +113,7 @@ const setActions = () => {
       const url = `${weatherBaseUrl}?units=I&lat=${lat}&lon=${lon}&key=${weatherApiKey}`;
       const res = await fetch(url);
       const weatherData = await res.json();
-      console.log(weatherData);
+
       return weatherData;
     } catch (error) {
       console.error('error', error);
@@ -150,9 +148,12 @@ const setActions = () => {
     const cityInfo = await getInfoByCity(city);
     const feelings = document.getElementById('feelings').value;
 
-    if (city) panToLatLon(city, cityInfo.lat, cityInfo.lon);
+    if (city && cityInfo) panToLatLon(city, cityInfo.lat, cityInfo.lon);
 
-    return getWeatherByLatLon(cityInfo.lat, cityInfo.lon).then((data) => {
+    return getWeatherByLatLon(
+      cityInfo && cityInfo.lat,
+      cityInfo && cityInfo.lon
+    ).then((data) => {
       postData('/addData', {
         temperature: (data.data && data.data[0].temp) || data.error,
         date: getDate(),
