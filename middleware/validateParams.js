@@ -3,10 +3,11 @@ const { check } = require('express-validator');
 module.exports = {
   // Methods for validating data
   setData: [
+    check('city').not().isEmpty().withMessage('Please input city').isString(),
     check('temperature')
       .not()
       .isEmpty()
-      .withMessage('Please input zipcode')
+      .withMessage('Please input city')
       .isDecimal(),
     check('date').not().isEmpty().withMessage('Date must not be empty'),
     check('userResponse')
@@ -15,10 +16,10 @@ module.exports = {
       .withMessage('Please provide a status'),
   ],
   urlData: [
-    check('zipCode')
+    check('city')
       .not()
       .isEmpty()
-      .withMessage('Zipcode must not be empty')
-      .isNumeric(),
+      .withMessage('City must not be empty')
+      .isString(),
   ],
 };

@@ -15,7 +15,7 @@ dotenv.config();
 projectData = {
   geonamesBaseUrl: 'https://secure.geonames.org/searchJSON?maxRows=10&',
   geonamesApiKey: process.env.GEONAMES_APP_ID,
-  weatherBaseUrl: 'https://api.weatherbit.io/v2.0/current',
+  weatherBaseUrl: 'https://api.weatherbit.io/v2.0/forecast/daily',
   weatherApiKey: process.env.WEATHER_APP_ID,
   mapboxBaseUrl: 'https://api.mapbox.com/geocoding/v5/mapbox.places/',
   mapboxApiKey: process.env.MAPBOX_API_KEY,
