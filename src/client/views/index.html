@@ -50,24 +50,7 @@
 
       <main>
         <h1>Travel Planner</h1>
-        <section>
-          <div class="holder city">
-            <label for="city">City Name</label>
-            <input type="text" id="city" placeholder="enter city name here" />
 
-            <label for="start">Start Date</label>
-            <input
-              type="date"
-              id="start"
-              placeholder="enter date here"
-              required
-              pattern="\d{4}-\d{2}-\d{2}"
-            />
-          </div>
-          <div class="holder feel">
-            <button id="generate" type="submit">Generate</button>
-          </div>
-        </section>
         <section>
           <div id="app">
             <div id="photo" class="photo"></div>
@@ -82,6 +65,22 @@
               </div>
             </div>
           </div>
+        </section>
+        <section>
+          <div class="holder city">
+            <label for="city">City Name</label>
+            <input type="text" id="city" placeholder="enter city name here" />
+
+            <label for="start">Start Date</label>
+            <input
+              type="date"
+              id="start"
+              placeholder="enter date here"
+              required
+              pattern="\d{4}-\d{2}-\d{2}"
+            />
+          </div>
+          <button id="generate" type="submit">Generate</button>
         </section>
       </main>
     </div>

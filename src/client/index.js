@@ -1,6 +1,6 @@
 import { showErrors, postData, getEnvData, setActions } from './js/app';
 
-import './styles/style.scss';
+import './styles/trip.scss';
 import './styles/base.scss';
 import './styles/footer.scss';
 import './styles/form.scss';
