@@ -9,19 +9,28 @@ const updateUI = async (data) => {
     try {
       const allData = await request.json();
 
+
       const daysUntil = getDateDiff(allData.date);
       const isToday = checkIsToday(allData.date);
 
-      document.getElementById('days').innerHTML = `${allData.city} trip is ${
+      document.getElementById('tripinfo').innerHTML = `
+        <strong>My trip to: ${allData.city}, ${allData.country}</strong><br />
+        <strong>Departing: ${allData.date}</strong><br />
+
+        <button class="trip" id="savetrip" type="submit">Save</button>
+        <button class="trip" id="removetrip" type="submit" disabled>Remove</button><br />
+
+        ${allData.city}, ${allData.country} trip is ${
         daysUntil === 0 && isToday
           ? 'today'
           : daysUntil === 0
           ? 'tomorrow'
           : daysUntil + 1 + ' days away'
-      }`;
-      document.getElementById('temp').innerHTML = allData.temperature + '°F';
-      document.getElementById('content').innerHTML =
-        'You feel ' + allData.userResponse;
+      }<br /><br />
+
+        Typical weather for then is: <br />
+        ${allData.temperature}°F ${allData.weather}
+      `;
       document.getElementById('error').innerHTML = '';
       document.getElementById(
         'photo'

@@ -40,6 +40,7 @@ const setActions = () => {
     pixabayApiKey,
   } = projectData;
 
+
   /* Initialize MapBox map */
   mapboxgl.accessToken = mapboxApiKey;
 
@@ -53,7 +54,6 @@ const setActions = () => {
   /* GET Data for the Project */
   const processData = async () => {
     const city = document.getElementById('city').value;
-    const feelings = document.getElementById('feelings').value;
     const start = document.getElementById('start').value;
 
     /* Get Data from Geonames API*/
@@ -63,11 +63,13 @@ const setActions = () => {
       maxRows: 10,
     });
 
-    const cityInfo = cityData.geonames[0] && {
-      lat: cityData.geonames[0].lat || -122.11,
-      lon: cityData.geonames[0].lng || 37.4,
-      country: cityData.geonames[0].countryName,
-    };
+    const cityInfo = cityData &&
+      cityData.geonames &&
+      cityData.geonames[0] && {
+        lat: cityData.geonames[0].lat || -122.11,
+        lon: cityData.geonames[0].lng || 37.4,
+        country: cityData.geonames[0].countryName,
+      };
 
     /* Get Data from Mapbox API*/
     const mapboxData = await getData(`${mapboxBaseUrl}${city}.json?`, {
@@ -75,6 +77,7 @@ const setActions = () => {
       autocomplete: 'true',
       proximity: `${cityInfo && cityInfo.lon}, ${cityInfo && cityInfo.lat}`,
     });
+
     if (city && cityInfo) panToLatLon(map, mapboxData);
 
     /* Get Data from Pixabay API*/
@@ -117,13 +120,18 @@ const setActions = () => {
 
       // Update projectData and UI
       postData('/addData', {
-        city: city,
+        city,
+        country: cityInfo && cityInfo.country,
+        weather:
+          startDayData &&
+          startDayData[0] &&
+          startDayData[0].weather.description,
         temperature:
           (startDayData && startDayData[0] && startDayData[0].temp) ||
           data.error ||
           'The date is outside the 16 day forecast interval.',
+
         date: start,
-        userResponse: feelings,
         photo: pixabayData.hits && pixabayData.hits[0],
       }).then((data) => updateUI(data));
     });

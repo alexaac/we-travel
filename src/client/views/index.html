@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Weather Journal</title>
+    <title>WE Travel</title>
     <link
       href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap"
       rel="stylesheet"
@@ -17,56 +17,95 @@
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
   </head>
-  <body>
-    <div id="app">
-      <div class="holder headline"><h1>Weather Journal App</h1></div>
-      <div class="holder city">
-        <label for="city">City Name</label>
-        <input type="text" id="city" placeholder="enter city name here" />
 
-        <label for="start">Start Date</label>
-        <input
-          type="date"
-          id="start"
-          placeholder="enter date here"
-          required
-          pattern="\d{4}-\d{2}-\d{2}"
-        />
-      </div>
-      <div class="holder feel">
-        <label for="feelings">How are you feeling today?</label>
-        <textarea
-          class="myInput"
-          id="feelings"
-          placeholder="Enter your feelings here"
-          rows="9"
-          cols="50"
-        ></textarea>
-        <button id="generate" type="submit">Generate</button>
-      </div>
-      <div class="holder entry">
-        <div class="title"><h2>Most Recent Entry</h2></div>
-        <div id="entryHolder">
-          <div id="days"></div>
-          <div id="temp"></div>
-          <div id="content"></div>
-          <div id="error"></div>
+  <body>
+    <div class="mps-wrap-flex">
+      <header class="header">
+        <div class="nav-flex">
+          <div class="nav-brand"><em>WE</em></div>
+          <div class="nav-mobile-button">
+            <span></span> <span></span> <span></span> <span></span>
+          </div>
+          <nav role="navigation" class="nav-menu-flex">
+            <div class="nav-menu-wrap">
+              <div role="list" class="nav-menu-list-flex">
+                <div role="listitem" class="nav-menu-item">
+                  <a href="#" class="nav-link mps-link">WE Travel</a>
+                </div>
+                <div role="listitem" class="nav-menu-item">
+                  <a href="#" class="nav-link mps-link">Trips</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <div class="nav-menu-wrap nav-right">
+            <div role="list" class="nav-menu-list-flex">
+              <div role="listitem" class="nav-menu-item">
+                <a href="#" class="mps-btn mps-btn-primary">Login</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mapholder">
-          <div id="map" class="map"></div>
-          <div id="photo" class="photo"></div>
-        </div>
-      </div>
+      </header>
+
+      <main>
+        <h1>Travel Planner</h1>
+        <section>
+          <div class="holder city">
+            <label for="city">City Name</label>
+            <input type="text" id="city" placeholder="enter city name here" />
+
+            <label for="start">Start Date</label>
+            <input
+              type="date"
+              id="start"
+              placeholder="enter date here"
+              required
+              pattern="\d{4}-\d{2}-\d{2}"
+            />
+          </div>
+          <div class="holder feel">
+            <button id="generate" type="submit">Generate</button>
+          </div>
+        </section>
+        <section>
+          <div id="app">
+            <div id="photo" class="photo"></div>
+            <div class="holder we-flex">
+              <div id="entryHolder">
+                <div id="tripinfo"></div>
+                <div id="content"></div>
+                <div id="error"></div>
+              </div>
+              <div class="mapholder">
+                <div id="map" class="map"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
 
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner-flex">
+          <div class="footer-inner-flex-2">© WE 2021</div>
+          <div class="footer-links">
+            <a href="#" class="footer-link mps-link">Terms</a>
+            <a href="#" class="footer-link mps-link">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <script>
-      // Check that service workers are supported
-      if ('serviceWorker' in navigator) {
-        // Use the window load event to keep the page load performant
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js');
-        });
-      }
+      // // Check that service workers are supported
+      // if ('serviceWorker' in navigator) {
+      //   // Use the window load event to keep the page load performant
+      //   window.addEventListener('load', () => {
+      //     navigator.serviceWorker.register('/service-worker.js');
+      //   });
+      // }
     </script>
   </body>
 </html>

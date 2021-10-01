@@ -1,0 +1,155 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 40px;
+}
+
+/* Header Navigation*/
+
+.nav-flex {
+  padding: 1.25rem 3rem 1rem;
+  border-bottom: 1px none rgba(138, 152, 158, 0.3);
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Brand */
+
+.nav-brand {
+  height: 60px;
+  font-weight: bold;
+  font-family: cursive;
+  font-size: larger;
+}
+
+.nav-brand-link {
+  background-image: none;
+}
+
+/* Menu */
+
+.nav-menu-flex {
+  display: flex;
+  align-items: center;
+  position: relative;
+  float: right;
+}
+
+.nav-menu-list-flex {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu-item {
+  margin-bottom: 1rem;
+}
+
+.nav-menu-item.mps-subscribe {
+  padding-left: 1rem;
+  margin-bottom: -0.2rem;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+
+  padding: 20px;
+  text-align: left;
+  margin: 0 auto;
+}
+
+/* Navigation Toggle Mobile Button */
+
+.nav-mobile-button {
+  z-index: 2;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  float: right;
+  cursor: pointer;
+  border: 12px solid transparent;
+  margin-right: -12px;
+  display: block;
+  box-sizing: initial;
+}
+
+.nav-mobile-button span {
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: var(--color-neutral-100);
+  background-color: var(--color-neutral-500);
+  border-radius: 2px;
+  opacity: 1;
+  left: 0;
+  display: block;
+}
+
+.nav-mobile-button span:nth-child(1) {
+  top: 0;
+}
+
+.nav-mobile-button span:nth-child(2),
+.nav-mobile-button span:nth-child(3) {
+  top: 50%;
+  margin-top: -1px;
+}
+
+.nav-mobile-button span:nth-child(4) {
+  top: 100%;
+  margin-top: -1px;
+}
+
+@media screen and (max-width: 991.98px) {
+  /* Small and medium devices (tablets, 768px and up) */
+  .nav-flex {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    z-index: 10;
+    border-bottom-style: solid;
+    box-shadow: 0 1px 20px 0 #0f0f0f;
+  }
+
+  .nav-menu-wrap {
+    position: relative;
+    overflow: auto;
+  }
+
+  .nav-right {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  /* Extra small devices and small devices */
+  .nav-brand {
+    height: 40px;
+  }
+
+  .nav-menu-flex {
+    display: none;
+  }
+
+  .nav-menu-list-flex {
+    overflow: auto;
+    flex-direction: row;
+  }
+
+  .nav-right {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* Medium devices (tablets, 768px and up) */
+  .nav-mobile-button {
+    display: none;
+  }
+}
