@@ -15,7 +15,8 @@ Travel app - plan a trip by entering the city name, and find out about the weath
 1. clone the Project - `git clone https://github.com/alexaac/we-travel.git`
 2. `cd we-travel`
 3. install the dependencies - `npm install`
-4. start the project on localhost:7000 - `npm start`
+4. run the dev server - `npm run dev` or run build for production - `npm run build`
+5. start the project on localhost:7000 - `npm start`
 
 #### References
 
@@ -46,6 +47,8 @@ Travel app - plan a trip by entering the city name, and find out about the weath
 │   │   │   └── ui.js
 │   │   ├── styles
 │   │   │   ├── base.scss
+│   │   │   ├── buttons.scss
+│   │   │   ├── colors.scss
 │   │   │   ├── footer.scss
 │   │   │   ├── form.scss
 │   │   │   ├── header.scss
