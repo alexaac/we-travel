@@ -4,7 +4,7 @@ exports.getProjectData = (req, res) => {
 
 // POST request to add incoming data
 exports.setProjectData = (req, res) => {
-  console.log(req.body.photo);
+
   projectData.city = req.body.city;
   projectData.temperature = req.body.temperature;
   projectData.date = req.body.date;

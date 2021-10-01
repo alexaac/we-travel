@@ -4,8 +4,6 @@ const dataController = require('../controllers/dataController');
 const validateParams = require('../middleware/validateParams');
 const validation = require('../middleware/validation');
 
-console.log('--------------------');
-
 router.get('/', function (req, res) {
   res.sendFile('../dist/index.html');
 });

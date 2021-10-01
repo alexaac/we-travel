@@ -63,8 +63,8 @@ const setActions = () => {
     });
 
     const cityInfo = cityData.geonames[0] && {
-      lat: cityData.geonames[0].lat,
-      lon: cityData.geonames[0].lng,
+      lat: cityData.geonames[0].lat || -122.11,
+      lon: cityData.geonames[0].lng || 37.4,
       country: cityData.geonames[0].countryName,
     };
 
@@ -75,9 +75,9 @@ const setActions = () => {
       proximity: `${cityInfo.lon}, ${cityInfo.lat}`,
     });
     if (city && cityInfo) panToLatLon(map, mapboxData);
-    console.log(pixabayBaseUrl);
+
     /* Get Data from Pixabay API*/
-    const pixabayData = await getData(pixabayBaseUrl, {
+    let pixabayData = await getData(pixabayBaseUrl, {
       key: pixabayApiKey,
       q: `${city} city`,
       category: 'travel',
@@ -88,6 +88,20 @@ const setActions = () => {
       min_height: 630,
     });
 
+    // Pull in an image for the country from Pixabay API when the entered location brings up no results
+    if (pixabayData.total === 0) {
+      pixabayData = await getData(pixabayBaseUrl, {
+        key: pixabayApiKey,
+        q: `${cityInfo.country} country`,
+        category: 'travel',
+        safesearch: 'true',
+        image_type: 'photo',
+        orientation: 'horizontal',
+        min_width: 1200,
+        min_height: 630,
+      });
+    }
+
     /* Get Data from Weather API*/
     return getData(weatherBaseUrl, {
       units: 'I',
@@ -97,7 +111,6 @@ const setActions = () => {
     }).then((data) => {
       const startDayData = filterByDay(data.data, start);
 
-      console.log(pixabayData.hits[0]);
       // Update projectData and UI
       postData('/addData', {
         city: city,

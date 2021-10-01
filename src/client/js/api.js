@@ -32,9 +32,6 @@ const postData = async (url = '', data = {}) => {
  * @param {object} params - parameters
  */
 const getData = async (baseUrl = '', params = {}) => {
-  console.log(baseUrl);
-  console.log(params);
-
   try {
     const queryString = Object.keys(params)
       .map((key) => `${key}=${params[key]}`)
@@ -44,7 +41,6 @@ const getData = async (baseUrl = '', params = {}) => {
     const res = await fetch(url);
     const data = await res.json();
 
-    console.log(data);
     return data;
   } catch (error) {
     console.error('error', error);
