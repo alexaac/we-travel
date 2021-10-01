@@ -1,4 +1,4 @@
-import { filterByDay, showErrors } from './helpers';
+import { filterByDay, showErrors, checkIsToday } from './helpers';
 import { postData, getData } from './api';
 import { updateUI } from './ui';
 import { panToLatLon } from './map';
@@ -30,6 +30,7 @@ const setActions = () => {
   // Personal API Key for OpenWeatherMap API and Mapbox
   const {
     weatherBaseUrl,
+    currWeatherBaseUrl,
     weatherApiKey,
     mapboxBaseUrl,
     mapboxApiKey,
@@ -72,7 +73,7 @@ const setActions = () => {
     const mapboxData = await getData(`${mapboxBaseUrl}${city}.json?`, {
       access_token: mapboxApiKey,
       autocomplete: 'true',
-      proximity: `${cityInfo.lon}, ${cityInfo.lat}`,
+      proximity: `${cityInfo && cityInfo.lon}, ${cityInfo && cityInfo.lat}`,
     });
     if (city && cityInfo) panToLatLon(map, mapboxData);
 
@@ -92,7 +93,7 @@ const setActions = () => {
     if (pixabayData.total === 0) {
       pixabayData = await getData(pixabayBaseUrl, {
         key: pixabayApiKey,
-        q: `${cityInfo.country} country`,
+        q: `${cityInfo && cityInfo.country} country`,
         category: 'travel',
         safesearch: 'true',
         image_type: 'photo',
@@ -102,8 +103,11 @@ const setActions = () => {
       });
     }
 
+    const isToday = checkIsToday(start);
+    const weatherUrl = isToday ? currWeatherBaseUrl : weatherBaseUrl;
+
     /* Get Data from Weather API*/
-    return getData(weatherBaseUrl, {
+    return getData(weatherUrl, {
       units: 'I',
       lat: cityInfo && cityInfo.lat,
       lon: cityInfo && cityInfo.lon,
@@ -115,7 +119,7 @@ const setActions = () => {
       postData('/addData', {
         city: city,
         temperature:
-          (startDayData[0] && startDayData[0].temp) ||
+          (startDayData && startDayData[0] && startDayData[0].temp) ||
           data.error ||
           'The date is outside the 16 day forecast interval.',
         date: start,

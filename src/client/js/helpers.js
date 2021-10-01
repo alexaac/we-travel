@@ -18,7 +18,12 @@ const checkIsToday = (start) => {
 
 // Filter By Day
 const filterByDay = (data, start) =>
+  data &&
   data.filter((day) => {
+    console.log(day);
+    console.log(day.datetime);
+    console.log(start);
+
     const dayDate = new Date(day.datetime.slice(0, 10))
       .toISOString()
       .split('T')[0];

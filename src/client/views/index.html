@@ -54,25 +54,19 @@
         </div>
         <div class="mapholder">
           <div id="map" class="map"></div>
-          <div id="photo" class="photo">
-            <img
-              src="../media/pedro-kummel-x1mQuq9lBq0-unsplash.jpg"
-              width="480"
-              alt=""
-            />
-          </div>
+          <div id="photo" class="photo"></div>
         </div>
       </div>
     </div>
 
     <script>
-      // // Check that service workers are supported
-      // if ('serviceWorker' in navigator) {
-      //   // Use the window load event to keep the page load performant
-      //   window.addEventListener('load', () => {
-      //     navigator.serviceWorker.register('/service-worker.js');
-      //   });
-      // }
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js');
+        });
+      }
     </script>
   </body>
 </html>
