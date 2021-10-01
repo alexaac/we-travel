@@ -57,6 +57,7 @@ Travel app - plan a trip by entering the city name, and find out about the weath
 ├── __test__
 │   ├── mockData.js
 │   └── testApi.spec.js
+├── variables.env
 ├── webpack.common.js
 ├── webpack.dev.js
 └── webpack.prod.js

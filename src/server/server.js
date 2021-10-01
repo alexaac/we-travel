@@ -8,8 +8,7 @@ const validation = require('../../middleware/validation');
 const routes = require('../../routes/index');
 
 // Import environmental variables from our variables.env file
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config({ path: 'variables.env' });
 
 // Setup JS object to act as endpoint for all routes
 projectData = {
