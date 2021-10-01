@@ -23,6 +23,9 @@ const updateUI = async (data) => {
       document.getElementById('content').innerHTML =
         'You feel ' + allData.userResponse;
       document.getElementById('error').innerHTML = '';
+      document.getElementById(
+        'photo'
+      ).innerHTML = `<img src=${allData.photo.webformatURL} width="480">`;
     } catch (error) {
       console.error('error', error);
     }

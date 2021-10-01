@@ -38,8 +38,10 @@ describe('Testing the API functionality', () => {
 
   dataForUrl.forEach((myTest) => {
     test(
-      (myTest.response.status && myTest.response.status.message) ||
-        myTest.response.message ||
+      (myTest.response &&
+        myTest.response.status &&
+        myTest.response.status.message) ||
+        (myTest.response && myTest.response.message) ||
         myTest.testName,
       async () => {
         global.fetch = jest

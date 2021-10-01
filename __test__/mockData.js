@@ -16,7 +16,6 @@ const getDataForUrl = () => [
   },
   {
     testName: 'geonames user does not exist',
-
     baseUrl: 'https://secure.geonames.org/searchJSON?',
     params: {
       name: 'Paris',
@@ -30,7 +29,6 @@ const getDataForUrl = () => [
   },
   {
     testName: 'geonames empty search',
-
     baseUrl: 'https://secure.geonames.org/searchJSON?',
     params: {
       name: '%667*',
@@ -44,7 +42,6 @@ const getDataForUrl = () => [
   },
   {
     testName: 'geonames empty name search',
-
     baseUrl: 'https://secure.geonames.org/searchJSON?',
     params: {
       name: '',
@@ -259,7 +256,6 @@ const getDataForUrl = () => [
   },
   {
     testName: 'geonames valid search Paris',
-
     baseUrl: 'https://secure.geonames.org/searchJSON?',
     params: {
       name: 'Paris',
@@ -474,7 +470,6 @@ const getDataForUrl = () => [
   },
   {
     testName: 'mapbox $56677* valid search',
-
     baseUrl: 'https://api.mapbox.com/geocoding/v5/mapbox.places/$56677*.json?',
     params: {
       access_token:
@@ -523,7 +518,6 @@ const getDataForUrl = () => [
   },
   {
     testName: 'mapbox empty token',
-
     baseUrl: 'https://api.mapbox.com/geocoding/v5/mapbox.places/Paris.json?',
     params: {
       access_token: '',
@@ -536,7 +530,6 @@ const getDataForUrl = () => [
   },
   {
     testName: 'mapbox Paris valid search',
-
     baseUrl: 'https://api.mapbox.com/geocoding/v5/mapbox.places/Paris.json?',
     params: {
       access_token:
@@ -710,7 +703,6 @@ const getDataForUrl = () => [
   },
   {
     testName: 'weatherbit empty token',
-
     baseUrl: 'https://api.weatherbit.io/v2.0/forecast/daily?',
     params: {
       units: 'I',
@@ -724,7 +716,6 @@ const getDataForUrl = () => [
   },
   {
     testName: 'weatherbit string latitude',
-
     baseUrl: 'https://api.weatherbit.io/v2.0/forecast/daily?',
     params: {
       units: 'I',
@@ -738,7 +729,6 @@ const getDataForUrl = () => [
   },
   {
     testName: 'weatherbit valid search',
-
     baseUrl: 'https://api.weatherbit.io/v2.0/forecast/daily?',
     params: {
       units: 'I',
@@ -1460,6 +1450,619 @@ const getDataForUrl = () => [
       country_code: 'FR',
       state_code: '11',
     },
+  },
+  {
+    testName: 'pixabay valid search',
+    baseUrl: 'https://pixabay.com/api/?',
+    params: {
+      key: '23634203-6e23785787a43b76832a87d2b',
+      q: 'Paris city',
+      category: 'travel',
+      safesearch: 'true',
+      image_type: 'photo',
+      orientation: 'horizontal',
+      min_width: 1200,
+      min_height: 630,
+    },
+    response: {
+      total: 395,
+      totalHits: 395,
+      hits: [
+        {
+          id: 843229,
+          pageURL:
+            'https://pixabay.com/photos/paris-eiffel-tower-france-french-843229/',
+          type: 'photo',
+          tags: 'paris, eiffel tower, france',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2015/07/13/14/40/paris-843229_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/gb024670397d863f1712f5d3365c9a97749173ac557615bc21862a611bd680ce3f2e3de9595f1ab62590e3a4518e83a3d_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g19a2e98f651750ce1e533d3cd897850862735ae7df6d5030e0f839d657119e78253a5715247462e37c93c88953f50dcb432105c945c908c287238128b1d75fb3_1280.jpg',
+          imageWidth: 6000,
+          imageHeight: 4000,
+          imageSize: 4003951,
+          views: 384058,
+          downloads: 265444,
+          collections: 1494,
+          likes: 772,
+          comments: 98,
+          user_id: 242387,
+          user: 'Free-Photos',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2014/05/07/00-10-34-2_250x250.jpg',
+        },
+        {
+          id: 2499022,
+          pageURL:
+            'https://pixabay.com/photos/paris-france-bridge-river-water-2499022/',
+          type: 'photo',
+          tags: 'paris, france, bridge',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2017/07/13/03/15/paris-2499022_150.jpg',
+          previewWidth: 150,
+          previewHeight: 105,
+          webformatURL:
+            'https://pixabay.com/get/g0cec84f29df15265f00e70047248a67c6b80eab9d8c0dea18bbc37cbfe6675a8f166345ed3bef7e6a960a90b384102c51867467c498617c588ddb2a42b36e5fb_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 452,
+          largeImageURL:
+            'https://pixabay.com/get/g2220417e8c08c7da3ea021dee2dc12bab564ae1c7b618027e40cd03df4119b95278f772ba7b8483bd9eefecc50d1e93f9e91c0275f3f60d7463da8b9537eab84_1280.jpg',
+          imageWidth: 2000,
+          imageHeight: 1415,
+          imageSize: 756380,
+          views: 111661,
+          downloads: 72635,
+          collections: 678,
+          likes: 291,
+          comments: 34,
+          user_id: 12019,
+          user: '12019',
+          userImageURL: '',
+        },
+        {
+          id: 768501,
+          pageURL:
+            'https://pixabay.com/photos/eiffel-tower-paris-france-landmark-768501/',
+          type: 'photo',
+          tags: 'eiffel tower, paris, france',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2015/05/15/14/27/eiffel-tower-768501_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/gc3e7c7f106fba1c0ac7c1fdbe2e44769fe0f3c4be6eb7ef08ae1280c0ff55d7afb7ca1c51e44044713cb5ef0ac348f70_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g8d89dbe2f53ed6f837bcb267f40845b98f16429afd952ac4bdc22be61cf906a1108fcdb24d5ab69d436a7e178a5c9546319f9b9a86aca6a6e6ac93288bacff97_1280.jpg',
+          imageWidth: 5376,
+          imageHeight: 3584,
+          imageSize: 5094681,
+          views: 318909,
+          downloads: 238375,
+          collections: 978,
+          likes: 326,
+          comments: 83,
+          user_id: 242387,
+          user: 'Free-Photos',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2014/05/07/00-10-34-2_250x250.jpg',
+        },
+        {
+          id: 1245970,
+          pageURL:
+            'https://pixabay.com/photos/eiffel-tower-paris-illuminated-1245970/',
+          type: 'photo',
+          tags: 'eiffel tower, paris, illuminated',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2016/03/09/09/45/eiffel-tower-1245970_150.jpg',
+          previewWidth: 150,
+          previewHeight: 84,
+          webformatURL:
+            'https://pixabay.com/get/g691dfcc6e4e960cd9726287e45f40ad37e5bb555d7fe592dc32149d96d45c62d8fd692bea9fc1cb43afa4c74f971b7bc8dd6b5527a4ac752becf036936136f3b_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 360,
+          largeImageURL:
+            'https://pixabay.com/get/g97b658fbd6c340d8fec96712638596783595f6e35da2dab3d4a080899197efd99f3ddd06db1de5f248efb15cdc909e3ccd3eac5dc9b299b6a2a284403f397ece_1280.jpg',
+          imageWidth: 5111,
+          imageHeight: 2875,
+          imageSize: 1622150,
+          views: 80967,
+          downloads: 63245,
+          collections: 396,
+          likes: 183,
+          comments: 11,
+          user_id: 242387,
+          user: 'Free-Photos',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2014/05/07/00-10-34-2_250x250.jpg',
+        },
+        {
+          id: 5397889,
+          pageURL:
+            'https://pixabay.com/photos/paris-museum-france-architecture-5397889/',
+          type: 'photo',
+          tags: 'paris, museum, france',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2020/07/12/16/40/paris-5397889_150.jpg',
+          previewWidth: 150,
+          previewHeight: 84,
+          webformatURL:
+            'https://pixabay.com/get/g3b804a577b8020ac36dedd096725188a73a7aba8c69db7afa0be8fbfc6f624458e682f55feb8e3920e7950ce5bc932a1ed5b9b7d02727d100511a1bd3ce2d3c4_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 360,
+          largeImageURL:
+            'https://pixabay.com/get/gfcb53dc0afff7288e45058623eea33aca3e7693b2f060ec4b97c8f2e0396a30303e51b9a957c9def6ac7894c96143dea690d98bd2276625481cc4dfed204ad87_1280.jpg',
+          imageWidth: 5626,
+          imageHeight: 3165,
+          imageSize: 5020398,
+          views: 60317,
+          downloads: 49185,
+          collections: 419,
+          likes: 158,
+          comments: 23,
+          user_id: 10217214,
+          user: 'pierre9x6',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2019/09/21/16-27-36-691_250x250.jpg',
+        },
+        {
+          id: 1853365,
+          pageURL:
+            'https://pixabay.com/photos/eiffel-tower-paris-river-seine-1853365/',
+          type: 'photo',
+          tags: 'eiffel tower, paris, river seine',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2016/11/23/14/57/eiffel-tower-1853365_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/gd9c2e122fc947a70e815d567d88911c143dfbf33e52fcc767a15c440fb5a0cbdbce7ed9e29e7742ef34c0500b3377c8b3d3699a3b4b1d877794f07bd2c1eb258_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g3b203428d920c3da5b86289a29aa598c63d81879c21377dcecbea695cfcdef7761b78a9461c20877f22f776071a21d21e281a1846a39f8edca7fd8d086f76355_1280.jpg',
+          imageWidth: 4096,
+          imageHeight: 2731,
+          imageSize: 1369980,
+          views: 52736,
+          downloads: 35539,
+          collections: 288,
+          likes: 125,
+          comments: 14,
+          user_id: 2286921,
+          user: 'Pexels',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2016/03/26/22-06-36-459_250x250.jpg',
+        },
+        {
+          id: 846067,
+          pageURL:
+            'https://pixabay.com/photos/city-eiffel-tower-paris-france-846067/',
+          type: 'photo',
+          tags: 'city, eiffel tower, paris',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2015/07/15/11/49/city-846067_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/gae02af40241eeb811362be605b8352731d23efb82688037cb9dc4e7a01511a72aab11a7bdf86b276511a346c6f6a9eaa_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g3f1fdb7026db63fcb8cb14f575d71237abad4b2091f5bce74ea8532fad961fa2a9474c8ea921c368b3e1c6e35c89879c70c035fbfdc7ba0604ca107256e6bf74_1280.jpg',
+          imageWidth: 5760,
+          imageHeight: 3840,
+          imageSize: 5589314,
+          views: 47987,
+          downloads: 30189,
+          collections: 291,
+          likes: 120,
+          comments: 22,
+          user_id: 242387,
+          user: 'Free-Photos',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2014/05/07/00-10-34-2_250x250.jpg',
+        },
+        {
+          id: 415476,
+          pageURL:
+            'https://pixabay.com/photos/paris-eiffel-tower-city-buildings-415476/',
+          type: 'photo',
+          tags: 'paris, eiffel tower, city',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2014/08/11/11/06/paris-415476_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/g771c85ff282ce5c6475595f2334e12090048beffb04616d631bd2117bc8cdab4d5f0982332c197c8368ec169a8e407f1_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g72f6f6f403e46134146cb8701f8141d9e8b16425432240b6e2ef5f7b7d98a1cabbae62facec2b8b3ca9ea36f2521655006314436a594d4673c3b673a0ffd5599_1280.jpg',
+          imageWidth: 4825,
+          imageHeight: 3217,
+          imageSize: 2692765,
+          views: 52440,
+          downloads: 34026,
+          collections: 244,
+          likes: 110,
+          comments: 16,
+          user_id: 242387,
+          user: 'Free-Photos',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2014/05/07/00-10-34-2_250x250.jpg',
+        },
+        {
+          id: 4627143,
+          pageURL:
+            'https://pixabay.com/photos/city-buldings-skyline-paris-4627143/',
+          type: 'photo',
+          tags: 'city, buldings, skyline',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2019/11/14/21/16/city-4627143_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/g3f14486aa7b5fd5fd41133c8d2804027f964dc9f679474e3f1dd82ec91625b0ae6cf66d32b7348e8d5b9f4db51f943cf1f52a45efd4c6c3f7bafae1d6b8a555f_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 425,
+          largeImageURL:
+            'https://pixabay.com/get/g3d4852c59b612aa64dacd1298f35e30205a817280c349746e2b375e98473d90adb7e6f0812acefb2130f21332e2191dafaac2189ee30316526f2a75b1bdc7595_1280.jpg',
+          imageWidth: 4500,
+          imageHeight: 2989,
+          imageSize: 4161175,
+          views: 13662,
+          downloads: 7399,
+          collections: 147,
+          likes: 65,
+          comments: 18,
+          user_id: 7110329,
+          user: 'DUOTONE_',
+          userImageURL: '',
+        },
+        {
+          id: 1868203,
+          pageURL:
+            'https://pixabay.com/photos/louvre-paris-france-architecture-1868203/',
+          type: 'photo',
+          tags: 'louvre, paris, france',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2016/11/29/07/48/louvre-1868203_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/g2fa68b382a8c8aa552e04ca16a1be8b5422b3883ed862a845ec1e263d86c95c8c5d56fa398e3197ae80b9bf15669f71af4aa365f5aaacfae34bbef509966b40a_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g3ba3c805fe82c7c14e3b712e56250017e38ff8b72dd23f3c0f70f461e51114a3ce3469ab49a05165a9dc507c51398b73f8f32b67a2cba003a2edc1dbb54368d5_1280.jpg',
+          imageWidth: 5150,
+          imageHeight: 3428,
+          imageSize: 5260398,
+          views: 35327,
+          downloads: 25312,
+          collections: 259,
+          likes: 114,
+          comments: 10,
+          user_id: 2286921,
+          user: 'Pexels',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2016/03/26/22-06-36-459_250x250.jpg',
+        },
+        {
+          id: 101633,
+          pageURL:
+            'https://pixabay.com/photos/arc-de-triomphe-arc-triomphe-paris-101633/',
+          type: 'photo',
+          tags: 'arc de triomphe, arc, triomphe',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2013/04/07/21/29/arc-de-triomphe-101633_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/ge886b28a59d2a84cd9f88d4d56490c00e0048595f4453e09ccb79b7417d048e43d30e0e338121fc19aec40a208f54567_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g5d3abf5bfe26fb3843961790210217b6e735fd4a50ac400fa85e26d8bd7f3c8c2b35209255f2ffea90b2ae2b917d317d38237be948cd2caf74119238679330e8_1280.jpg',
+          imageWidth: 1600,
+          imageHeight: 1067,
+          imageSize: 520401,
+          views: 38185,
+          downloads: 23008,
+          collections: 250,
+          likes: 115,
+          comments: 15,
+          user_id: 29985,
+          user: 'herryway',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2013/04/07/21-48-58-589_250x250.jpg',
+        },
+        {
+          id: 1854130,
+          pageURL:
+            'https://pixabay.com/photos/architecture-eiffel-tower-1854130/',
+          type: 'photo',
+          tags: 'architecture, eiffel tower, illuminated',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2016/11/23/18/10/architecture-1854130_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/gf24776403cf39a1f4f1e300c9421d0852d19826dd188c52a92c918b32346e8c03dff01db42a7c1d625b7e03600d2b44c7309f74a26b4ca69209955bd2f8c93f5_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g985721b89844c279ca9497381a00093d7d160b8ff320ea3c011717b5e9345656ca437b400b33d8b99cd2511a7547eb24150658899c000a0c213c3c24fb075f27_1280.jpg',
+          imageWidth: 7952,
+          imageHeight: 5304,
+          imageSize: 15995630,
+          views: 39496,
+          downloads: 29309,
+          collections: 222,
+          likes: 113,
+          comments: 7,
+          user_id: 2286921,
+          user: 'Pexels',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2016/03/26/22-06-36-459_250x250.jpg',
+        },
+        {
+          id: 4416700,
+          pageURL:
+            'https://pixabay.com/photos/eiffel-tower-arch-tourism-crowd-4416700/',
+          type: 'photo',
+          tags: 'eiffel tower, arch, tourism',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2019/08/19/15/13/eiffel-tower-4416700_150.jpg',
+          previewWidth: 150,
+          previewHeight: 101,
+          webformatURL:
+            'https://pixabay.com/get/ge269a1abfd37d2e4bb30dd614f52d2cb375c7d245a60f9127c77fdd2b50b7acfa0dda6d2b073a6df7766cdf432858d0b9ff31b4334389fa1cec138375f80d1a8_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 431,
+          largeImageURL:
+            'https://pixabay.com/get/gc85382b662c35b2fb2b3d7d9af4f9fc66026d75e224fac71185ba955c7d11e40cd411485b3ed3bbdb0b9967302fc0077fe14632d2fd86d2f68e4de2e906e0795_1280.jpg',
+          imageWidth: 5500,
+          imageHeight: 3712,
+          imageSize: 5659145,
+          views: 45099,
+          downloads: 28868,
+          collections: 269,
+          likes: 140,
+          comments: 28,
+          user_id: 331295,
+          user: 'philriley427',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2016/01/06/01-14-50-606_250x250.jpg',
+        },
+        {
+          id: 5310783,
+          pageURL:
+            'https://pixabay.com/photos/paris-rooftop-eiffel-tower-urban-5310783/',
+          type: 'photo',
+          tags: 'paris, rooftop, eiffel tower',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2020/06/17/19/19/paris-5310783_150.jpg',
+          previewWidth: 150,
+          previewHeight: 101,
+          webformatURL:
+            'https://pixabay.com/get/g11d92b9bd8e5fcd25b28423334e4a37b28f97c2cafb28cc1b2805f717801666181d37b2f03e0986a1777424735e2327a0c84e8a60bc53433f9de3135ca8e1d40_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 431,
+          largeImageURL:
+            'https://pixabay.com/get/g38f14a38e4f15557eaa00846eb1b97d12d9bb27ce7e1b3180c5c30c6acb2749edd6a35b0e7397c6202309b910c444a80d3f594a08572150d5f38615a59e53694_1280.jpg',
+          imageWidth: 5287,
+          imageHeight: 3563,
+          imageSize: 2070284,
+          views: 11180,
+          downloads: 6030,
+          collections: 126,
+          likes: 80,
+          comments: 9,
+          user_id: 17092181,
+          user: 'Jibs-breizh',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2020/06/17/18-45-25-252_250x250.jpg',
+        },
+        {
+          id: 1850676,
+          pageURL:
+            'https://pixabay.com/photos/architecture-bridge-building-castle-1850676/',
+          type: 'photo',
+          tags: 'architecture, bridge, building',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2016/11/22/21/38/architecture-1850676_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/g5c4f2e40370c0700f125c67e5e215928aa3b95ff7d0cb405c426a040033dfe43d302ffac35c332920610982c9cc7c7f282475a86011fef8ae4f94a7034cc4049_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g838246e19d4c391d2198649cf0ad90688e74f7395682011aa2c7cd9ac7ee163b3a884b63917c3703f8ee8482b0ea11f2639ac427eb1e9c7c97be4cddfb535e15_1280.jpg',
+          imageWidth: 4537,
+          imageHeight: 3025,
+          imageSize: 2759935,
+          views: 40706,
+          downloads: 30193,
+          collections: 131,
+          likes: 104,
+          comments: 11,
+          user_id: 2286921,
+          user: 'Pexels',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2016/03/26/22-06-36-459_250x250.jpg',
+        },
+        {
+          id: 4119828,
+          pageURL:
+            'https://pixabay.com/photos/paris-eiffel-tower-roof-sky-france-4119828/',
+          type: 'photo',
+          tags: 'paris, eiffel tower, roof',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2019/04/11/13/59/paris-4119828_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/gdfc07a2bd65ff0e285223b1e27bb580e3ffdbbd3dcf34c82c43024b93c502c09f49b3988d1875a71d93c3a6b278e6e343b9208fd7d87c2a196de48615984accf_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g952c4032acf33f7f6ae815aafdaa8b37011f263a8c01f51c567b79c200376135474d852668504422f3ac1bc4b3398c7a7cb87f4e8f629e68ae265d132ae6e852_1280.jpg',
+          imageWidth: 6000,
+          imageHeight: 4000,
+          imageSize: 9863395,
+          views: 17486,
+          downloads: 9787,
+          collections: 53,
+          likes: 54,
+          comments: 9,
+          user_id: 10690657,
+          user: 'Sadnos',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2019/03/08/10-44-32-362_250x250.jpg',
+        },
+        {
+          id: 4011990,
+          pageURL:
+            'https://pixabay.com/photos/paris-architecture-france-city-4011990/',
+          type: 'photo',
+          tags: 'paris, architecture, france',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2019/02/21/19/00/paris-4011990_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/g9370c0001e553b708ccda8df6a180c74b344b998d607526be61fc5146a522d4c802ba8bd8b788572422088eebf4ba82720adeb4501a1c9fb3cdc8fae20b7f933_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g460bc5828518280daf12d656954b82283741264ae35c90daedad932b4cadfb55e001cf78c0f181c88ece7c9ae691ee6767d89ed0265ca0e1c205c3cc1149c813_1280.jpg',
+          imageWidth: 6000,
+          imageHeight: 4000,
+          imageSize: 8960940,
+          views: 11900,
+          downloads: 6659,
+          collections: 105,
+          likes: 44,
+          comments: 4,
+          user_id: 485744,
+          user: 'dnovac',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2019/02/21/18-28-10-721_250x250.jpg',
+        },
+        {
+          id: 4793200,
+          pageURL:
+            'https://pixabay.com/photos/paris-night-scene-france-city-4793200/',
+          type: 'photo',
+          tags: 'paris, night, scene',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2020/01/25/19/14/paris-4793200_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/g883d0b4056eb9479e0ae7f623028a8afffea7acc36c5cca0ab9895c582dedf63dff4ed6924a1f307a773c996edd2feaa2240269f1f8f38bfbfdda1e0584630b2_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g16391c071255ac8817ce5bc95b44c4cf95b5398080731e645a61c06f0a813830cf98dc3f1c5d632711a3436e5421751cb1fc2b0d6967058041687de8a6a1eff2_1280.jpg',
+          imageWidth: 6240,
+          imageHeight: 4160,
+          imageSize: 5870867,
+          views: 13493,
+          downloads: 10502,
+          collections: 102,
+          likes: 47,
+          comments: 16,
+          user_id: 12470662,
+          user: 'CJMM',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2019/05/14/11-46-32-442_250x250.jpg',
+        },
+        {
+          id: 3862939,
+          pageURL:
+            'https://pixabay.com/photos/eiffel-tower-paris-sightseeing-3862939/',
+          type: 'photo',
+          tags: 'eiffel tower, paris, sightseeing',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2018/12/08/07/52/eiffel-tower-3862939_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/g207bac04776b5ca43f7fb95fa7536e04c2e77c3be3a4d4eb4f642cb2957bf32ea9b77d230c7493711bed844bba032b7fef03f127f3e97df2172731d2d5401af4_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g24c65234e1ef5cd69354c3b4e543e8770fbf6ea707d4897e61da4263d94ad1bccb490ec484bb8ecdc6af235a8c0defba350ce52b8f8e6592e93064101e059259_1280.jpg',
+          imageWidth: 5778,
+          imageHeight: 3852,
+          imageSize: 5626628,
+          views: 14775,
+          downloads: 8450,
+          collections: 42,
+          likes: 73,
+          comments: 34,
+          user_id: 6735189,
+          user: 'Paul_Henri',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2019/05/22/18-55-38-477_250x250.jpeg',
+        },
+        {
+          id: 4793193,
+          pageURL:
+            'https://pixabay.com/photos/paris-night-scene-france-city-4793193/',
+          type: 'photo',
+          tags: 'paris, night, scene',
+          previewURL:
+            'https://cdn.pixabay.com/photo/2020/01/25/19/13/paris-4793193_150.jpg',
+          previewWidth: 150,
+          previewHeight: 99,
+          webformatURL:
+            'https://pixabay.com/get/gb465d338bd7bd4828ff884a56ac516f42e49217a66040a0a4cc55e43d948cb12237cc3b8a3629f10463b007619decdbade3d25f907c645cb88fb072b715b47f7_640.jpg',
+          webformatWidth: 640,
+          webformatHeight: 426,
+          largeImageURL:
+            'https://pixabay.com/get/g6cd59c760cca93bbbf5f641538c3c0679f4b695ee38bab8510929d1a1625a5f018e4bfcfa1ac245005637d0043d40e9d4d9ed139b0079a4f54a019b35b8b8083_1280.jpg',
+          imageWidth: 6240,
+          imageHeight: 4160,
+          imageSize: 6332771,
+          views: 11488,
+          downloads: 6243,
+          collections: 48,
+          likes: 81,
+          comments: 12,
+          user_id: 12470662,
+          user: 'CJMM',
+          userImageURL:
+            'https://cdn.pixabay.com/user/2019/05/14/11-46-32-442_250x250.jpg',
+        },
+      ],
+    },
+  },
+  {
+    testName: 'pixabay valid search',
+    baseUrl: 'https://pixabay.com/api/?',
+    params: {
+      key: '',
+      q: 'Paris city',
+      category: 'travel',
+      safesearch: 'true',
+      image_type: 'photo',
+      orientation: 'horizontal',
+      min_width: 1200,
+      min_height: 630,
+    },
+    response: undefined,
   },
 ];
 

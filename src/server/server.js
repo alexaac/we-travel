@@ -19,6 +19,8 @@ projectData = {
   weatherApiKey: process.env.WEATHER_APP_ID,
   mapboxBaseUrl: 'https://api.mapbox.com/geocoding/v5/mapbox.places/',
   mapboxApiKey: process.env.MAPBOX_API_KEY,
+  pixabayBaseUrl: 'https://pixabay.com/api/?',
+  pixabayApiKey: process.env.PIXABAY_API_KEY,
 };
 
 // Start up an instance of app

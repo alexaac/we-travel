@@ -35,9 +35,11 @@ const setActions = () => {
     mapboxApiKey,
     geonamesBaseUrl,
     geonamesApiKey,
+    pixabayBaseUrl,
+    pixabayApiKey,
   } = projectData;
 
-  /* MapBox map */
+  /* Initialize MapBox map */
   mapboxgl.accessToken = mapboxApiKey;
 
   const map = new mapboxgl.Map({
@@ -73,6 +75,18 @@ const setActions = () => {
       proximity: `${cityInfo.lon}, ${cityInfo.lat}`,
     });
     if (city && cityInfo) panToLatLon(map, mapboxData);
+    console.log(pixabayBaseUrl);
+    /* Get Data from Pixabay API*/
+    const pixabayData = await getData(pixabayBaseUrl, {
+      key: pixabayApiKey,
+      q: `${city} city`,
+      category: 'travel',
+      safesearch: 'true',
+      image_type: 'photo',
+      orientation: 'horizontal',
+      min_width: 1200,
+      min_height: 630,
+    });
 
     /* Get Data from Weather API*/
     return getData(weatherBaseUrl, {
@@ -83,6 +97,7 @@ const setActions = () => {
     }).then((data) => {
       const startDayData = filterByDay(data.data, start);
 
+      console.log(pixabayData.hits[0]);
       // Update projectData and UI
       postData('/addData', {
         city: city,
@@ -92,6 +107,7 @@ const setActions = () => {
           'The date is outside the 16 day forecast interval.',
         date: start,
         userResponse: feelings,
+        photo: pixabayData.hits && pixabayData.hits[0],
       }).then((data) => updateUI(data));
     });
   };
