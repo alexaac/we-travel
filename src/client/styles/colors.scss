@@ -1,0 +1,151 @@
+/* Main colors*/
+
+:root {
+  /* primary colors */
+  --color-primary: #ebc137;
+  --color-primary-hover: #ddb034;
+  --color-accent: #057f9c;
+  --color-accent-hover: #045063;
+
+  /* neutral colors */
+  --color-neutral-100: #fff;
+  --color-neutral-200: #f0f0f0;
+  --color-neutral-300: #d7d7d7;
+  --color-neutral-400: #4d4e53;
+  --color-neutral-500: #162945;
+  --color-neutral-600: #000;
+
+  /* secondary colors */
+  --color-secondary: #006fc2;
+  --color-secondary-light: #1c77c6;
+  --color-secondary-transp: rgba(10, 102, 201, 0.2);
+
+  /* text */
+  --color-text: #4d4e53;
+  --color-text-inverted: #fff;
+
+  /* tertiary colors */
+  --color-success: #4a8231;
+  --color-success-hover: #1b3609;
+  --color-warning: #8b7306;
+  --color-warning-hover: #503a04;
+  --color-error: #d9394d;
+  --color-error-hover: #860b19;
+}
+
+html,
+body {
+  color: var(--color-text);
+  background-color: var(--color-neutral-200-bk);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.title {
+  color: var(--color-accent);
+}
+
+/* Colors*/
+
+.color-primary {
+  color: var(--color-primary);
+}
+
+.color-primary-bk {
+  background-color: var(--color-primary);
+}
+
+.color-accent {
+  color: var(--color-accent);
+}
+
+.color-accent-bk {
+  background-color: var(--color-accent);
+}
+
+.color-neutral-200 {
+  color: var(--color-neutral-200);
+}
+
+.color-neutral-200-bk {
+  background-color: var(--color-neutral-200);
+}
+
+.color-neutral-100 {
+  color: var(--color-neutral-100);
+}
+
+.color-neutral-100-bk {
+  background-color: var(--color-neutral-100);
+}
+
+.color-neutral-500 {
+  color: var(--color-neutral-500);
+}
+
+.color-neutral-500-bk {
+  background-color: var(--color-neutral-500);
+}
+
+.color-neutral-600 {
+  color: var(--color-neutral-600);
+}
+
+.color-neutral-600-bk {
+  background-color: var(--color-neutral-600);
+}
+
+.color-secondary {
+  color: var(--color-secondary);
+}
+
+.color-secondary-light {
+  color: var(--color-secondary-light);
+}
+
+.color-secondary-bk {
+  background-color: var(--color-secondary);
+}
+
+.color-neutral-400 {
+  color: var(--color-neutral-400);
+}
+
+.color-neutral-400-bk {
+  background-color: var(--color-neutral-400);
+}
+
+.color-neutral-300 {
+  color: var(--color-neutral-300);
+}
+
+.color-neutral-300-bk {
+  background-color: var(--color-neutral-300);
+}
+
+.color-success {
+  color: var(--color-success);
+}
+
+.color-success-bk {
+  background-color: var(--color-success);
+}
+
+.color-warning {
+  color: var(--color-warning);
+}
+
+.color-warning-bk {
+  background-color: var(--color-warning);
+}
+
+.color-error {
+  color: var(--color-error);
+}
+
+.color-error-bk {
+  background-color: var(--color-error);
+}
