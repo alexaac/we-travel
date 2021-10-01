@@ -8,7 +8,7 @@ We Travel App Project
 
 ### Description
 
-Travel app
+Travel app - plan a trip by entering the city name, and find out about the weather.
 
 ## Project Setup
 
@@ -24,10 +24,47 @@ Travel app
 #### Files
 
 ```bash
-
+.
+├── controllers
+│   └── dataController.js
+├── middleware
+│   ├── validateParams.js
+│   └── validation.js
+├── package.json
+├── package-lock.json
+├── README.md
+├── routes
+│   └── index.js
+├── src
+│   ├── client
+│   │   ├── index.js
+│   │   ├── js
+│   │   │   ├── api.js
+│   │   │   ├── app.js
+│   │   │   ├── helpers.js
+│   │   │   ├── map.js
+│   │   │   └── ui.js
+│   │   ├── styles
+│   │   │   ├── base.scss
+│   │   │   ├── footer.scss
+│   │   │   ├── form.scss
+│   │   │   ├── header.scss
+│   │   │   └── trip.scss
+│   │   └── views
+│   │       └── index.html
+│   └── server
+│       └── server.js
+├── __test__
+│   ├── mockData.js
+│   └── testApi.spec.js
+├── webpack.common.js
+├── webpack.dev.js
+└── webpack.prod.js
 ```
 
 ### TODO
+
+Design system, code cleaning
 
 ### Credits
 
