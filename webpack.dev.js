@@ -9,9 +9,11 @@ module.exports = merge(common, {
   mode: 'development',
 
   output: {
-    // filename: '[name].bundle.js',
+    filename: '[name].bundle.js',
 
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'media/[name][ext]',
+
     libraryTarget: 'var',
     library: 'Client',
   },

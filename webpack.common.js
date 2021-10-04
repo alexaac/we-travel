@@ -8,6 +8,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|gif|webp|svg|tiff|ico)(\?.*)?$/,
+        type: 'asset/resource',
+      },
+      {
         test: '/.js$/',
         exclude: /node_modules/,
         loader: 'babel-loader',

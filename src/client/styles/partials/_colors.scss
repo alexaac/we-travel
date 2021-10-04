@@ -23,6 +23,8 @@
   /* text */
   --color-text: #4d4e53;
   --color-text-inverted: #fff;
+  --typography-fonts-text: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  --typography-size-html: 18px;
 
   /* tertiary colors */
   --color-success: #4a8231;
@@ -31,6 +33,15 @@
   --color-warning-hover: #503a04;
   --color-error: #d9394d;
   --color-error-hover: #860b19;
+
+  /* images */
+  // Photo by Eléonore Kemmel on Unsplash
+  --cover_image: url(../media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg);
+  --cover_image_position: 50% 50%;
+  --cover_image_size: cover;
+  --cover_image_repeat: repeat;
+  --cover_image_attachment: scroll;
+  --cover_image_opacity: 0.15;
 }
 
 html,

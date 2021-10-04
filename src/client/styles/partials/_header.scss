@@ -1,7 +1,8 @@
 header {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 10px 40px;
+  z-index: 3;
 }
 
 /* Header Navigation*/

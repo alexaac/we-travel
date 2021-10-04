@@ -1,12 +1,10 @@
 import { showErrors, postData, getEnvData, setActions } from './js/app';
 
-import './styles/trip.scss';
-import './styles/buttons.scss';
-import './styles/colors.scss';
-import './styles/base.scss';
-import './styles/footer.scss';
-import './styles/form.scss';
-import './styles/header.scss';
+import './styles/main.scss';
+
+// load svg images for brand
+import icon from './media/icon.ico';
+import brand from './media/wemoto.svg';
 
 export { showErrors, postData, getEnvData, setActions };
 
