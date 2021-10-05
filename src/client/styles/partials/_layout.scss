@@ -1,0 +1,106 @@
+/* Page Wrap */
+
+.we-wrap-flex {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Main */
+
+.we-flex {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+/* Inner container */
+
+.container {
+  margin: 0 auto;
+  max-width: 992px; /* Medium devices (tablets, 768px and up) */
+}
+
+.container:before,
+.container:after {
+  content: ' ';
+  display: table;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-column-end: 2;
+  grid-row-end: 2;
+}
+
+.container:after {
+  clear: both;
+}
+
+/* Helper containers */
+
+.we-container {
+  display: block;
+  margin: 0 auto;
+}
+
+.we-container.bd {
+  border: 1px solid var(--color-neutral-300);
+  padding: 0.5rem;
+}
+
+.we-container.sm {
+  max-width: 310px;
+}
+
+.we-container.md {
+  max-width: 620px;
+}
+
+.we-container.lg {
+  max-width: 1000px;
+}
+
+.we-page-divider {
+  height: 1px;
+  margin: 3rem -5.375rem 1.5rem;
+  background-color: rgba(138, 152, 158, 0.3);
+}
+
+/* Page breaks after Bootstrap */
+
+@media screen and (max-width: 575.98px) {
+  /* Extra small devices (portrait phones, less than 576px) */
+  .container {
+    max-width: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Medium devices (tablets, 768px and up) */
+  .container {
+    max-width: 728px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* Large devices (desktops, 992px and up) */
+  .container {
+    max-width: 991.98px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Extra large devices (large desktops, 1200px and up) */
+
+  .container {
+    max-width: 1199.98px;
+  }
+}
+
+.container {
+  max-width: 992px;
+}

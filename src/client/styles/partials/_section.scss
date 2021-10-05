@@ -1,0 +1,58 @@
+/* Section */
+
+section {
+  display: block;
+  border-bottom: solid 1px var(--color-neutral-200);
+}
+
+.section {
+  padding: 2rem;
+}
+
+.section.first {
+  padding-top: 3rem;
+}
+
+.section.stretch {
+  padding-right: 0rem;
+  padding-left: 0rem;
+}
+
+.section.last {
+  padding-bottom: 3rem;
+}
+
+@media screen and (max-width: 991.98px) {
+  /* Small and medium devices (tablets, 768px and up) */
+  .section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .container {
+    max-width: none;
+  }
+
+  .section.first {
+    padding-top: 7rem;
+  }
+
+  .section.last {
+    padding-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  /* Extra small devices and small devices */
+  .section {
+    padding: 0.5rem;
+  }
+
+  .section.first {
+    padding-top: 4rem;
+  }
+
+  .section.last {
+    padding-bottom: 4rem;
+  }
+}

@@ -6,22 +6,6 @@ import { panToLatLon } from './map';
 /* Global variables */
 let projectData = {};
 
-const getEnvData = async () => {
-  const request = await fetch('/all');
-
-  try {
-    const allData = await request.json();
-
-    projectData = allData;
-
-    setActions();
-  } catch (error) {
-    console.error('error', error);
-  }
-};
-
-getEnvData();
-
 /* Initialize */
 document.getElementById('start').min = new Date().toJSON().split('T')[0];
 document.getElementById('start').valueAsDate = new Date();
@@ -39,7 +23,6 @@ const setActions = () => {
     pixabayBaseUrl,
     pixabayApiKey,
   } = projectData;
-
 
   /* Initialize MapBox map */
   mapboxgl.accessToken = mapboxApiKey;
@@ -140,5 +123,21 @@ const setActions = () => {
   /* Event listener */
   document.getElementById('generate').addEventListener('click', processData);
 };
+
+const getEnvData = async () => {
+  const request = await fetch('/all');
+
+  try {
+    const allData = await request.json();
+
+    projectData = allData;
+
+    setActions();
+  } catch (error) {
+    console.error('error', error);
+  }
+};
+
+getEnvData();
 
 export { showErrors, postData, getEnvData, setActions };

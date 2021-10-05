@@ -26,14 +26,14 @@
   </head>
 
   <body>
-    <div class="mps-wrap-flex">
+    <div class="we-wrap-flex">
       <header class="header">
         <div class="nav-flex">
           <div class="nav-brand">
             <a class="nav-brand-link" href="#">
               <!-- Motorcycle by leo-graph.com from the Noun Project -->
               <img
-                src="../media/wemoto.svg"
+                src="../media/wemoto_white.svg"
                 alt="We Travel brand logo"
                 class="nav-brand"
             /></a>
@@ -45,10 +45,15 @@
             <div class="nav-menu-wrap">
               <div role="list" class="nav-menu-list-flex">
                 <div role="listitem" class="nav-menu-item">
-                  <a href="#" class="nav-link mps-link">WE Travel</a>
+                  <a href="#" class="nav-link we-link">WE Travel</a>
                 </div>
                 <div role="listitem" class="nav-menu-item">
-                  <a href="#" class="nav-link mps-link">Trips</a>
+                  <a href="#" class="nav-link we-link">Trips</a>
+                </div>
+                <div role="listitem" class="nav-menu-item">
+                  <a href="design_system.html" class="nav-link we-link"
+                    >Design</a
+                  >
                 </div>
               </div>
             </div>
@@ -56,7 +61,7 @@
           <div class="nav-menu-wrap nav-right">
             <div role="list" class="nav-menu-list-flex">
               <div role="listitem" class="nav-menu-item">
-                <a href="#" class="mps-btn mps-btn-primary">Login</a>
+                <a href="#" class="nav-link we-link">Login</a>
               </div>
             </div>
           </div>
@@ -65,41 +70,75 @@
 
       <div class="cover"></div>
 
-      <main>
+      <main class="we-flex">
+        <a href="#top" aria-label="Top of the page">
+          <button id="top-btn">˄</button>
+        </a>
+
         <h1>Travel Planner</h1>
 
         <section>
-          <div id="app">
-            <div id="photo" class="photo"></div>
-            <div class="holder we-flex">
-              <div id="entryHolder">
-                <div id="tripinfo"></div>
-                <div id="content"></div>
-                <div id="error"></div>
-              </div>
+          <div class="we-post-grid inversed">
+            <div class="img-link we-inline-block">
+              <div id="photo" class="post-img-wrap pointer-events-none"></div>
+            </div>
+            <div class="we-post-info-flex">
+              <span class="we-post-category">Maps</span>
               <div class="mapholder">
                 <div id="map" class="map"></div>
+              </div>
+              <div class="we-post-link">
+                <div id="tripinfo"></div>
+                <div id="content"></div>
+                <div class="color-neutral-100 color-error-bk" id="error"></div>
               </div>
             </div>
           </div>
         </section>
-        <section>
-          <div class="holder city">
-            <label for="city">City Name</label>
-            <input type="text" id="city" placeholder="enter city name here" />
-
-            <label for="start">Start Date</label>
-            <input
-              type="date"
-              id="start"
-              placeholder="enter date here"
-              required
-              pattern="\d{4}-\d{2}-\d{2}"
-            />
+        <section class="section first">
+          <div class="container">
+            <div class="we-wide">
+              <img
+                src="media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg"
+                loading="lazy"
+                alt=""
+                class="we-wide-bg"
+              />
+              <div class="we-form-info-flex">
+                <label for="city" class="we-wide-label">City Name</label>
+                <input
+                  type="text"
+                  class="we-wide-input"
+                  maxlength="256"
+                  name="city"
+                  data-name="City"
+                  placeholder="Enter location"
+                  id="city"
+                  required="true"
+                />
+                <label for="start" class="we-wide-label">City Name</label>
+                <input
+                  type="date"
+                  class="we-wide-input"
+                  maxlength="256"
+                  name="start"
+                  data-name="start"
+                  placeholder="Departing"
+                  id="start"
+                  required="true"
+                />
+                <br />
+                <button
+                  type="submit"
+                  data-wait="Please wait..."
+                  class="we-wide-submit we-btn we-btn-primary"
+                  id="generate"
+                >
+                  Generate
+                </button>
+              </div>
+            </div>
           </div>
-          <button class="we-btn we-btn-lg" id="generate" type="submit">
-            Generate
-          </button>
         </section>
       </main>
     </div>
@@ -107,10 +146,51 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-inner-flex">
-          <div class="footer-inner-flex-2">© WE 2021</div>
-          <div class="footer-links">
-            <a href="#" class="footer-link mps-link">Terms</a>
-            <a href="#" class="footer-link mps-link">Privacy</a>
+          <div class="footer-inner-flex-2">
+            © WE Travel 2021
+            <a href="#" class="footer-link we-link">Terms</a>
+            <a href="#" class="footer-link we-link">Privacy</a>
+            <a href="design_system.html" class="footer-link we-link">Design</a>
+          </div>
+          <div class="we-social-grid">
+            <a
+              href="https://www.github.com/WETravel"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="we-social"
+            >
+              <img src="media/github.svg" alt="GitHub" />
+            </a>
+
+            <a
+              href="https://www.facebook.com/WETravel"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="we-social"
+              aria-label="facebook page ex 1"
+            >
+              <img src="media/facebook.svg" alt="Facebook" />
+            </a>
+
+            <a
+              href="https://twitter.com/WETravel"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="we-social"
+              aria-label="twitter page ex 1"
+            >
+              <img src="media/twitter.svg" alt="Twitter" />
+            </a>
+
+            <a
+              href="https://www.linkedin.hcom/WETravel"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="we-social"
+              aria-label="linkedin page ex 1"
+            >
+              <img src="media/linkedin.svg" alt="Linkedin" />
+            </a>
           </div>
         </div>
       </div>

@@ -2,6 +2,17 @@ const path = require('path');
 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
+// Plugin to process HTML
+const htmlPlugin = new HtmlWebPackPlugin({
+  filename: 'index.html',
+  template: path.join(__dirname, './src/client/views/index.html'),
+});
+
+const htmlPlugin_design = new HtmlWebPackPlugin({
+  filename: 'design_system.html',
+  template: path.join(__dirname, './src/client/views/design_system.html'),
+});
+
 module.exports = {
   entry: './src/client/index.js',
 
@@ -19,10 +30,5 @@ module.exports = {
     ],
   },
 
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/client/views/index.html',
-      filename: './index.html',
-    }),
-  ],
+  plugins: [htmlPlugin, htmlPlugin_design],
 };

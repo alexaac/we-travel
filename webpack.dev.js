@@ -3,13 +3,15 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 // const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'development',
 
   output: {
-    filename: '[name].bundle.js',
+    // filename: '[name].bundle.js',
 
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'media/[name][ext]',
@@ -39,6 +41,12 @@ module.exports = merge(common, {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+    ],
   },
 
   plugins: [
@@ -50,6 +58,10 @@ module.exports = merge(common, {
       // Automatically remove all unused webpack assets on rebuild
       cleanStaleWebpackAssets: true,
       protectWebpackAssets: false,
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
     // new WorkboxPlugin.GenerateSW(),
   ],

@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="WE Travel - Trip Planner" />
+
+    <title>WE Travel</title>
+
+    <link rel="icon" href="../media/icon.ico" />
+    <link rel="shortcut icon" href="../media/icon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+  </head>
+  <body>
+    <div class="we-wrap-flex">
+      
+      <header class="header">
+        <div class="nav-flex">
+          <div class="nav-brand">
+            <a class="nav-brand-link" href="#">
+              <!-- Motorcycle by leo-graph.com from the Noun Project -->
+              <img
+                src="../media/wemoto_white.svg"
+                alt="We Travel brand logo"
+                class="nav-brand"
+            /></a>
+          </div>
+          <div class="nav-mobile-button">
+            <span></span> <span></span> <span></span> <span></span>
+          </div>
+          <nav role="navigation" class="nav-menu-flex">
+            <div class="nav-menu-wrap">
+              <div role="list" class="nav-menu-list-flex">
+                <div role="listitem" class="nav-menu-item">
+                  <a href="#" class="nav-link we-link">WE Travel</a>
+                </div>
+                <div role="listitem" class="nav-menu-item">
+                  <a href="#" class="nav-link we-link">Trips</a>
+                </div>
+                <div role="listitem" class="nav-menu-item">
+                  <a href="design_system.html" class="nav-link we-link"
+                    >Design</a
+                  >
+                </div>
+              </div>
+            </div>
+          </nav>
+          <div class="nav-menu-wrap nav-right">
+            <div role="list" class="nav-menu-list-flex">
+              <div role="listitem" class="nav-menu-item">
+                <a href="#" class="nav-link we-link">Login</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <a href="#top" aria-label="Top of the page">
+          <button id="top-btn"> ˄ </button>
+        </a>
+        <div class="navbar" role="navigation" aria-label="Menu">
+          <span class="title">Design System</span>
+
+          <ul class="nav-list">
+            <li><a href="#Blog_Homepage">Blog Homepage Link</a></li>
+            <li><a href="#Blog_Post">Blog Post Link</a></li>
+
+            <li><a href="#Logo">Logo</a></li>
+            <li><a href="#Colors">Colors</a></li>
+            <li><a href="#Typography">Typography</a></li>
+            <li><a href="#Buttons">Buttons</a></li>
+
+            <li><a href="#Social">Social Sharing</a></li>
+            <li><a href="#Forms">Forms</a></li>
+
+            <li><a href="#Cards">Cards</a></li>
+            <li><a href="#Article">Article</a></li>
+
+            <li><a href="#Page_Breaks">Page Breaks</a></li>
+            <li><a href="#Flex">Flex</a></li>
+            <li><a href="#Grid">Grid</a></li>
+          </ul>
+        </div>
+        <div class="we-doc">
+
+          <h1>WE Travel Design System</h1>
+         
+
+          <section id="Logo" class="we-section">
+            <h2>Logo</h2>
+            <article>
+              <p>
+                The logo helps our users identify our brand when using our services.</p>
+              <p>
+                  Example
+              </p>
+              <div class="color-neutral-500-bk back">
+                <img src="media/wemoto_black.svg" alt="WE Travel logo white on black, with text." height="150px">
+              </div>
+              <div class="color-neutral-200-bk back">
+                <img src="media/wemoto_white.svg" alt="WE Travel logo black on white, with text." height="150px">
+              </div>
+              <div class="color-neutral-500-bk back">
+                <img src="media/wemoto_black.svg" alt="WE Travel logo white on black, with text." height="100px">
+              </div>
+              <div class="color-neutral-200-bk back">
+                <img src="media/wemoto_white.svg" alt="WE Travel logo black on white, with text." height="100px">
+              </div>
+              <div class="color-neutral-500-bk back">
+                <img src="media/wemoto_black.svg" alt="WE Travel logo white on black, with text." height="50px">
+              </div>
+              <div class="color-neutral-200-bk back">
+                <img src="media/wemoto_white.svg" alt="WE Travel logo black on white, with text." height="50px">
+              </div>
+            </article>
+          </section>
+          <section id="Colors" class="we-section">
+            <h2>Colors</h2>
+            <article>
+              <p>
+                The colors set out below will form the base colors for all components, with a secondary palette introduced to complement primary colors where an alternate colour is required. Colors are presented here by their name and Hex value.
+              </p>
+              <p>See <a href="https://paletton.com" aria-label="See Paletton color app">Paletton</a>, <a href="http://tristen.ca/hcl-picker/#/hlc/6/1/15534C/E2E062" aria-label="See Colorpicker page">Colorpicker for data</a> and <a href="https://earthobservatory.nasa.gov/blogs/elegantfigures/2013/08/05/subtleties-of-color-part-1-of-6/" aria-label="See Elegant Figures page">Elegant Figures</a> article for more info on how to choose a color palette.</p>
+              <h3>Primary colors</h3>
+              <div class="items-group-rows">
+                <div class="items-item">
+                  <figure class="items-img color-primary-bk">
+                      <figcaption class="color-neutral-100">#162945</figcaption>
+                  </figure>
+                  <p>color-primary</p>
+                </div>
+                  <div class="items-item">
+                    <figure class="items-img color-accent-bk">
+                        <figcaption class="color-neutral-100">#f61708</figcaption>
+                    </figure>
+                    <p>color-accent</p>
+                  </div>
+                <div class="items-item">
+                  <figure class="items-img color-neutral-100-bk">
+                      <figcaption>#f0f0f0</figcaption>
+                  </figure>
+                  <p>color-neutral-200</p>
+                </div>
+                <div class="items-item">
+                  <figure class="items-img color-neutral-500-bk">
+                      <figcaption class="color-neutral-200">#162945</figcaption>
+                  </figure>
+                  <p>color-neutral-500</p>
+                </div>
+              </div>
+              <h3>Secondary colors</h3>
+              <div class="items-group-rows">
+                <div class="items-item">
+                  <figure class="items-img color-neutral-400-bk">
+                      <figcaption class="color-neutral-100">#4d4e53</figcaption>
+                  </figure>
+                  <p>Text - color-neutral-400</p>
+                </div>
+                <div class="items-item">
+                  <figure class="items-img color-secondary-bk">
+                      <figcaption class="color-neutral-100">#006fc2</figcaption>
+                  </figure>
+                  <p>Hyperlink - color-secondary</p>
+                </div>
+                <div class="items-item">
+                  <figure class="items-img color-neutral-100-bk">
+                      <figcaption>#fff</figcaption>
+                  </figure>
+                  <p>color-neutral-100</p>
+                </div>
+                <div class="items-item">
+                  <figure class="items-img color-neutral-600-bk">
+                      <figcaption class="color-neutral-100">#000</figcaption>
+                  </figure>
+                  <p>color-neutral-600</p>
+                </div>
+              </div>
+              <h3>Tertiary colors</h3>
+              <div class="items-group-rows">
+                <div class="items-item">
+                  <figure class="items-img color-success-bk">
+                      <figcaption class="color-neutral-100">#4a8122</figcaption>
+                  </figure>
+                  <p>color-success</p>
+                </div>
+                <div class="items-item">
+                  <figure class="items-img color-warning-bk">
+                      <figcaption class="color-neutral-100">#bd8b03</figcaption>
+                  </figure>
+                  <p>color-warning</p>
+                </div>
+                <div class="items-item">
+                  <figure class="items-img color-error-bk">
+                      <figcaption class="color-neutral-100">#d3394b</figcaption>
+                  </figure>
+                  <p>color-error</p>
+                </div>
+              </div>
+            </article>
+          </section>
+          <section id="Typography" class="we-section">
+            <h2>Typography</h2>
+            <article>
+              <p>
+                Typography is the structure of every well designed interface. It is used to guide users through the interface and help them understand the logic behind the interface intuitively.
+              </p>
+              <p>
+                WE Travel uses DejaVu Serif for headers and Source Sans Pro for text.
+              </p>
+              <p>
+              </p>
+                <a href="https://www.fontspace.com/dejavu-serif-font-f13237" aria-label="DejaVu Serif link on Google fonts page"><span>DejaVu Serif font on Font Space</span></a>
+              <p>
+                <a href="https://www.fontspace.com/source-sans-pro-font-f15035" aria-label="Source Sans Pro link on Google fonts page"><span>Source Sans Pro font on Font Space</span></a>
+              </p>
+              <h3>Type scale</h3>
+              <p>
+                The type scale goes from 6.76(px)(0.422rem) to 67.34(px)(4.209rem). Base size 16px, scale Perfect Fourth.
+              </p>
+              <p>
+                For <code class="we-code">@media screen and (max-width: 770px)</code>the type scale goes from 11.24(px)(0.702rem) to 28.83(px)(1.802rem). Base size 16px, scale Major Second.
+              </p>
+              <p>
+                <a href="https://type-scale.com/" aria-label="Type Scale page">Type Scale.</a>
+              </p>
+              <h1>h1 heading - 67.34(px)(4.209rem)</h1>
+              <h2>h2 heading - 50.52(px)(3.157rem)</h2>
+              <h3>h3 heading - 37.90(px)(2.369rem)</h3>
+              <h4>h4 heading - 28.43(px)(1.777rem)</h4>
+              <h5>h5 heading - 21.33(px)(1.333rem</h5>
+              <p>Paragraph - 16.00(px)(1rem)</p>
+              <p>
+                <span class="helper-text">Helper Text - 12.00(px)(0.75rem)</span>
+              </p>
+              <p>
+                <span class="copyright-text">Copyright Text - 9.00(px)(0.563rem)</span>
+              </p>
+              <p>
+                <span class="extra-small-text">Extra Small Text - 6.76(px)(0.422rem)</span>
+              </p>
+              <h3>Paragraph</h3>
+              <p>
+                Use <a href="https://addons.mozilla.org/en-US/firefox/addon/tota11y-accessibility-toolkit/" aria-label="tota11y accessibility kit extension page">tota11y</a> to check elements contrast and accesibility.
+              </p>
+              <p>
+                Styling inline text elements:
+              </p>
+              <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+              <p><del>This line of text is meant to be treated as deleted text.</del></p>
+              <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+              <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+              <p><u>This line of text will render as underlined</u></p>
+              <p><small>This line of text is meant to be treated as fine print.</small></p>
+              <p><strong>This line rendered as bold text.</strong></p>
+              <p><em>This line rendered as italicized text.</em></p>
+              <p class="color-primary">Primary text</p>
+              <p class="color-accent">Accent text</p>
+              <p class="color-neutral-500">Black text</p>
+              <p class="color-secondary">Blue text</p>
+              <p class="color-success">Success text</p>
+              <p class="color-warning">Warning text</p>
+              <p class="color-error">Error text</p>
+              <div class="color-neutral-600-bk">
+                <p class="color-primary">Primary text</p>
+                <p class="color-accent">Accent text</p>
+                <p class="color-secondary-light">Light blue text</p>
+                <p class="color-success">Success text</p>
+                <p class="color-warning">Warning text</p>
+                <p class="color-error">Error text</p>
+              </div>
+              <p class="color-neutral-100 color-primary-bk">White text on red background</p>
+              <p class="color-neutral-100 color-accent-bk">White text on accent background</p>
+              <p class="color-neutral-100 color-success-bk">White text on success background</p>
+              <p class="color-neutral-100 color-warning-bk">White text on warning background</p>
+              <p class="color-neutral-100 color-error-bk">White text on error background</p>
+              <h3>Code</h3>
+              <p>
+                Include <code class="we-code">rel="noreferrer noopener"</code> along with <code class="we-code">target="_blank"</code>.
+              </p>
+              <h3>Links</h3>
+              <p>
+                Links are key elements for the navigation. Thanks to underscoring, they can easily be spotted by users.
+              </p>
+              <p>
+                Avoid opening links in a new tab or window. If you must use this behaviour, include the words ‘opens in new tab’ as part of the link.
+              </p>
+              <p>
+                If it’s an external link to a non-government website, make that clear in the link text.
+              </p>
+              <p>
+                <a href="#" aria-label="example blank link">A text link</a><br><br>
+              </p>
+              <h3>Blockquotes</h3>
+              <p>
+                <figure class="we-article">
+                  <blockquote cite="https://en.wikipedia.org/wiki/UV_mapping">
+                    <p>
+                      UV mapping is the 3D modeling process of projecting a 2D image to a 3D model's surface for texture mapping. The letters "U" and "V" denote the axis of the 2D texture because "X", "Y", and "Z" are already used to denote the axis of the 3D object in model space, while "W" (in addition to XYZ) is used in calculating quaternion rotations, a common operation in computer graphics.
+                    </p>
+                  </blockquote>
+                  <figcaption>—Wikipedia, <cite>UV mapping</cite>
+                </figure>
+              </p>
+            </article>
+          </section>
+          <section id="Buttons" class="we-section">
+            <h2>Buttons</h2>
+            <article>
+              <p>
+                Buttons are action elements, they allow users to interact with the product. They can be of different sizes, colors and status.
+              </p>
+              <h3>Main buttons</h3>
+              <p>
+                The primary button is plain with a background. For the secondary button, the design system provides a second type of button called outline.
+              </p>
+              <div class="items-group-rows">
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-primary">#be3188</button>
+                  <p>Primary button</p>
+                </div>
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-secondary">#be3188</button>
+                  <p>Secondary button</p>
+                </div>
+              </div>
+              <h3>Tertiary buttons</h3>
+              <p>
+                Predefined button styles, each serving its own semantic purpose according to the theme colors palette.
+              </p>
+              <div class="items-group-rows">
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-success">#4a8122</button>
+                  <p>Success</p>
+                </div>
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-warning">#bd8b03</button>
+                  <p>Warning</p>
+                </div>
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-error">#c03344</button>
+                  <p>Error</p>
+                </div>
+              </div>
+              <div class="items-group-rows">
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-success-sec">#4a8122</button>
+                  <p>Success secondary</p>
+                </div>
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-warning-sec">#bd8b03</button>
+                  <p>Warning secondary</p>
+                </div>
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-error-sec">#c03344</button>
+                  <p>Error secondary</p>
+                </div>
+              </div>
+              <div class="items-group-rows">
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-primary disabled">#d7d7d7</button>
+                  <p>Disabled</p>
+                </div>
+              </div>
+              <h3>Button Size</h3>
+              <p>
+                Larger or smaller buttons.
+              </p>
+              <div class="items-group-rows">
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-primary we-btn-sm">#be3188</button>
+                </div>
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-primary">#be3188</button>
+                </div>
+                <div class="items-item">
+                  <button type="button" class="we-btn we-btn-primary we-btn-lg">#be3188</button>
+                </div>
+              </div>
+            </article>
+          </section>
+          
+          <section id="Social" class="we-section">
+            <h2>Social Sharing</h2>
+            <article>
+              <p>
+                Social Sharing
+              </p>
+              <div class="we-container bd sm">
+                <div class="we-social-grid">
+                  <a
+                    href="https://www.github.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                    aria-label="github link"
+                  >
+                    <img src="media/github.svg" alt="GitHub" />
+                  </a>
+
+                  <a
+                    href="https://www.facebook.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                    aria-label="facebook page ex 3"
+                  >
+                    <img src="media/facebook.svg" alt="Facebook" />
+                  </a>
+
+                  <a
+                    href="https://twitter.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                    aria-label="twitter page ex 3"
+                  >
+                    <img src="media/twitter.svg" alt="Twitter" />
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                    aria-label="linkedin page ex 3"
+                  >
+                    <img src="media/linkedin.svg" alt="Linkedin" />
+                  </a>
+                </div>
+              </div>
+              <div class="we-container bd md">
+                <div class="we-social-grid">
+                  <a
+                    href="https://www.github.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                  >
+                    <img src="media/github.svg" alt="GitHub" />
+                  </a>
+
+                  <a
+                    href="https://www.facebook.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                    aria-label="facebook page ex 4"
+                  >
+                    <img src="media/facebook.svg" alt="Facebook" />
+                  </a>
+
+                  <a
+                    href="https://twitter.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                    aria-label="twitter page ex 4"
+                  >
+                    <img src="media/twitter.svg" alt="Twitter" />
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                    aria-label="linkedin page ex 4"
+                  >
+                    <img src="media/linkedin.svg" alt="Linkedin" />
+                  </a>
+                </div>
+              </div>
+              <div class="we-container bd lg">
+                <div class="we-social-grid">
+                  <a
+                    href="https://www.github.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                  >
+                    <img src="media/github.svg" alt="GitHub" />
+                  </a>
+
+                  <a
+                    href="https://www.facebook.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                    aria-label="facebook page ex 5"
+                  >
+                    <img src="media/facebook.svg" alt="Facebook" />
+                  </a>
+
+                  <a
+                    href="https://twitter.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                    aria-label="twitter page ex 5"
+                  >
+                    <img src="media/twitter.svg" alt="Twitter" />
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/WETravel"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="we-social"
+                    aria-label="linkedin page ex 5"
+                  >
+                    <img src="media/linkedin.svg" alt="Linkedin" />
+                  </a>
+                </div>
+              </div>
+              <div class="we-container bd sm">
+                <div class="article-footer-container container">
+                  <p class="color-primary">Don't forget to share this post!</p>
+                  <div class="we-social-grid-wrap">
+                    <div class="we-social-grid post">
+                      <a
+                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Falexaac.github.io%2FWE Travel%2Fpost.html"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="we-social"
+                        aria-label="facebook page ex 6"
+                      >
+                        <img src="media/facebook.svg" alt="Facebook" />
+                      </a>
+                      <a
+                        href="https://twitter.com/intent/tweet?source=https%3A%2F%2Falexaac.github.io%2FWE Travel%2Fpost.html&amp;text=Procedural GL JS:%20https%3A%2F%2Falexaac.github.io%2FWE Travel%2Fpost.html"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="we-social"
+                        aria-label="twitter page ex 6"
+                      >
+                        <img src="media/twitter.svg" alt="Twitter" />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Falexaac.github.io%2FWE Travel%2Fpost.html"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="we-social"
+                        aria-label="linkedin page ex 6"
+                      >
+                        <img src="media/linkedin.svg" alt="Linkedin" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section id="Forms" class="we-section">
+            <h2>Forms</h2>
+            <article>
+              <p>
+                Search by location form
+              </p>
+              <div class="we-container bd lg">
+                <section class="section first">
+                  <div class="container">
+                    <div class="we-wide">
+                      <img
+                        src="media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg"
+                        loading="lazy"
+                        alt=""
+                        class="we-wide-bg"
+                      />
+                      <div class="we-form-info-flex">
+                        <label for="city" class="we-wide-label">City Name</label>
+                        <input
+                          type="text"
+                          class="we-wide-input"
+                          maxlength="256"
+                          name="city"
+                          data-name="City"
+                          placeholder="Enter location"
+                          id="city"
+                          required="true"
+                        />
+                        <label for="start" class="we-wide-label">City Name</label>
+                        <input
+                          type="date"
+                          class="we-wide-input"
+                          maxlength="256"
+                          name="start"
+                          data-name="start"
+                          placeholder="Departing"
+                          id="start"
+                          required="true"
+                        />
+                        <br />
+                        <button
+                          type="submit"
+                          data-wait="Please wait..."
+                          class="we-wide-submit we-btn we-btn-primary"
+                          id="generate"
+                        >
+                          Generate
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </article>
+          </section>
+
+
+          <section id="Cards" class="we-section">
+            <h2>Cards</h2>
+            <article>
+              <p>
+                Cards
+              </p>
+              <div class="items-group-columns">
+                <div class="items-item">
+                  <!-- Top Post Medium Left -->
+                  <p>
+                    <div class="we-container bd lg">
+                      <div class="we-post-grid inversed">
+                        <div class="img-link we-inline-block">
+                          <div id="photo" class="post-img-wrap pointer-events-none">
+                            <img src="media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg" alt="Cheile Aiudului 3D Map WebGL" srcset="media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg 576w, media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg 992w, media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg 1200w" class="post-img">
+                          </div>
+                        </div>
+                        <div class="we-post-info-flex">
+                          <span class="we-post-category">Maps</span>
+                          <div class="mapholder">
+                            <div id="map" class="map"></div>
+                          </div>
+                          <div class="we-post-link">
+                            <h4>My trip to: Paris, France</h4>
+                            <h5>Departing: 05/12/2021</h5>
+                            <button class="we-btn we-btn-primary we-btn-sm" id="savetrip" type="submit">Save</button>
+                            <button class="we-btn we-btn-primary we-btn-sm" id="removetrip" type="submit" disabled>Remove</button><br />
+                            <p>
+                              Paris, France is 38 days away.
+                            </p>
+                            <p>
+                              Typical weather for then is:<br />
+                              51.8°F Scattered clouds 
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                </div>
+                <div class="items-item">
+                  <!-- Top Post Medium Right -->
+                  <p>
+                    <div class="we-container bd lg">
+                      <div class="we-post-grid">
+                        <div class="we-post-info-flex">
+                          <span class="we-post-category">Maps</span>
+                          <div class="mapholder">
+                            <div id="map" class="map"></div>
+                          </div>
+                          <div class="we-post-link">
+                            <h4>My trip to: Paris, France</h4>
+                            <h5>Departing: 05/12/2021</h5>
+                            <button class="we-btn we-btn-primary we-btn-sm" id="savetrip" type="submit">Save</button>
+                            <button class="we-btn we-btn-primary we-btn-sm" id="removetrip" type="submit" disabled>Remove</button><br />
+                            <p>
+                              Paris, France is 38 days away.
+                            </p>
+                            <p>
+                              Typical weather for then is:<br />
+                              51.8°F Scattered clouds 
+                            </p>
+                          </div>
+                        </div>
+                        <div class="img-link we-inline-block">
+                          <div id="photo" class="post-img-wrap pointer-events-none">
+                            <img src="media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg" alt="Cheile Aiudului 3D Map WebGL" srcset="media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg 576w, media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg 992w, media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg 1200w" class="post-img">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                </div>
+                <div class="items-item">
+                  <!-- Top Posts Smaller -->
+                  <p>
+                    <div class="we-container bd md">
+                      <div class="img-link we-inline-block">
+                        <div class="post-img-wrap pointer-events-none">
+                          <div id="photo" class="post-img-wrap-in">
+                            <img src="media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg" alt="Cheile Aiudului 3D Map WebGL" srcset="media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg 576w, media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg 992w, media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg 1200w" class="post-img">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="we-post-info-flex">
+                        <span class="we-post-category">Maps</span>
+                        <div class="mapholder">
+                          <div id="map" class="map"></div>
+                        </div>
+                        <div class="we-post-link">
+                          <h4>My trip to: Paris, France</h4>
+                          <h5>Departing: 05/12/2021</h5>
+                          <button class="we-btn we-btn-primary we-btn-sm" id="savetrip" type="submit">Save</button>
+                          <button class="we-btn we-btn-primary we-btn-sm" id="removetrip" type="submit" disabled>Remove</button><br />
+                          <p>
+                            Paris, France is 38 days away.
+                          </p>
+                          <p>
+                            Typical weather for then is:<br />
+                            51.8°F Scattered clouds 
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                </div>
+                <div class="items-item">
+                  <!-- Event Post Wide -->
+                  <p>
+                    <div class="we-container bd lg">
+                      <div role="list" class="we-post-item">
+                        <div role="listitem">
+                          <div class="img-link wide we-inline-block">
+                            <img src="media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg" loading="lazy" alt="Washington High Resolution Images" class="post-img wide">
+                            <div class="we-overlay">
+                              <div class="we-overlay-info-flex wide">
+                                <div class="we-overlay-info-container">
+                                  <div class="we-overlay-info-in">
+                                    <div class="we-post-link">
+                                      <h4>My trip to: Paris, France</h4>
+                                      <h5>Departing: 05/12/2021</h5>
+                                      <p>
+                                        Paris, France is 38 days away.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                </div>
+                <div class="items-item">
+                  <!-- Article Hero-->
+                  <p>
+                    <div class="we-container bd lg">
+                      <div class="article-hero">
+                        <div class="we-overlay">
+                          <div class="we-overlay-info-flex">
+                            <div class="we-overlay-info-container">
+                              <div class="we-overlay-info-in">
+                                <div class="we-post-link">
+                                  <h4>My trip to: Paris, France</h4>
+                                  <h5>Departing: 05/12/2021</h5>
+                                  <p>
+                                    Paris, France is 38 days away.
+                                  </p>
+                                </div>
+                                
+                                <div role="list" class="article-tags">
+                                  <div role="listitem" class="article-tag">
+                                    <a href="#" class="article-tag-link" rel="noopener noreferrer" target="_blank">3D</a>
+                                  </div>
+                                  <div role="listitem" class="article-tag">
+                                    <a href="#" class="article-tag-link" rel="noopener noreferrer" target="_blank">Maps</a>
+                                  </div>
+                                  <div role="listitem" class="article-tag">
+                                    <a href="#" class="article-tag-link" rel="noopener noreferrer" target="_blank">LiDAR</a>
+                                  </div>
+                                  <div role="listitem" class="article-tag">
+                                    <a href="#" class="article-tag-link" rel="noopener noreferrer" target="_blank">DEM</a>
+                                  </div>
+                                  <div role="listitem" class="article-tag">
+                                    <a href="#" class="article-tag-link" rel="noopener noreferrer" target="_blank">WebGL</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </section>
+          <section id="Article" class="we-section">
+            <h2>Article</h2>
+            <article>
+              <p>
+                Article
+              </p>
+              <!-- Article image -->
+              <p>article-img</p>
+              <p>
+                <div class="article-img-block sm">
+                  <div class="article-img">
+                    <img src="https://mps-ph.s3.us-east-2.amazonaws.com/220px-Delaunay-Triangulation.png" alt="Delaunay Triangulation">
+                  </div>
+                  <div class="article-img-desc">
+                    <a href="https://en.wikipedia.org/wiki/Triangulated_irregular_network">Source</a>
+                  </div>
+                  <div class="article-img-text">
+                    Triangulated irregular network.
+                  </div>
+                </div>
+              </p>
+
+              <p>article-img-flex</p>
+              <p>
+                <div class="we-container lg bd">
+                  <div class="article-img-flex">
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/_117856764_rockthisone.jpg">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/_117856764_rockthisone.jpg" alt="3D map in Europe">
+                        </a>
+                        <div class="article-img-desc">
+                          <a href="https://www.bbc.com/news/world-europe-56648055">bbc.com</a>
+                        </div>
+                        <div class="article-img-text">
+                          Oldest bronze 3D map in Europe, 1900 BC - 1650 BC
+                        </div>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/carte.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/carte.png" alt="Carte des Indes Orientales">
+                        </a>
+                        <div class="article-img-desc">
+                          <a href="https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~326565~90095122:Carte-des-Indes-Orientales-?sort=Pub_List_No_InitialSort%2CPub_Date%2CPub_List_No%2CSeries_No&amp;qvq=q:moon%20atlas;sort:Pub_List_No_InitialSort%2CPub_Date%2CPub_List_No%2CSeries_No;lc:RUMSEY~8~1&amp;mi=17&amp;trs=1069#">davidrumsey.com</a>
+                        </div>
+                        <div class="article-img-text">
+                          Carte des Indes Orientales, 1665.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/_117860407_rock5.jpg">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/topo.png" alt="Topographical Map of Ancient Rome">
+                        </a>
+                        <div class="article-img-desc">
+                          <a href="https://www.nga.gov/collection/art-object-page.112707.html">nga.gov</a>
+                        </div>
+                        <div class="article-img-text">
+                          Topographical Map of Ancient Rome, 1557.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </p>
+
+              <p>article-img-flex gallery</p>
+              <p>
+                <div class="we-container lg bd">
+                  <div class="article-img-flex gallery">
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/l1.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/l1.png" alt="Yosemite Valley 3D ex 1">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/l2.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/l2.png" alt="Yosemite Valley 3D ex 2">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/l3.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/l3.png" alt="Yosemite Valley 3D ex 3">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/l4.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/l4.png" alt="Yosemite Valley 3D ex 4">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/l5.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/l5.png" alt="Yosemite Valley 3D ex 5">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/l6.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/l6.png" alt="Dublin 3D ex 1">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/l7.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/l7.png" alt="Dublin 3D ex 2">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/l8.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/l8.png" alt="Dublin 3D ex 3">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/l9.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/l9.png" alt="Dublin 3D ex 4">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="article-img-block sm">
+                      <div class="article-img">
+                        <a href="media/post/l10.png">
+                          <img src="https://mps-ph.s3.us-east-2.amazonaws.com/l10.png" alt="Dublin 3D ex 5">
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </p>
+
+              <p>article-tags</p>
+              <p>
+                <!-- <div class="we-container md color-neutral-600-bk"> -->
+                  <div role="list" class="article-tags">
+                    <div role="listitem" class="article-tag">
+                      <a href="#" class="article-tag-link" rel="noopener noreferrer" target="_blank">3D</a>
+                    </div>
+                    <div role="listitem" class="article-tag">
+                      <a href="#" class="article-tag-link" rel="noopener noreferrer" target="_blank">Maps</a>
+                    </div>
+                    <div role="listitem" class="article-tag">
+                      <a href="#" class="article-tag-link" rel="noopener noreferrer" target="_blank">LiDAR</a>
+                    </div>
+                    <div role="listitem" class="article-tag">
+                      <a href="#" class="article-tag-link" rel="noopener noreferrer" target="_blank">DEM</a>
+                    </div>
+                    <div role="listitem" class="article-tag">
+                      <a href="#" class="article-tag-link" rel="noopener noreferrer" target="_blank">WebGL</a>
+                    </div>
+                  </div>
+                <!-- </div> -->
+              </p>
+            </article>
+          </section>
+
+              <!-- Page Breaks -->
+          <section id="Page_Breaks" class="we-section">
+            <h2>Page Breaks</h2>
+            <article>
+              <p>
+                Page breaks - after Bootstrap.
+              </p>
+              <div class="we-container md">
+
+                <code class="we-code" tabindex="0">
+@media (max-width: 575.98px) {
+  /* Extra small devices (portrait phones, less than 576px) */
+
+}
+@media (min-width: 576px) {
+  /* Small devices (landscape phones, 576px and up) */
+
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* Small devices (landscape phones, 576px and up) */
+
+}
+@media screen and (max-width: 767.98px) {
+  /* Extra small devices and small devices */
+
+}
+@media (min-width: 768px) {
+  /* Medium devices (tablets, 768px and up) */
+
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Medium devices (tablets, 768px and up) */
+
+}
+@media screen and (max-width: 991.98px) {
+  /* Small and medium devices */
+
+}
+@media (min-width: 992px) {
+  /* Large devices (desktops, 992px and up) */
+
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* Large devices (desktops, 992px and up) */
+
+}
+@media (min-width: 1200px) {
+  /* Extra large devices (large desktops, 1200px and up) */
+
+}
+                </code>
+
+              </div>
+            </article>
+          </section>
+          <!-- Flex -->
+          <section id="Flex" class="we-section">
+            <h2>Flex</h2>
+            <article>
+              <p>
+                Layout
+              </p>
+              <p>
+                we-wrap-flex
+                <div class="we-container bd lg">
+                  <div class="we-wrap-flex">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                we-flex
+                <div class="we-container bd lg">
+                  <div class="we-flex">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                nav-flex
+
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                nav-menu flex
+                <div class="we-container bd md">
+                  <div class="nav-menu-flex">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                nav-menu-list
+                <div class="we-container bd md">
+                  <div class="nav-menu-list-flex">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                we-post-info-flex
+                <div class="we-container bd md">
+                  <div class="we-post-info-flex">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              
+              <div class="we-page-divider"></div>
+              <p>
+                we-form-info-flex
+                <div class="we-container bd md">
+                  <div class="we-form-info-flex">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                we-overlay-info
+                <div class="we-container bd md">
+                  <a href="post8.html" aria-label="blog post link 8" class="img-link wide we-inline-block">
+                    <div class="we-overlay-info-flex">
+                      <div class="we-overlay-info-container">
+                        <div class="we-overlay-info-in">
+                          <div class="we-container bd md">item</div>
+                          <div class="we-container bd md">item</div>
+                          <div class="we-container bd md">item</div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                footer-inner-flex
+                <div class="we-container bd md">
+                  <div class="footer-inner-flex">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                footer-inner-flex-2
+                <div class="we-container bd md">
+                  <div class="footer-inner-flex-2">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                article-img-flex
+                <a href="#Article">See Article img</a>
+              </p>
+            </article>
+          </section>
+          <!-- Grid -->
+          <section id="Grid" class="we-section">
+            <h2>Grid</h2>
+            <article>
+              <p>
+                Layout
+              </p>
+              <p>
+                we-post-grid
+                <div class="we-container bd md">
+                  <div class="we-post-grid">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                we-post-featured-grid
+                <div class="we-container bd md">
+                  <div class="we-post-featured-grid">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                we-post-grid.inversed
+                <div class="we-container bd md">
+                  <div class="we-post-grid inversed">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                we-post-recent-grid
+                <div class="we-container bd md">
+                  <div class="we-post-recent-grid">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+              <div class="we-page-divider"></div>
+              <p>
+                we-social-grid
+                <div class="we-container bd md">
+                  <div class="we-social-grid">
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                    <div class="we-container bd md">item</div>
+                  </div>
+                </div>
+              </p>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner-flex">
+          <div class="footer-inner-flex-2">
+            © WE Travel 2021
+            <a href="#" class="footer-link we-link">Terms</a>
+            <a href="#" class="footer-link we-link">Privacy</a>
+            <a href="design_system.html" class="footer-link we-link">Design</a>
+          </div>
+          <div class="we-social-grid">
+            <a
+              href="https://www.github.com/WETravel"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="we-social"
+            >
+              <img src="media/github.svg" alt="GitHub" />
+            </a>
+
+            <a
+              href="https://www.facebook.com/WETravel"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="we-social"
+              aria-label="facebook page ex 1"
+            >
+              <img src="media/facebook.svg" alt="Facebook" />
+            </a>
+
+            <a
+              href="https://twitter.com/WETravel"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="we-social"
+              aria-label="twitter page ex 1"
+            >
+              <img src="media/twitter.svg" alt="Twitter" />
+            </a>
+
+            <a
+              href="https://www.linkedin.hcom/WETravel"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="we-social"
+              aria-label="linkedin page ex 1"
+            >
+              <img src="media/linkedin.svg" alt="Linkedin" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -13,27 +13,49 @@ const updateUI = async (data) => {
       const isToday = checkIsToday(allData.date);
 
       document.getElementById('tripinfo').innerHTML = `
-        <strong>My trip to: ${allData.city}, ${allData.country}</strong><br />
-        <strong>Departing: ${allData.date}</strong><br />
-
-        <button class="we-btn we-btn-primary" id="savetrip" type="submit">Save</button>
-        <button class="we-btn we-btn-primary" id="removetrip" type="submit" disabled>Remove</button><br />
-
-        ${allData.city}, ${allData.country} trip is ${
+        <h4>My trip to: ${allData.city}, ${allData.country}</h4>
+        <h5>Departing: ${allData.date}</h5>
+        <button
+          class="we-btn we-btn-primary we-btn-sm"
+          id="savetrip"
+          type="submit"
+        >
+          Save
+        </button>
+        <button
+          class="we-btn we-btn-primary we-btn-sm"
+          id="removetrip"
+          type="submit"
+          disabled
+        >
+          Remove</button
+        ><br />
+        <p>${allData.city}, ${allData.country} trip is ${
         daysUntil === 0 && isToday
           ? 'today'
           : daysUntil === 0
           ? 'tomorrow'
-          : daysUntil + 1 + ' days away'
-      }<br /><br />
-
-        Typical weather for then is: <br />
-        ${allData.temperature}°F ${allData.weather}
+          : daysUntil + 1 + ' days away.'
+      }</p>
+        <p>
+          Typical weather for then is:<br />
+          ${allData.temperature}°F ${allData.weather}
+        </p>
       `;
+      console.log(allData.photo);
       document.getElementById('error').innerHTML = '';
-      document.getElementById(
-        'photo'
-      ).innerHTML = `<img src=${allData.photo.webformatURL} width="480">`;
+      document.getElementById('photo').innerHTML = `
+        <img
+          src=${allData.photo.webformatURL}
+          alt="Cheile Aiudului 3D Map WebGL"
+          srcset="
+            ${allData.photo.previewURL}  576w,
+            ${allData.photo.webformatURL}  992w,
+            ${allData.photo.largeImageURL} 1200w
+          "
+          class="post-img"
+        />
+      `;
     } catch (error) {
       console.error('error', error);
     }

@@ -1,8 +1,27 @@
 /* Buttons */
 
 .we-btn {
+  display: inline-flex;
+  position: relative;
+  vertical-align: middle;
+  line-height: inherit;
+  font-size: inherit;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  min-width: 4rem;
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 6px 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  font-weight: 300;
+  font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
+  width: auto;
 }
 
 /* Main buttons */
