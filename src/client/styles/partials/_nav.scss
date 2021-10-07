@@ -1,10 +1,12 @@
-/* Header Navigation*/
-
+/**
+ * Header Navigation
+ */
+ 
 .nav-flex {
   position: relative;
   padding: 1.25rem 3rem 1rem;
   border-bottom: 1px none rgba(138, 152, 158, 0.3);
-  background-color: var(--color-neutral-200);
+  background-color: $color-neutral-200;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,8 +74,8 @@
   position: absolute;
   height: 1px;
   width: 100%;
-  background: var(--color-neutral-100);
-  background-color: var(--color-neutral-500);
+  background: $color-neutral-100;
+  background-color: $color-neutral-500;
   border-radius: 2px;
   opacity: 1;
   left: 0;

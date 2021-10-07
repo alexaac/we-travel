@@ -17,181 +17,191 @@ $desktop: $medium !default;
 
 /* Main colors*/
 
-:root {
-  /* primary colors */
-  --color-primary: #162945;
-  --color-primary-hover: #01545e;
-  --color-accent: #f61708;
-  --color-accent-hover: #8a0d04;
+/* primary colors */
+$color-primary: #162945;
+$color-primary-hover: #01545e;
+$color-accent: #f61708;
+$color-accent-hover: #8a0d04;
 
-  /* neutral colors */
-  --color-neutral-100: #fff;
-  --color-neutral-200: #f2f2f2;
-  --color-neutral-300: #d7d7d7;
-  --color-neutral-400: #4d4e53;
-  --color-neutral-500: #162945;
-  --color-neutral-600: #000;
+/* neutral colors */
+$color-neutral-100: #fff;
+$color-neutral-200: #f2f2f2;
+$color-neutral-300: #d7d7d7;
+$color-neutral-400: #4d4e53;
+$color-neutral-500: #162945;
+$color-neutral-600: #000;
 
-  /* secondary colors */
-  --color-secondary: #006fc2;
-  --color-secondary-light: #1c77c6;
-  --color-secondary-transp: rgba(10, 102, 201, 0.2);
+/* secondary colors */
+$color-secondary: #006fc2;
+$color-secondary-light: #1c77c6;
+$color-secondary-transp: rgba(10, 102, 201, 0.2);
 
-  /* text */
-  @font-face {
-    font-family: 'dejavu';
-    src: url('../fonts/DejaVuSerif.ttf');
-  }
+/* tertiary colors */
+$color-success: #4a8231;
+$color-success-hover: #1b3609;
+$color-warning: #8b7306;
+$color-warning-hover: #503a04;
+$color-error: #d9394d;
+$color-error-hover: #860b19;
 
-  .sacramento {
-    font-family: 'dejavu';
-  }
+/* Gradient */
+$color-main-grad: linear-gradient(
+    45deg,
+    var(--color-primary-dark) 0%,
+    hsla(190, 95%, 43%, 0) 70%
+  ),
+  linear-gradient(
+    135deg,
+    var(--color-primary-darker) 10%,
+    hsla(219, 93%, 48%, 0) 80%
+  ),
+  linear-gradient(
+    225deg,
+    var(--color-secondary-darker) 10%,
+    hsla(293, 93%, 48%, 0) 80%
+  ),
+  linear-gradient(
+    315deg,
+    var(--color-secondary-dark) 100%,
+    hsla(130, 96%, 45%, 0) 70%
+  );
 
-  @font-face {
-    font-family: 'sourcesans';
-    src: url('../fonts/SourceSansPro-RyPo.ttf');
-  }
+/* Typography */
 
-  .sacramento {
-    font-family: 'dejavu';
-  }
-
-  --color-text: #4d4e53;
-  --color-text-inverted: #fff;
-  --typography-fonts-text: 'sourcesans', 'Arial', sans-serif;
-  --typography-fonts-text-title: 'dejavu', cursive;
-
-  /* tertiary colors */
-  --color-success: #4a8231;
-  --color-success-hover: #1b3609;
-  --color-warning: #8b7306;
-  --color-warning-hover: #503a04;
-  --color-error: #d9394d;
-  --color-error-hover: #860b19;
-
-  /* images */
-  // Photo by Eléonore Kemmel on Unsplash
-  --cover_image: url(../media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg);
-  --cover_image_position: 50% 50%;
-  --cover_image_size: cover;
-  --cover_image_repeat: repeat;
-  --cover_image_attachment: scroll;
-  --cover_image_opacity: 0.15;
+@font-face {
+  font-family: 'dejavu';
+  src: url('../fonts/DejaVuSerif.ttf');
 }
 
-html,
-body {
-  color: var(--color-text);
-  background-color: var(--color-neutral-200-bk);
+.sacramento {
+  font-family: 'dejavu';
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-.title {
-  color: var(--color-accent);
+@font-face {
+  font-family: 'sourcesans';
+  src: url('../fonts/SourceSansPro-RyPo.ttf');
 }
+
+.sacramento {
+  font-family: 'dejavu';
+}
+
+$font-family: 'sourcesans', 'Arial', sans-serif;
+$font-family-title: 'dejavu', cursive;
+$font-color: #4d4e53 !default;
+$font-color-inverted: #fff !default;
+$font-size: 1rem !default;
+$font-weight: 400 !default;
+$line-height: 1.75 !default;
+
+/* images */
+// Photo by Eléonore Kemmel on Unsplash
+$cover_image: url(../media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg);
+$cover_image_position: 50% 50%;
+$cover_image_size: cover;
+$cover_image_repeat: repeat;
+$cover_image_attachment: scroll;
+$cover_image_opacity: 0.15;
+$color_intro_overlay_opacity: 0.6;
 
 /* Colors*/
 
 .color-primary {
-  color: var(--color-primary);
+  color: $color-primary;
 }
 
 .color-primary-bk {
-  background-color: var(--color-primary);
+  background-color: $color-primary;
 }
 
 .color-accent {
-  color: var(--color-accent);
+  color: $color-accent;
 }
 
 .color-accent-bk {
-  background-color: var(--color-accent);
+  background-color: $color-accent;
 }
 
 .color-neutral-200 {
-  color: var(--color-neutral-200);
+  color: $color-neutral-200;
 }
 
 .color-neutral-200-bk {
-  background-color: var(--color-neutral-200);
+  background-color: $color-neutral-200;
 }
 
 .color-neutral-100 {
-  color: var(--color-neutral-100);
+  color: $color-neutral-100;
 }
 
 .color-neutral-100-bk {
-  background-color: var(--color-neutral-100);
+  background-color: $color-neutral-100;
 }
 
 .color-neutral-500 {
-  color: var(--color-neutral-500);
+  color: $color-neutral-500;
 }
 
 .color-neutral-500-bk {
-  background-color: var(--color-neutral-500);
+  background-color: $color-neutral-500;
 }
 
 .color-neutral-600 {
-  color: var(--color-neutral-600);
+  color: $color-neutral-600;
 }
 
 .color-neutral-600-bk {
-  background-color: var(--color-neutral-600);
+  background-color: $color-neutral-600;
 }
 
 .color-secondary {
-  color: var(--color-secondary);
+  color: $color-secondary;
 }
 
 .color-secondary-light {
-  color: var(--color-secondary-light);
+  color: $color-secondary-light;
 }
 
 .color-secondary-bk {
-  background-color: var(--color-secondary);
+  background-color: $color-secondary;
 }
 
 .color-neutral-400 {
-  color: var(--color-neutral-400);
+  color: $color-neutral-400;
 }
 
 .color-neutral-400-bk {
-  background-color: var(--color-neutral-400);
+  background-color: $color-neutral-400;
 }
 
 .color-neutral-300 {
-  color: var(--color-neutral-300);
+  color: $color-neutral-300;
 }
 
 .color-neutral-300-bk {
-  background-color: var(--color-neutral-300);
+  background-color: $color-neutral-300;
 }
 
 .color-success {
-  color: var(--color-success);
+  color: $color-success;
 }
 
 .color-success-bk {
-  background-color: var(--color-success);
+  background-color: $color-success;
 }
 
 .color-warning {
-  color: var(--color-warning);
+  color: $color-warning;
 }
 
 .color-warning-bk {
-  background-color: var(--color-warning);
+  background-color: $color-warning;
 }
 
 .color-error {
-  color: var(--color-error);
+  color: $color-error;
 }
 
 .color-error-bk {
-  background-color: var(--color-error);
+  background-color: $color-error;
 }

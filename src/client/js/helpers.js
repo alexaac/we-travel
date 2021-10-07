@@ -86,4 +86,30 @@ const getWeatherIcons = (weatherCode) => {
   return codesList[weatherCode];
 };
 
-export { getDateDiff, checkIsToday, filterByDay, showErrors, getWeatherIcons };
+/* Initialize date input fields */
+const initDates = () => {
+  const startElem = document.getElementById('start');
+  const endElem = document.getElementById('end');
+
+  startElem.min = new Date().toJSON().split('T')[0];
+  endElem.min = new Date().toJSON().split('T')[0];
+
+  startElem.addEventListener('click', () => {
+    startElem.style.color = 'inherit';
+    endElem.value = '';
+  });
+  startElem.addEventListener('focusout', () => {
+    endElem.min = startElem.value;
+  });
+
+  endElem.addEventListener('click', () => (endElem.style.color = 'inherit'));
+};
+
+export {
+  getDateDiff,
+  checkIsToday,
+  filterByDay,
+  showErrors,
+  getWeatherIcons,
+  initDates,
+};

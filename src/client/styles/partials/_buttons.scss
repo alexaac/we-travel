@@ -1,4 +1,6 @@
-/* Buttons */
+/**
+ * Buttons
+ */
 
 .we-btn {
   display: inline-flex;
@@ -29,39 +31,41 @@
 /* Primary button */
 
 .we-btn-primary {
-  color: var(--color-text-inverted);
-  background: var(--color-primary);
-}
+  color: $font-color-inverted;
+  background: $color-primary;
 
-.we-btn-primary:hover {
-  text-decoration: none;
-  background: var(--color-primary-hover);
-  outline: 0;
-}
+  /* Hover */
 
-/* Disabled */
+  &:hover {
+    text-decoration: none;
+    background: $color-primary-hover;
+    outline: 0;
+  }
 
-.we-btn-primary.disabled,
-.we-btn-primary:disabled {
-  color: var(--color-neutral-400);
-  background-color: var(--color-neutral-300);
-  border-color: transparent;
-  opacity: 1;
+  /* Disabled */
+
+  .disabled,
+  &:disabled {
+    color: $color-neutral-400;
+    background-color: $color-neutral-300;
+    border-color: transparent;
+    opacity: 1;
+  }
 }
 
 /* Secondary button */
 
 .we-btn-secondary {
-  color: var(--color-primary);
+  color: $color-primary;
   background-color: transparent;
   background-image: none;
-  border: 1px solid var(--color-primary);
-}
+  border: 1px solid $color-primary;
 
-.we-btn-secondary:hover {
-  color: var(--color-text-inverted);
-  background: var(--color-primary);
-  border: none;
+  &:hover {
+    color: $font-color-inverted;
+    background: $color-primary;
+    border: none;
+  }
 }
 
 /* Tertiary buttons */
@@ -69,79 +73,79 @@
 /* Success */
 
 .we-btn-success {
-  color: var(--color-text-inverted);
-  background: var(--color-success);
-}
+  color: $font-color-inverted;
+  background: $color-success;
 
-.we-btn-success:hover {
-  text-decoration: none;
-  background: var(--color-success-hover);
-  outline: 0;
+  &:hover {
+    text-decoration: none;
+    background: $color-success-hover;
+    outline: 0;
+  }
 }
 
 .we-btn-success-sec {
-  color: var(--color-success);
+  color: $color-success;
   background-color: transparent;
   background-image: none;
-  border: 1px solid var(--color-success);
-}
+  border: 1px solid $color-success;
 
-.we-btn-success-sec:hover {
-  color: var(--color-text-inverted);
-  background: var(--color-success);
-  border: none;
+  &:hover {
+    color: $font-color-inverted;
+    background: $color-success;
+    border: none;
+  }
 }
 
 /* Warning */
 
 .we-btn-warning {
-  color: var(--color-text-inverted);
-  background: var(--color-warning);
-}
+  color: $font-color-inverted;
+  background: $color-warning;
 
-.we-btn-warning:hover {
-  text-decoration: none;
-  background: var(--color-warning-hover);
-  outline: 0;
+  &:hover {
+    text-decoration: none;
+    background: $color-warning-hover;
+    outline: 0;
+  }
 }
 
 .we-btn-warning-sec {
-  color: var(--color-warning);
+  color: $color-warning;
   background-color: transparent;
   background-image: none;
-  border: 1px solid var(--color-warning);
-}
+  border: 1px solid $color-warning;
 
-.we-btn-warning-sec:hover {
-  color: var(--color-text-inverted);
-  background: var(--color-warning);
-  border: none;
+  &:hover {
+    color: $font-color-inverted;
+    background: $color-warning;
+    border: none;
+  }
 }
 
 /* Error */
 
 .we-btn-error {
-  color: var(--color-text-inverted);
-  background: var(--color-error);
-}
+  color: $font-color-inverted;
+  background: $color-error;
 
-.we-btn-error:hover {
-  text-decoration: none;
-  background: var(--color-error-hover);
-  outline: 0;
+  &:hover {
+    text-decoration: none;
+    background: $color-error-hover;
+    outline: 0;
+  }
 }
 
 .we-btn-error-sec {
-  color: var(--color-error);
+  color: $color-error;
   background-color: transparent;
   background-image: none;
-  border: 1px solid var(--color-error);
-}
+  border: 1px solid $color-error;
 
-.we-btn-error-sec:hover {
-  color: var(--color-text-inverted);
-  background: var(--color-error);
-  border: none;
+  &:hover {
+    color: $font-color-inverted;
+    background: $color-error;
+    border: none;
+  }
 }
 
 /* Button Size */

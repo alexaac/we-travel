@@ -1,3 +1,7 @@
+/**
+ * Card
+ */
+
 .we-post-grid {
   display: grid;
   grid-auto-columns: 1fr;
@@ -18,7 +22,7 @@
 }
 
 .we-post-info-flex p {
-  color: var(--color-neutral-500);
+  color: $color-neutral-500;
 }
 
 .we-post-category {
@@ -36,7 +40,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  color: var(--color-neutral-400);
+  color: $color-neutral-400;
 }
 
 .img-link {
@@ -104,12 +108,12 @@ img {
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--color-neutral-600);
+  background-color: $color-neutral-600;
 }
 
 .we-overlay,
 .we-overlay-title {
-  color: var(--color-neutral-100);
+  color: $color-neutral-100;
 }
 
 .we-overlay-info-flex {

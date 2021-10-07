@@ -1,3 +1,7 @@
+/**
+ * Layout
+ */
+
 html {
   box-sizing: border-box;
 }
@@ -5,6 +9,21 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+html,
+body {
+  color: $font-color;
+  background-color: $color-neutral-200;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.title {
+  color: $color-accent;
 }
 
 /* Page Wrap */
@@ -64,7 +83,7 @@ html {
 }
 
 .we-container.bd {
-  border: 1px solid var(--color-neutral-300);
+  border: 1px solid $color-neutral-300;
   padding: 0.5rem;
 }
 

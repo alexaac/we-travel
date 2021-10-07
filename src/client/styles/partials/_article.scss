@@ -1,4 +1,6 @@
-/* Article */
+/**
+ * Article
+ */
 
 /* Article footer */
 .article-footer-container {
@@ -43,18 +45,18 @@
   padding: 0.3125rem 0.625rem;
   border-style: solid;
   border-width: 1px;
-  border-color: var(--color-neutral-400);
+  border-color: $color-neutral-400;
   border-radius: 4px;
   transition: border-color 100ms ease, color 100ms ease;
-  color: var(--color-neutral-400);
+  color: $color-neutral-400;
   text-decoration: none;
   background-image: none;
   white-space: nowrap;
 }
 
 .article-tag-link:hover {
-  border-color: var(--color-neutral-200);
-  color: var(--color-neutral-200);
+  border-color: $color-neutral-200;
+  color: $color-neutral-200;
 }
 
 /* Main Container */
@@ -82,13 +84,13 @@
 
 .we-article-category {
   font-family: 'Sacramento', cursive;
-  color: var(--color-neutral-100);
+  color: $color-neutral-100;
   font-weight: bolder;
 }
 
 .article-hero p,
 .article-hero span {
-  color: var(--color-neutral-100);
+  color: $color-neutral-100;
 }
 
 /* Video */
@@ -159,7 +161,7 @@
 .article-img-block {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--color-neutral-300);
+  border: 1px solid $color-neutral-300;
   padding: 0.5rem;
   margin: 0.5rem;
   min-width: 220px;
@@ -199,9 +201,9 @@
 
 .article-img-desc {
   padding: 0.2rem;
-  background: var(--color-neutral-200);
+  background: $color-neutral-200;
   font-size: 8px;
-  color: --var(--color-neutral-500);
+  color: $color-neutral-500;
   text-align: center;
   z-index: 2;
 }

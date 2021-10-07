@@ -1,4 +1,6 @@
-/* Social Media Links */
+/**
+ * Social
+ */
 
 .we-social-grid {
   display: grid;
@@ -28,7 +30,7 @@
 }
 
 .we-social:hover {
-  color: var(--color-secondary);
+  color: $color-secondary;
 }
 
 .article-social-icon {

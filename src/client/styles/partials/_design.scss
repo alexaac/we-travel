@@ -1,3 +1,7 @@
+/**
+ * Design
+ */
+
 .navbar {
   position: fixed;
   min-width: 290px;
@@ -7,7 +11,7 @@
   height: 62%;
   margin-bottom: 110px;
   border-right: solid;
-  border-color: var(--color-accent);
+  border-color: $color-accent;
   padding-top: 1rem;
 }
 
@@ -19,7 +23,7 @@
 }
 
 .nav-list li {
-  color: var(--color-neutral-500);
+  color: $color-neutral-500;
   border-top: 1px solid;
   list-style: none;
   position: relative;
@@ -33,7 +37,7 @@
 .navbar a {
   display: block;
   padding: 10px 30px;
-  color: var(--color-neutral-500);
+  color: $color-neutral-500;
   text-decoration: none;
   cursor: pointer;
 }
@@ -50,7 +54,7 @@
 }
 
 .we-section article {
-  color: var(--color-neutral-500);
+  color: $color-neutral-500;
   margin: 15px;
   font-size: 0.96em;
 }
@@ -87,7 +91,7 @@
   border-style: solid;
   border-width: 1px;
   border-radius: 20%;
-  border-color: var(--color-neutral-300);
+  border-color: $color-neutral-300;
 }
 
 /* Media */
@@ -108,7 +112,7 @@
   }
 
   .navbar {
-    background-color: var(--color-neutral-200);
+    background-color: $color-neutral-200;
     position: absolute;
     top: 0;
     padding: 0;
