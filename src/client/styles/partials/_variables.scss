@@ -1,3 +1,20 @@
+/**
+ * Variables
+ *
+ * The configuration for the app.
+ */
+
+/* Breakpoints */
+$x-small: 576px !default;
+$small: 768px !default;
+$medium: 992px !default;
+$large: 1200px !default;
+$x-large: 1440px !default;
+
+$mobile: $x-small !default;
+$tablet: $small !default;
+$desktop: $medium !default;
+
 /* Main colors*/
 
 :root {

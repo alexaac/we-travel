@@ -156,7 +156,7 @@ mark {
   line-height: 1;
 }
 
-@media screen and (max-width: 767.98px) {
+@media screen and (max-width: $tablet) {
   /* Extra small devices and small devices */
   /* The type scale goes from 11.24(px)(0.702rem) to 28.83(px)(1.802rem).
      Base size 16px, scale Major Second. */

@@ -1,3 +1,12 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 /* Page Wrap */
 
 .we-wrap-flex {
@@ -30,7 +39,7 @@
 
 .container {
   margin: 0 auto;
-  max-width: 992px; /* Medium devices (tablets, 768px and up) */
+  max-width: $desktop; /* Medium devices (tablets, $tablet and up) */
 }
 
 .container:before,
@@ -52,7 +61,6 @@
 .we-container {
   display: block;
   margin: 0 auto;
-  // max-height: 600px;
 }
 
 .we-container.bd {
@@ -80,41 +88,41 @@
 
 /* Page breaks after Bootstrap */
 
-@media screen and (max-width: 575.98px) {
+@media screen and (max-width: $mobile) {
   /* Extra small devices (portrait phones, less than 576px) */
   .container {
     max-width: none;
   }
 }
 
-@media screen and (max-width: 767.98px) {
+@media screen and (max-width: $tablet) {
   .we-container {
     max-height: initial;
   }
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
-  /* Medium devices (tablets, 768px and up) */
+@media (min-width: $tablet) and (max-width: $desktop) {
+  /* Medium devices (tablets, $tablet and up) */
   .container {
     max-width: 728px;
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  /* Large devices (desktops, 992px and up) */
+@media (min-width: $desktop) and (max-width: $large) {
+  /* Large devices (desktops, $desktop and up) */
   .container {
-    max-width: 991.98px;
+    max-width: $desktop;
   }
 }
 
-@media (min-width: 1200px) {
-  /* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: $large) {
+  /* Extra large devices (large desktops, $large and up) */
 
   .container {
-    max-width: 1199.98px;
+    max-width: $large;
   }
 }
 
 .container {
-  max-width: 992px;
+  max-width: $desktop;
 }

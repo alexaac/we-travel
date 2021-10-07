@@ -35,8 +35,8 @@
   width: 24px;
 }
 
-@media screen and (max-width: 991.98px) {
-  /* Small and medium devices (tablets, 768px and up) */
+@media screen and (max-width: $desktop) {
+  /* Small and medium devices (tablets, $tablet and up) */
   .we-social-grid {
     margin-top: 1rem;
   }

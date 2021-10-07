@@ -226,19 +226,19 @@
   margin: 1rem auto;
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: $x-large) {
   .article-container {
     max-width: 800px;
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: $large) {
   .article-container {
     max-width: 800px;
   }
 }
 
-@media screen and (max-width: 991.98px) {
+@media screen and (max-width: $desktop) {
   /* Small and medium devices */
   .article-img-flex {
     flex-wrap: wrap;
@@ -253,7 +253,7 @@
   }
 }
 
-@media screen and (max-width: 575.98px) {
+@media screen and (max-width: $mobile) {
   /* Extra small devices (portrait phones, less than 576px) */
   .article-tags {
     overflow: hidden;

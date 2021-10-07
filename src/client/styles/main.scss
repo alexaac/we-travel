@@ -1,10 +1,12 @@
 @charset 'UTF-8';
 
-// @import 'partials/base';
+// Config
+@import 'partials/_variables';
+
+// Components
 @import 'partials/_article';
 @import 'partials/_buttons';
 @import 'partials/_card';
-@import 'partials/_variables';
 @import 'partials/_cover';
 @import 'partials/_design';
 @import 'partials/_footer';
@@ -16,12 +18,3 @@
 @import 'partials/_social';
 @import 'partials/_topbtn';
 @import 'partials/_typography';
-
-html {
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}

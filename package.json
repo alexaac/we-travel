@@ -1,6 +1,15 @@
 {
   "name": "we-travel",
   "version": "0.0.1",
+  "author": "Alexa Cristina",
+  "description": "A trip planner",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexaac/we-travel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alexaac/we-travel/issues"
+  },
   "scripts": {
     "test": "jest",
     "start": "node src/server/server.js",
@@ -8,6 +17,14 @@
     "build": "webpack --config webpack.prod.js"
   },
   "browserslist": "last 3 versions",
+  "keywords": [
+    "sass",
+    "webpack",
+    "node",
+    "express",
+    "map"
+  ],
+  "private": false,
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.15.0",
     "body-parser": "^1.19.0",
@@ -41,6 +58,7 @@
     "webpack-merge": "^5.8.0",
     "workbox-webpack-plugin": "^6.1.5"
   },
+  "dependencies": {},
   "engines": {
     "node": ">= 16"
   }

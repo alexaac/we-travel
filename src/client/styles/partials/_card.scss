@@ -183,7 +183,7 @@ img {
 
 /***************************************/
 
-@media screen and (max-width: 991.98px) {
+@media screen and (max-width: $desktop) {
   /* Small and medium devices */
 
   .we-overlay-info-flex,
@@ -197,7 +197,7 @@ img {
   }
 }
 
-@media screen and (max-width: 767.98px) {
+@media screen and (max-width: $tablet) {
   /* Extra small devices and small devices */
   .we-post-grid {
     grid-row-gap: 1rem;

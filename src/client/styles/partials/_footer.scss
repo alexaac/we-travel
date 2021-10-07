@@ -39,7 +39,7 @@
   background-image: none;
 }
 
-@media screen and (max-width: 767.98px) {
+@media screen and (max-width: $tablet) {
   /* Extra small and small devices */
   .footer {
     padding: 20px 20px;
@@ -58,7 +58,7 @@
   }
 }
 
-@media screen and (max-width: 575.98px) {
+@media screen and (max-width: $mobile) {
   /* Extra small devices (portrait phones, less than 576px) */
   .footer-bottom-flex {
     white-space: nowrap;
