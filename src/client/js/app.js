@@ -1,4 +1,4 @@
-import { filterByDay, showErrors, checkIsToday } from './helpers';
+import { getDateDiff, filterByDay, showErrors, checkIsToday } from './helpers';
 import { postData, getData } from './api';
 import { updateUI } from './ui';
 import { panToLatLon } from './map';
@@ -6,9 +6,26 @@ import { panToLatLon } from './map';
 /* Global variables */
 let projectData = {};
 
-/* Initialize */
-document.getElementById('start').min = new Date().toJSON().split('T')[0];
-document.getElementById('start').valueAsDate = new Date();
+/* Initialize date input fields */
+const initDates = () => {
+  const startElem = document.getElementById('start');
+  const endElem = document.getElementById('end');
+
+  startElem.min = new Date().toJSON().split('T')[0];
+  endElem.min = new Date().toJSON().split('T')[0];
+
+  startElem.addEventListener('click', () => {
+    startElem.style.color = 'inherit';
+    endElem.value = '';
+  });
+  startElem.addEventListener('focusout', () => {
+    endElem.min = startElem.value;
+  });
+
+  endElem.addEventListener('click', () => (endElem.style.color = 'inherit'));
+};
+
+initDates();
 
 const setActions = () => {
   // Personal API Key for OpenWeatherMap API and Mapbox
@@ -36,8 +53,12 @@ const setActions = () => {
 
   /* GET Data for the Project */
   const processData = async () => {
-    const city = document.getElementById('city').value;
-    const start = document.getElementById('start').value;
+    const now = new Date();
+
+    const city = document.getElementById('city').value || 'Paris';
+    const start =
+      document.getElementById('start').value || now.toJSON().split('T')[0];
+    const end = document.getElementById('end').value || start;
 
     /* Get Data from Geonames API*/
     const cityData = await getData(geonamesBaseUrl, {
@@ -89,36 +110,50 @@ const setActions = () => {
       });
     }
 
-    const isToday = checkIsToday(start);
-    const weatherUrl = isToday ? currWeatherBaseUrl : weatherBaseUrl;
-
     /* Get Data from Weather API*/
-    return getData(weatherUrl, {
+    // Check if forecast data includes 'today'
+    let weatherData = await getData(weatherBaseUrl, {
       units: 'I',
       lat: cityInfo && cityInfo.lat,
       lon: cityInfo && cityInfo.lon,
       key: weatherApiKey,
-    }).then((data) => {
-      const startDayData = filterByDay(data.data, start);
-
-      // Update projectData and UI
-      postData('/addData', {
-        city,
-        country: cityInfo && cityInfo.country,
-        weather:
-          startDayData &&
-          startDayData[0] &&
-          startDayData[0].weather.description,
-        temperature:
-          (startDayData && startDayData[0] && startDayData[0].temp) ||
-          data.error ||
-          'The date is outside the 16 day forecast interval.',
-
-        date: start,
-        photo: pixabayData.hits && pixabayData.hits[0],
-      }).then((data) => updateUI(data));
     });
+
+    let startDayData = filterByDay(weatherData.data, start);
+
+    if (
+      !(startDayData && startDayData[0] && startDayData[0].temp) &&
+      checkIsToday(start)
+    ) {
+      // Check if current data includes 'today'; there are moments when
+      // only previous day data can be received
+      weatherData = await getData(currWeatherBaseUrl, {
+        units: 'I',
+        lat: cityInfo && cityInfo.lat,
+        lon: cityInfo && cityInfo.lon,
+        key: weatherApiKey,
+      });
+
+      startDayData = weatherData.data;
+    }
+
+    // Update projectData and UI
+    return postData('/addData', {
+      city,
+      country: cityInfo && cityInfo.country,
+      weather: startDayData && startDayData[0] && startDayData[0].weather,
+      temperature:
+        (startDayData && startDayData[0] && startDayData[0].temp) ||
+        weatherData.error ||
+        'The date is outside the 16 day forecast interval.',
+
+      startDate: start,
+      endDate: end,
+      photo: pixabayData.hits && pixabayData.hits[0],
+    }).then((data) => updateUI(data));
   };
+
+  processData();
 
   /* Event listener */
   document.getElementById('generate').addEventListener('click', processData);

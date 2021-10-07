@@ -14,7 +14,8 @@ module.exports = {
       .isEmpty()
       .withMessage('Please input city')
       .isDecimal(),
-    check('date').not().isEmpty().withMessage('Date must not be empty'),
+    check('startDate').not().isEmpty().withMessage('Date must not be empty'),
+    check('endDate').not().isEmpty().withMessage('Date must not be empty'),
   ],
   urlData: [
     check('city')

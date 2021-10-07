@@ -1,6 +1,6 @@
 .we-wide {
   position: relative;
-  padding: 3rem 2rem 4rem;
+  padding: 1rem 0;
   background-color: var(--color-neutral-500);
   text-align: center;
 }
@@ -11,14 +11,30 @@
 
 .we-wide-label {
   position: absolute;
-  opacity: 0;
+  margin-top: 0.5rem;
+  margin-left: 1.7rem;
 }
 
 .we-wide-input {
-  height: 3.5rem;
   padding: 0.5rem 1.5rem;
   font-size: 0.9375rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.we-wide-date {
+  background-image: url(../media/calendar.svg);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 20px 20px;
+  padding: 0.5rem 1rem 0.5rem 5.5rem;
+}
+
+.we-wide-date svg {
+  transition: color 0.2s ease-in-out;
+}
+
+input[type='date'] {
+  color: transparent;
 }
 
 .we-wide-submit {

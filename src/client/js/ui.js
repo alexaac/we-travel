@@ -1,4 +1,9 @@
-import { getDateDiff, checkIsToday, showErrors } from './helpers';
+import {
+  getDateDiff,
+  checkIsToday,
+  showErrors,
+  getWeatherIcons,
+} from './helpers';
 
 /* Update UI */
 const updateUI = async (data) => {
@@ -9,12 +14,16 @@ const updateUI = async (data) => {
     try {
       const allData = await request.json();
 
-      const daysUntil = getDateDiff(allData.date);
-      const isToday = checkIsToday(allData.date);
+      const daysUntil = getDateDiff(new Date(), allData.startDate);
+      const tripDuration = getDateDiff(allData.startDate, allData.endDate);
+      const isToday = checkIsToday(allData.startDate);
+      const weatherIcons = getWeatherIcons(allData.weather.code);
 
       document.getElementById('tripinfo').innerHTML = `
-        <h4>My trip to: ${allData.city}, ${allData.country}</h4>
-        <h5>Departing: ${allData.date}</h5>
+        <h5>My trip to: ${allData.city}, ${allData.country}</h5>
+        <p>Departing: ${allData.startDate}</p>
+        <p>Return: ${allData.endDate} (${tripDuration} days)</p>
+
         <button
           class="we-btn we-btn-primary we-btn-sm"
           id="savetrip"
@@ -22,6 +31,7 @@ const updateUI = async (data) => {
         >
           Save
         </button>
+
         <button
           class="we-btn we-btn-primary we-btn-sm"
           id="removetrip"
@@ -39,10 +49,22 @@ const updateUI = async (data) => {
       }</p>
         <p>
           Typical weather for then is:<br />
-          ${allData.temperature}°F ${allData.weather}
+          <span class="helper-text">${allData.temperature}°F ${
+        allData.weather.description
+      }</span>
+      <img alt="${
+        allData.weather.description
+      }" style="" src="https://mps-ph.s3.us-east-2.amazonaws.com/we/icons/${
+        weatherIcons[0]
+      }.png" width="50" height="50">
+      <img alt="${
+        allData.weather.description
+      }" style="" src="https://mps-ph.s3.us-east-2.amazonaws.com/we/icons/${
+        weatherIcons[1]
+      }.png" width="50" height="50">
         </p>
       `;
-      console.log(allData.photo);
+
       document.getElementById('error').innerHTML = '';
       document.getElementById('photo').innerHTML = `
         <img
@@ -53,7 +75,7 @@ const updateUI = async (data) => {
             ${allData.photo.webformatURL}  992w,
             ${allData.photo.largeImageURL} 1200w
           "
-          class="post-img"
+          class="post-img photo"
         />
       `;
     } catch (error) {

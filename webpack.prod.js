@@ -8,6 +8,10 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 module.exports = merge(common, {
   mode: 'production',
 
+  output: {
+    assetModuleFilename: 'media/[name][ext]',
+  },
+
   optimization: {
     minimizer: [new TerserPlugin({}), new CssMinimizerPlugin()],
   },
@@ -22,7 +26,10 @@ module.exports = merge(common, {
   },
 
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[name].css' }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
     new WorkboxPlugin.GenerateSW({
       // Do not precache images
       exclude: [/\.(?:png|jpg|jpeg|svg)$/],

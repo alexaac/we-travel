@@ -2,7 +2,7 @@
 
 section {
   display: block;
-  border-bottom: solid 1px var(--color-neutral-200);
+  // border-bottom: solid 1px var(--color-neutral-200);
 }
 
 .section {
@@ -10,7 +10,7 @@ section {
 }
 
 .section.first {
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
 
 .section.stretch {
@@ -33,10 +33,6 @@ section {
     max-width: none;
   }
 
-  .section.first {
-    padding-top: 7rem;
-  }
-
   .section.last {
     padding-bottom: 2rem;
   }
@@ -48,11 +44,7 @@ section {
     padding: 0.5rem;
   }
 
-  .section.first {
-    padding-top: 4rem;
-  }
-
   .section.last {
-    padding-bottom: 4rem;
+    padding-bottom: 3rem;
   }
 }
