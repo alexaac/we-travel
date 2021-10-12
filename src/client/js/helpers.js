@@ -42,7 +42,7 @@ const showErrors = (errors) => {
       ),
     };
     errorString = errorDetails.message;
-  } else if (typeof errors === String) {
+  } else if (typeof errors === 'string') {
     errorString = errors;
   } else if (errors && errors[0]) {
     errors.forEach((error) => {
@@ -114,6 +114,10 @@ const initDates = () => {
   });
   startDate.addEventListener('focusout', () => {
     endDate.min = startDate.value;
+    // Update end date to be equal or higher than start date
+    if (getDateDiff(startDate.value, endDate.value) < 0) {
+      endDate.value = startDate.value;
+    }
   });
 
   endDate.addEventListener('click', () => (endDate.style.color = 'inherit'));
@@ -122,7 +126,7 @@ const initDates = () => {
 const toProperCase = (str) => {
   return str
     .trim()
-    .split(' ')
+    .split(/[., -]/) // find a better regex
     .map((w) => (w[0] ? w[0].toUpperCase() + w.substr(1).toLowerCase() : ''))
     .join(' ');
 };

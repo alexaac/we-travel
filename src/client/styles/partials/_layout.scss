@@ -80,6 +80,11 @@ h5,
 .we-container {
   display: block;
   margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.we-container.expired {
+  background-color: $color-neutral-300;
 }
 
 .we-container.bd {

@@ -15,27 +15,44 @@ const displayTrips = async (parentId, mapboxApiKey) => {
         ? JSON.parse(localStorage.getItem('trips'))
         : {};
 
-    const tripIds = Object.keys(tripsData);
-    if (tripIds.length > 0) {
-      document.getElementById(parentId).innerHTML = ``;
+    const tripsIds = Object.keys(tripsData);
+    const tripsCount = tripsIds.length;
+
+    if (tripsCount > 0) {
+      document.getElementById(
+        parentId
+      ).innerHTML = `You have ${tripsCount} saved trips.`;
 
       const coords = {};
+      const expired = [];
 
-      Object.keys(tripsData)
-        .sort(
-          (a, b) =>
-            getDateDiff(a.startDate, b.startDate) || a['city'] - b['city']
+      tripsIds
+        .sort((a, b) =>
+          getDateDiff(
+            JSON.parse(tripsData[b]).startDate,
+            JSON.parse(tripsData[a]).startDate
+          )
         )
         .forEach((tripId) => {
           const tripData = JSON.parse(tripsData[tripId]);
 
-          addTripDiv(tripData, parentId, mapboxApiKey);
+          const daysUntil = getDateDiff(new Date(), tripData.startDate);
+
+          if (daysUntil < 0) {
+            expired.push(tripData);
+          } else {
+            addTripDiv(tripData, parentId, mapboxApiKey);
+          }
 
           coords[tripData.city] = [
             tripData.cityInfo.lon,
             tripData.cityInfo.lat,
           ];
         });
+
+      expired.forEach((tripData) => {
+        addTripDiv(tripData, parentId, mapboxApiKey);
+      });
 
       /* Center map on locations */
       showMarkers(coords, mapboxApiKey);
@@ -72,6 +89,7 @@ const addTripDiv = async (tripData, parentId, mapboxApiKey) => {
   const alreadySaved = await checkAlreadySaved(tripData.tripId);
 
   const daysUntil = getDateDiff(new Date(), tripData.startDate);
+
   const tripDuration = getDateDiff(tripData.startDate, tripData.endDate);
   const isToday = checkIsToday(tripData.startDate);
   const weatherIcons = getWeatherIcons(tripData.weather.code);
@@ -82,7 +100,7 @@ const addTripDiv = async (tripData, parentId, mapboxApiKey) => {
   parentDiv.appendChild(tripDiv);
 
   document.getElementById(tripId).innerHTML = `
-        <div class="we-container bd lg">
+        <div class="we-container bd lg ${daysUntil < 0 ? 'expired' : ''}">
           <div class="we-post-grid inversed">
             <div class="img-link we-inline-block">
               <div id="photo" class="post-img-wrap pointer-events-none">
@@ -133,15 +151,19 @@ const addTripDiv = async (tripData, parentId, mapboxApiKey) => {
                 >
                   Remove</button
                 ><br />
-                <p>${tripData.city}, ${tripData.cityInfo.country} trip is ${
+                <p>${tripData.city}, ${tripData.cityInfo.country} trip ${
     daysUntil === 0 && isToday
-      ? 'today'
+      ? 'is today'
       : daysUntil === 0
-      ? 'tomorrow'
-      : daysUntil + 1 + ' days away.'
+      ? 'is tomorrow'
+      : daysUntil < 0
+      ? 'was ' + Math.abs(daysUntil) + ' days ago.'
+      : 'is ' + (daysUntil + 1) + ' days away.'
   }</p>
                           <p>
-                            Typical weather for then is:<br />
+                            Typical weather for then ${
+                              daysUntil < 0 ? 'was' : 'is'
+                            }:<br />
                             <span class="helper-text">${
                               tripData.temperature
                             }°F ${tripData.weather.description}</span>
@@ -184,12 +206,22 @@ const addTripDiv = async (tripData, parentId, mapboxApiKey) => {
             ? JSON.parse(localStorage.getItem('trips'))
             : {};
 
-        tripsData[tripData.tripId] = JSON.stringify(tripData);
-        typeof localStorage !== 'undefined' &&
-          localStorage.setItem('trips', JSON.stringify(tripsData));
+        const tripsIds = Object.keys(tripsData);
+        const tripsCount = tripsIds.length;
 
-        document.getElementById(`removetrip-${tripId}`).disabled = false;
-        this.disabled = true;
+        if (1) {
+          tripsData[tripData.tripId] = JSON.stringify(tripData);
+          typeof localStorage !== 'undefined' &&
+            localStorage.setItem('trips', JSON.stringify(tripsData));
+
+          document.getElementById(`removetrip-${tripId}`).disabled = false;
+          this.disabled = true;
+        } else {
+          showErrors('You have reached the maximum limit of 100 saved trips.');
+          throw new Error(
+            'You have reached the maximum limit of 100 saved trips.'
+          );
+        }
       }
     });
 
@@ -241,28 +273,18 @@ const updateInputs = (tripData) => {
 };
 
 /* Update UI */
-const displayTrip = async (data, parentId, mapboxApiKey) => {
-  if (data && data.errors) {
-    showErrors(data.errors);
+const displayTrip = async (tripData, parentId, mapboxApiKey) => {
+  if (tripData && tripData.errors) {
+    showErrors(tripData.errors);
 
     return 0;
-  } else if (data) {
-    const request = await fetch('/getLastTrip');
-    try {
-      const tripData = await request.json();
+  } else if (tripData) {
+    if (tripData.tripId) {
+      addTripDiv(tripData, parentId, mapboxApiKey);
 
-      if (tripData.tripId) {
-        addTripDiv(tripData, parentId, mapboxApiKey);
+      updateInputs(tripData);
 
-        updateInputs(tripData);
-
-        return 1;
-      }
-    } catch (error) {
-      console.error('error', error);
-      showErrors(error);
-
-      return 0;
+      return 1;
     }
   }
 };

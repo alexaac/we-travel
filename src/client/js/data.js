@@ -1,6 +1,38 @@
-import { pi } from 'mathjs';
 import { getLastTrip } from './api';
-import { filterByDay, checkIsToday } from './helpers';
+import { filterByDay, checkIsToday, getDateDiff } from './helpers';
+import { saveToMyStorage } from './storage';
+
+/* GET Data for the Project */
+const processData = async (projectData) => {
+  const now = new Date();
+
+  const city = document.getElementById('city').value || 'Paris';
+  const startDate =
+    document.getElementById('start').value || now.toJSON().split('T')[0];
+  const endDate = document.getElementById('end').value || startDate;
+
+  // Alert the user that won't receive weather data outside the forecast interval
+  if (getDateDiff(new Date(), startDate) >= 15) {
+    throw new Error('The start date is outside the 16 day forecast interval.');
+  }
+
+  const tripDataBundle = await getLastTripBundle(
+    projectData,
+    city,
+    startDate,
+    endDate
+  );
+
+  // Save trip details to lastTripData
+  const lastTripData =
+    tripDataBundle && (await saveToMyStorage(tripDataBundle));
+
+  if (lastTripData && lastTripData.city) {
+    localStorage.setItem('lastTrip', JSON.stringify(lastTripData));
+  }
+
+  return lastTripData;
+};
 
 /* Get Data from Geonames API*/
 const getLocationData = async (geonamesBaseUrl, geonamesApiKey, city) => {
@@ -161,4 +193,10 @@ const getLastTripBundle = async (projectData, city, startDate, endDate) => {
   };
 };
 
-export { getLocationData, getPhotoData, getWeatherData, getLastTripBundle };
+export {
+  processData,
+  getLocationData,
+  getPhotoData,
+  getWeatherData,
+  getLastTripBundle,
+};
