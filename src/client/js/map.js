@@ -30,7 +30,7 @@ const showMarker = async (tripId, coords, mapboxApiKey) => {
       const width = 50;
       const height = 50;
       el.className = 'marker';
-      el.style.backgroundImage = `url(../media/wemotoicon.svg)`;
+      el.style.backgroundImage = `url(https://mps-ph.s3.us-east-2.amazonaws.com/we/media/wemotoicon.svg)`;
       el.style.backgroundRepeat = 'no-repeat';
       el.style.width = `${width}px`;
       el.style.height = `${height}px`;
