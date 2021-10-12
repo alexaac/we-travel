@@ -1,118 +1,73 @@
 import { showErrors, initDates } from './helpers';
 import { postData } from './api';
-import {
-  getLocationData,
-  getMapData,
-  getPhotoData,
-  getWeatherData,
-} from './data';
-import { updateUI } from './ui';
-import { panToLatLon } from './map';
+import { getLastTripBundle } from './data';
+import { displayTrip, displayTrips, addTripDiv } from './ui';
+import { saveToMyStorage } from './storage';
 
 /* Global variables */
 let projectData = {};
+const parentId = document.getElementById('parent-id').value;
 
-/* Initialize date input fields */
-
-initDates();
-
-const setActions = () => {
-  // Personal API Key for OpenWeatherMap API and Mapbox
-  const {
-    weatherBaseUrl,
-    currWeatherBaseUrl,
-    weatherApiKey,
-    mapboxBaseUrl,
-    mapboxApiKey,
-    geonamesBaseUrl,
-    geonamesApiKey,
-    pixabayBaseUrl,
-    pixabayApiKey,
-  } = projectData;
-
-  /* Initialize MapBox map */
-  mapboxgl.accessToken = mapboxApiKey;
-
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-122.11, 37.4], // starting position
-    zoom: 5, // starting zoom
-  });
-
+/* Set Actions */
+const setActions = async () => {
   /* GET Data for the Project */
   const processData = async () => {
-    const now = new Date();
+    const tripDataBundle = await getLastTripBundle(projectData);
 
-    const city = document.getElementById('city').value || 'Paris';
-    const startDate =
-      document.getElementById('start').value || now.toJSON().split('T')[0];
-    const endDate = document.getElementById('end').value || startDate;
+    // Save trip details to lastTripData
+    const lastTripData = await saveToMyStorage(tripDataBundle);
 
-    /* Get Data from Geonames API*/
-    const cityInfo = await getLocationData(
-      geonamesBaseUrl,
-      geonamesApiKey,
-      city
-    );
-    console.log(cityInfo);
+    if (lastTripData.city) {
+      localStorage.setItem('lastTrip', JSON.stringify(lastTripData));
+    }
 
-    /* Get Data from Mapbox API*/
-    const mapboxData = await getMapData(
-      mapboxBaseUrl,
-      mapboxApiKey,
-      city,
-      cityInfo
-    );
-
-    /* Center map on location */
-    if (city && cityInfo) panToLatLon(map, mapboxData);
-
-    /* Get Data from Pixabay API*/
-    const pixabayData = await getPhotoData(pixabayBaseUrl, pixabayApiKey, city);
-
-    /* Get Data from Weather API*/
-    const [startDayData, weatherData] = await getWeatherData(
-      weatherBaseUrl,
-      currWeatherBaseUrl,
-      weatherApiKey,
-      cityInfo,
-      startDate
-    );
-
-    // Update projectData and UI
-    return postData('/addData', {
-      city,
-      country: cityInfo && cityInfo.country,
-      weather: startDayData && startDayData[0] && startDayData[0].weather,
-      temperature:
-        (startDayData && startDayData[0] && startDayData[0].temp) ||
-        weatherData.error ||
-        'The date is outside the 16 day forecast interval.',
-
-      startDate,
-      endDate,
-      photo: pixabayData.hits && pixabayData.hits[0],
-    }).then((data) => updateUI(data));
+    // Clean error div, and update UI
+    document.getElementById('error').innerHTML = '';
+    displayTrip(lastTripData, parentId, projectData.mapboxApiKey);
   };
 
-  processData();
+  if (parentId === 'trips') {
+    // we are on the trips page
+    /* Show saved trips */
+    displayTrips(parentId, projectData.mapboxApiKey);
+  } else {
+    // we are on homepage
+    /* Initialize date input fields */
+    initDates();
 
-  /* Event listener */
-  document.getElementById('generate').addEventListener('click', processData);
+    // Front page initial display
+    const lastTripData = await processData();
+
+    /* Event listener */
+    document
+      .getElementById('main-form')
+      .addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        document.getElementById(parentId).innerHTML = '';
+
+        try {
+          const lastTripData = await processData();
+        } catch (error) {
+          console.error('error', error);
+          showErrors(error);
+        }
+      });
+  }
 };
 
 const getEnvData = async () => {
-  const request = await fetch('/all');
+  const request = await fetch('/init');
 
   try {
-    const allData = await request.json();
+    const initData = await request.json();
 
-    projectData = allData;
+    projectData = initData;
 
     setActions();
   } catch (error) {
     console.error('error', error);
+    showErrors(error);
   }
 };
 

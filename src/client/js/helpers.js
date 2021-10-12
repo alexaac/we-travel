@@ -9,11 +9,11 @@ const getDateDiff = (date1, date2) => {
 };
 
 // Check today
-const checkIsToday = (start) => {
+const checkIsToday = (startDate) => {
   const now = new Date();
-  const startDate = new Date(start.slice(0, 10));
+  const start = new Date(startDate.slice(0, 10));
 
-  return startDate.toJSON().split('T')[0] === now.toJSON().split('T')[0];
+  return start.toJSON().split('T')[0] === now.toJSON().split('T')[0];
 };
 
 // Filter By Day
@@ -29,15 +29,17 @@ const filterByDay = (data, start) =>
   });
 
 const showErrors = (errors) => {
+  console.log(errors);
   let errorString = '';
+  if (typeof errors === Array) {
+    errors.forEach((error) => {
+      errorString =
+        errorString + `${error.param} - ${error.msg}: '${error.value}'<br/> `;
+    });
+  } else {
+    errorString = error;
+  }
 
-  errors.forEach((error) => {
-    errorString =
-      errorString + `${error.param} - ${error.msg}: '${error.value}'<br/> `;
-  });
-
-  document.getElementById('tripinfo').innerHTML = '';
-  document.getElementById('content').innerHTML = '';
   document.getElementById('error').innerHTML = errorString;
 };
 
@@ -88,21 +90,20 @@ const getWeatherIcons = (weatherCode) => {
 
 /* Initialize date input fields */
 const initDates = () => {
-  const startElem = document.getElementById('start');
-  const endElem = document.getElementById('end');
+  const startDate = document.getElementById('start');
+  const endDate = document.getElementById('end');
 
-  startElem.min = new Date().toJSON().split('T')[0];
-  endElem.min = new Date().toJSON().split('T')[0];
+  startDate.min = new Date().toJSON().split('T')[0];
+  endDate.min = new Date().toJSON().split('T')[0];
 
-  startElem.addEventListener('click', () => {
-    startElem.style.color = 'inherit';
-    endElem.value = '';
+  startDate.addEventListener('click', () => {
+    startDate.style.color = 'inherit';
   });
-  startElem.addEventListener('focusout', () => {
-    endElem.min = startElem.value;
+  startDate.addEventListener('focusout', () => {
+    endDate.min = startDate.value;
   });
 
-  endElem.addEventListener('click', () => (endElem.style.color = 'inherit'));
+  endDate.addEventListener('click', () => (endDate.style.color = 'inherit'));
 };
 
 export {

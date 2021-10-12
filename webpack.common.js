@@ -13,6 +13,11 @@ const htmlPlugin_design = new HtmlWebPackPlugin({
   template: path.join(__dirname, './src/client/views/design_system.html'),
 });
 
+const htmlPlugin_trips = new HtmlWebPackPlugin({
+  filename: 'trips.html',
+  template: path.join(__dirname, './src/client/views/trips.html'),
+});
+
 module.exports = {
   entry: './src/client/index.js',
 
@@ -30,5 +35,5 @@ module.exports = {
     ],
   },
 
-  plugins: [htmlPlugin, htmlPlugin_design],
+  plugins: [htmlPlugin, htmlPlugin_design, htmlPlugin_trips],
 };

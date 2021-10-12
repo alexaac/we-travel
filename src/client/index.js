@@ -4,6 +4,7 @@ import './styles/main.scss';
 
 // load svg images for brand
 import icon from './media/icon.ico';
+import brandi from './media/wemotoicon.svg';
 import brandw from './media/wemoto_white.svg';
 import brandb from './media/wemoto_black.svg';
 import face from './media/facebook.svg';

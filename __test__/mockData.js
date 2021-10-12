@@ -1,4 +1,4 @@
-const getDataForUrl = () => [
+const getLastTripForUrl = () => [
   {
     testName: 'geonames invalid user',
     baseUrl: 'https://secure.geonames.org/searchJSON?',
@@ -2066,4 +2066,4 @@ const getDataForUrl = () => [
   },
 ];
 
-export { getDataForUrl };
+export { getLastTripForUrl };

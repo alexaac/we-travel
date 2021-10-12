@@ -4,11 +4,11 @@ module.exports = {
   // Methods for validating data
   setData: [
     check('city').not().isEmpty().withMessage('Please input city').isString(),
-    check('country')
+    check('cityInfo')
       .not()
       .isEmpty()
       .withMessage('Please input country')
-      .isString(),
+      .isObject(),
     check('temperature')
       .not()
       .isEmpty()
@@ -16,6 +16,11 @@ module.exports = {
       .isDecimal(),
     check('startDate').not().isEmpty().withMessage('Date must not be empty'),
     check('endDate').not().isEmpty().withMessage('Date must not be empty'),
+    check('tripId')
+      .not()
+      .isEmpty()
+      .withMessage('Trip id must not be empty')
+      .isString(),
   ],
   urlData: [
     check('city')
@@ -23,5 +28,12 @@ module.exports = {
       .isEmpty()
       .withMessage('City must not be empty')
       .isString(),
+  ],
+  tripId: [
+    check('tripId')
+      .not()
+      .isEmpty()
+      .withMessage('Trip id must not be empty')
+      .isNumeric(),
   ],
 };

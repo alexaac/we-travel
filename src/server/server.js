@@ -23,6 +23,8 @@ projectData = {
   pixabayApiKey: process.env.PIXABAY_API_KEY,
 };
 
+lastTripData = {};
+
 // Start up an instance of app
 const app = express();
 

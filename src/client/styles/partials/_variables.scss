@@ -70,7 +70,7 @@ $color-main-grad: linear-gradient(
 
 @font-face {
   font-family: 'dejavu';
-  src: url('../fonts/DejaVuSerif.ttf');
+  src: local('../fonts/DejaVuSerif.ttf');
 }
 
 .sacramento {
@@ -79,7 +79,7 @@ $color-main-grad: linear-gradient(
 
 @font-face {
   font-family: 'sourcesans';
-  src: url('../fonts/SourceSansPro-RyPo.ttf');
+  src: local('../fonts/SourceSansPro-RyPo.ttf');
 }
 
 .sacramento {
