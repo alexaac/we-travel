@@ -1,6 +1,9 @@
 {
   "name": "we-travel",
   "version": "0.0.1",
+  "engines": {
+    "node": ">= 16"
+  },
   "author": "Alexa Cristina",
   "description": "A trip planner",
   "repository": {
@@ -27,6 +30,7 @@
   "private": false,
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.15.0",
+    "@turf/bbox": "^6.5.0",
     "body-parser": "^1.19.0",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "concurrently": "^6.2.0",
@@ -43,6 +47,9 @@
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.0.6",
     "jest-fetch-mock": "^3.0.3",
+    "jsdom": "^16.7.0",
+    "mapbox-gl": "1.13.2",
+    "mathjs": "^9.5.0",
     "mini-css-extract-plugin": "^2.3.0",
     "node-fetch": "^2.6.1",
     "node-sass": "^6.0.1",
@@ -51,15 +58,12 @@
     "style-loader": "^3.2.1",
     "svg-url-loader": "^7.1.1",
     "terser-webpack-plugin": "^5.1.4",
+    "turf-extent": "^1.0.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.48.0",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^4.3.0",
     "webpack-merge": "^5.8.0",
     "workbox-webpack-plugin": "^6.1.5"
-  },
-  "dependencies": {},
-  "engines": {
-    "node": ">= 16"
   }
 }

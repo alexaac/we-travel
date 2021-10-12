@@ -1,6 +1,6 @@
 // Import the js file to test
-import { postData, getData } from '../src/client/js/api';
-import { getDataForUrl } from './mockData.js';
+import { postData, getLastTrip } from '../src/client/js/api';
+import { getLastTripForUrl } from './mockData.js';
 
 function FormDataMock() {
   this.append = jest.fn();
@@ -26,15 +26,15 @@ function setupFetchStub(data) {
 // A test suite may contain one or more related tests
 describe('Testing the API functionality', () => {
   // The test() function has two arguments - a string description, and an actual test as a callback function.
-  test('Testing the getData() function', () => {
+  test('Testing the getLastTrip() function', () => {
     // Define the input for the function, if any, in the form of variables/array
     // Define the expected output, if any, in the form of variables/array
     // The expect() function, in combination with a Jest matcher, is used to check if the function produces the expected output
     // The general syntax is `expect(myFunction(arg1, arg2, ...)).toEqual(expectedValue);`, where `toEqual()` is a matcher
-    expect(getData).toBeDefined();
+    expect(getLastTrip).toBeDefined();
   });
 
-  const dataForUrl = getDataForUrl();
+  const dataForUrl = getLastTripForUrl();
 
   dataForUrl.forEach((myTest) => {
     test(
@@ -48,7 +48,7 @@ describe('Testing the API functionality', () => {
           .fn()
           .mockImplementation(setupFetchStub(myTest.response));
 
-        const data = await getData(myTest.baseUrl, myTest.params);
+        const data = await getLastTrip(myTest.baseUrl, myTest.params);
 
         expect(data).toEqual({ data: myTest.response });
         expect(fetch).toHaveBeenCalledTimes(1);

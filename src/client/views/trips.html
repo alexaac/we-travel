@@ -39,7 +39,7 @@
                   <a href="#" class="nav-link we-link">WE Travel</a>
                 </div>
                 <div role="listitem" class="nav-menu-item">
-                  <a href="./trips.html" class="nav-link we-link">Trips</a>
+                  <a href="#" class="nav-link we-link">Trips</a>
                 </div>
                 <div role="listitem" class="nav-menu-item">
                   <a href="design_system.html" class="nav-link we-link"
@@ -66,91 +66,16 @@
           <button id="top-btn">˄</button>
         </a>
 
-        <h1>Travel Planner</h1>
+        <h1>My Trips</h1>
 
-        <section class="section">
-          <div id="last-trip"></div>
-          <input
-            type="hidden"
-            id="parent-id"
-            name="parent-id"
-            value="last-trip"
-          />
-          <div class="color-neutral-100 color-error-bk" id="error"></div>
-        </section>
         <section class="section first">
-          <div class="container">
-            <div class="we-wide">
-              <img
-                src="media/eleonore-kemmel-Q8JuPozm4s0-unsplash.jpg"
-                loading="lazy"
-                alt=""
-                class="we-wide-bg"
-              />
-              <form
-                id="main-form"
-                name="main-form"
-                data-name="Main Form"
-                class="we-form-info-flex"
-              >
-                <div>
-                  <input
-                    type="text"
-                    class="we-wide-input"
-                    maxlength="256"
-                    name="city"
-                    data-name="City"
-                    placeholder="Enter city name"
-                    id="city"
-                    required="true"
-                  />
-                </div>
-                <div class="we-flex-rows">
-                  <div>
-                    <label for="start" class="we-wide-label helper-text"
-                      >Start date</label
-                    >
-                    <input
-                      type="date"
-                      class="we-wide-input we-wide-date"
-                      maxlength="256"
-                      name="start"
-                      data-name="start"
-                      placeholder="Departing (optional)"
-                      id="start"
-                    />
-                  </div>
-
-                  <div>
-                    <label for="end" class="we-wide-label helper-text"
-                      >End date</label
-                    >
-                    <input
-                      type="date"
-                      class="we-wide-input we-wide-date"
-                      maxlength="256"
-                      name="end"
-                      data-name="end"
-                      placeholder="Return (optional)"
-                      id="end"
-                    />
-                  </div>
-                </div>
-                <span class="color-neutral-400">(optional)</span>
-                <br />
-                <br />
-                <br />
-                <button
-                  type="submit"
-                  data-wait="Please wait..."
-                  class="we-wide-submit we-btn we-btn-primary"
-                  id="generate"
-                >
-                  Generate
-                </button>
-              </form>
-            </div>
+          <div class="mapholder">
+            <div id="map-all" class="map"></div>
           </div>
+        </section>
+        <section class="section">
+          <div id="trips">There are no saved trips yet.</div>
+          <input type="hidden" id="parent-id" name="parent-id" value="trips" />
         </section>
       </main>
     </div>

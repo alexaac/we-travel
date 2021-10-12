@@ -31,7 +31,7 @@ const postData = async (url = '', data = {}) => {
  * @param {string} baseUrl - url to analyze
  * @param {object} params - parameters
  */
-const getData = async (baseUrl = '', params = {}) => {
+const getLastTrip = async (baseUrl = '', params = {}) => {
   try {
     const queryString = Object.keys(params)
       .map((key) => `${key}=${params[key]}`)
@@ -47,4 +47,4 @@ const getData = async (baseUrl = '', params = {}) => {
   }
 };
 
-export { postData, getData };
+export { postData, getLastTrip };
