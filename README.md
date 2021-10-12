@@ -10,6 +10,21 @@ We Travel App Project
 
 Travel app - plan a trip by entering the city name, and find out about the weather.
 
+- display demo trip to Paris on page load
+- trip info:
+  - city photo (country photo if not available)
+  - city map
+  - departing and return dates
+  - the weather for start date
+  - weather day and night icons
+  - dave and remove buttons for the trip
+- the user can use the form to input city name, start date and end date
+- all inputs are checked for empty values
+- end date is checked against start date, so the user can't enter a smaller value as end date
+- start date is checked not to go beyond the 16 days weather forecast interval
+- when the user revisits the page, the last visited trip will be displayed
+- trips page where the user can see all the locations on a main map, and each trip details listed below by start date
+
 ## Project Setup
 
 1. clone the Project - `git clone https://github.com/alexaac/we-travel.git`
