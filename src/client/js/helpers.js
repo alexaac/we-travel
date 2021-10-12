@@ -30,7 +30,7 @@ const filterByDay = (data, start) =>
 
 const showErrors = (errors) => {
   let errorString = '';
-  if (typeof errors === Array) {
+  if (errors[0]) {
     errors.forEach((error) => {
       errorString =
         errorString + `${error.param} - ${error.msg}: '${error.value}'<br/> `;
