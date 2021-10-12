@@ -36,6 +36,7 @@ const displayTrips = async (parentId, mapboxApiKey) => {
             tripData.cityInfo.lat,
           ];
         });
+
       /* Center map on locations */
       showMarkers(coords, mapboxApiKey);
     }
@@ -110,7 +111,9 @@ const addTripDiv = async (tripData, parentId, mapboxApiKey) => {
                   alreadySaved ? 'saved trip' : ''
                 }</span>
                 <p>Departing: ${tripData.startDate}</p>
-                <p>Return: ${tripData.endDate} (${tripDuration} days)</p>
+                <p>Return: ${tripData.endDate} (${
+    tripDuration > 0 ? tripDuration + ' days' : 'same day'
+  })</p>
       
                 <button
                   class="we-btn we-btn-primary we-btn-sm"
@@ -222,6 +225,21 @@ const addTripDiv = async (tripData, parentId, mapboxApiKey) => {
   );
 };
 
+/* Update input fields based on last visited city */
+const updateInputs = (tripData) => {
+  const city = document.getElementById('city');
+  const startDate = document.getElementById('start');
+  const endDate = document.getElementById('end');
+
+  city.value = tripData.city;
+
+  startDate.value = tripData.startDate;
+  startDate.style.color = 'inherit';
+
+  endDate.value = tripData.endDate;
+  endDate.style.color = 'inherit';
+};
+
 /* Update UI */
 const displayTrip = async (data, parentId, mapboxApiKey) => {
   if (data && data.errors) {
@@ -235,6 +253,9 @@ const displayTrip = async (data, parentId, mapboxApiKey) => {
 
       if (tripData.tripId) {
         addTripDiv(tripData, parentId, mapboxApiKey);
+
+        updateInputs(tripData);
+
         return 1;
       }
     } catch (error) {

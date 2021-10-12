@@ -1,3 +1,7 @@
+exports.getTrips = (req, res) => {
+  res.sendFile('../dist/trips.html');
+};
+
 exports.getLastTripData = (req, res) => {
   res.send(lastTripData);
 };

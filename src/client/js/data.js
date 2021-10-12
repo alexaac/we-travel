@@ -1,3 +1,4 @@
+import { pi } from 'mathjs';
 import { getLastTrip } from './api';
 import { filterByDay, checkIsToday } from './helpers';
 
@@ -9,31 +10,30 @@ const getLocationData = async (geonamesBaseUrl, geonamesApiKey, city) => {
     maxRows: 10,
   });
 
-  const cityData = data &&
-    data.geonames &&
-    data.geonames[0] && {
-      lat: data.geonames[0].lat || -122.11,
-      lon: data.geonames[0].lng || 37.4,
-      country: data.geonames[0].countryName,
-    };
+  const locationData = data.data || data;
 
-  return cityData;
-};
+  // Throw error if no results
+  if (
+    locationData === undefined ||
+    (locationData && locationData.totalResultsCount === 0)
+  ) {
+    throw new Error(`Couldn't find any city with this name.`);
+  } else {
+    const cityData = locationData &&
+      locationData.geonames &&
+      locationData.geonames[0] && {
+        lat: locationData.geonames[0].lat || -122.11,
+        lon: locationData.geonames[0].lng || 37.4,
+        country: locationData.geonames[0].countryName,
+      };
 
-/* Get Data from Mapbox API*/
-const getMapData = async (mapboxBaseUrl, mapboxApiKey, city, cityInfo) => {
-  const mapboxData = await getLastTrip(`${mapboxBaseUrl}${city}.json?`, {
-    access_token: mapboxApiKey,
-    autocomplete: 'true',
-    proximity: `${cityInfo && cityInfo.lon}, ${cityInfo && cityInfo.lat}`,
-  });
-
-  return mapboxData;
+    return cityData;
+  }
 };
 
 /* Get Data from Pixabay API*/
 const getPhotoData = async (pixabayBaseUrl, pixabayApiKey, city, cityInfo) => {
-  let pixabayData = await getLastTrip(pixabayBaseUrl, {
+  let data = await getLastTrip(pixabayBaseUrl, {
     key: pixabayApiKey,
     q: `${city} city`,
     category: 'travel',
@@ -45,8 +45,8 @@ const getPhotoData = async (pixabayBaseUrl, pixabayApiKey, city, cityInfo) => {
   });
 
   // Pull in an image for the country from Pixabay API when the entered location brings up no results
-  if (pixabayData.total === 0) {
-    pixabayData = await getLastTrip(pixabayBaseUrl, {
+  if (data === undefined || (data && data.total === 0)) {
+    data = await getLastTrip(pixabayBaseUrl, {
       key: pixabayApiKey,
       q: `${cityInfo && cityInfo.country} country`,
       category: 'travel',
@@ -56,6 +56,13 @@ const getPhotoData = async (pixabayBaseUrl, pixabayApiKey, city, cityInfo) => {
       min_width: 1200,
       min_height: 630,
     });
+  }
+
+  const pixabayData = data.data || data;
+
+  // Throw error if no results
+  if (pixabayData === undefined || (pixabayData && pixabayData.total === 0)) {
+    throw new Error(`Couldn't find any photo for this city or country.`);
   }
 
   return pixabayData;
@@ -70,14 +77,23 @@ const getWeatherData = async (
   startDate
 ) => {
   // Check if forecast data includes 'today'
-  let weatherData = await getLastTrip(weatherBaseUrl, {
+  let data = await getLastTrip(weatherBaseUrl, {
     units: 'I',
     lat: cityInfo && cityInfo.lat,
     lon: cityInfo && cityInfo.lon,
     key: weatherApiKey,
   });
 
-  let startDayData = filterByDay(weatherData.data, startDate);
+  let weatherData = data.data || data;
+
+  // Throw error if no results/error
+  if (weatherData === undefined) {
+    throw new Error('Could retrieve no weather data for this location.');
+  } else if (weatherData && weatherData.error) {
+    throw new Error(weatherData.error);
+  }
+
+  let startDayData = filterByDay(weatherData, startDate);
 
   if (
     !(startDayData && startDayData[0] && startDayData[0].temp) &&
@@ -95,10 +111,14 @@ const getWeatherData = async (
     startDayData = weatherData.data;
   }
 
-  return [startDayData, weatherData];
+  if (startDayData.length === 0) {
+    throw new Error(`Couldn't find weather data for this date`);
+  }
+
+  return startDayData;
 };
 
-const getLastTripBundle = async (projectData) => {
+const getLastTripBundle = async (projectData, city, startDate, endDate) => {
   // Personal API Keys
   const {
     weatherBaseUrl,
@@ -109,24 +129,6 @@ const getLastTripBundle = async (projectData) => {
     pixabayBaseUrl,
     pixabayApiKey,
   } = projectData;
-
-  const now = new Date();
-
-  /* Get local storage data */
-  let lastTripData =
-    typeof localStorage !== 'undefined' &&
-    (await localStorage.getItem('lastTrip'))
-      ? JSON.parse(localStorage.getItem('lastTrip'))
-      : {};
-
-  const city =
-    document.getElementById('city').value || lastTripData.city || 'Paris';
-  const startDate =
-    document.getElementById('start').value ||
-    lastTripData.startDate ||
-    now.toJSON().split('T')[0];
-  const endDate =
-    document.getElementById('end').value || lastTripData.endDate || startDate;
 
   /* Get Data from Geonames API*/
   const cityInfo = await getLocationData(geonamesBaseUrl, geonamesApiKey, city);
@@ -140,7 +142,7 @@ const getLastTripBundle = async (projectData) => {
   );
 
   /* Get Data from Weather API*/
-  const [startDayData, weatherData] = await getWeatherData(
+  const startDayData = await getWeatherData(
     weatherBaseUrl,
     currWeatherBaseUrl,
     weatherApiKey,
@@ -152,20 +154,11 @@ const getLastTripBundle = async (projectData) => {
     city,
     cityInfo,
     weather: startDayData && startDayData[0] && startDayData[0].weather,
-    temperature:
-      (startDayData && startDayData[0] && startDayData[0].temp) ||
-      weatherData.error ||
-      'The date is outside the 16 day forecast interval.',
+    temperature: startDayData && startDayData[0] && startDayData[0].temp,
     startDate,
     endDate,
     photo: pixabayData.hits && pixabayData.hits[0],
   };
 };
 
-export {
-  getLocationData,
-  getMapData,
-  getPhotoData,
-  getWeatherData,
-  getLastTripBundle,
-};
+export { getLocationData, getPhotoData, getWeatherData, getLastTripBundle };

@@ -11,14 +11,15 @@ const getDateDiff = (date1, date2) => {
 // Check today
 const checkIsToday = (startDate) => {
   const now = new Date();
-  const start = new Date(startDate.slice(0, 10));
+  const start = startDate && new Date(startDate.slice(0, 10));
 
-  return start.toJSON().split('T')[0] === now.toJSON().split('T')[0];
+  return start && start.toJSON().split('T')[0] === now.toJSON().split('T')[0];
 };
 
 // Filter By Day
 const filterByDay = (data, start) =>
   data &&
+  data[0] &&
   data.filter((day) => {
     const dayDate = new Date(day.datetime.slice(0, 10))
       .toISOString()
@@ -30,13 +31,26 @@ const filterByDay = (data, start) =>
 
 const showErrors = (errors) => {
   let errorString = '';
-  if (errors[0]) {
+
+  if (errors.stack) {
+    const errorDetails = {
+      message: errors.message,
+      status: errors.status,
+      stackHighlighted: errors.stack.replace(
+        /[a-z_-\d]+.js:\d+:\d+/gi,
+        '<mark>$&</mark>'
+      ),
+    };
+    errorString = errorDetails.message;
+  } else if (typeof errors === String) {
+    errorString = errors;
+  } else if (errors && errors[0]) {
     errors.forEach((error) => {
       errorString =
         errorString + `${error.param} - ${error.msg}: '${error.value}'<br/> `;
     });
   } else {
-    errorString = error;
+    errorString = errorString + errors.msg || errors.message;
   }
 
   document.getElementById('error').innerHTML = errorString;
@@ -105,6 +119,14 @@ const initDates = () => {
   endDate.addEventListener('click', () => (endDate.style.color = 'inherit'));
 };
 
+const toProperCase = (str) => {
+  return str
+    .trim()
+    .split(' ')
+    .map((w) => (w[0] ? w[0].toUpperCase() + w.substr(1).toLowerCase() : ''))
+    .join(' ');
+};
+
 export {
   getDateDiff,
   checkIsToday,
@@ -112,4 +134,5 @@ export {
   showErrors,
   getWeatherIcons,
   initDates,
+  toProperCase,
 };

@@ -12,7 +12,7 @@ module.exports = {
     check('temperature')
       .not()
       .isEmpty()
-      .withMessage('Please input city')
+      .withMessage('Please input temperature')
       .isDecimal(),
     check('startDate').not().isEmpty().withMessage('Date must not be empty'),
     check('endDate').not().isEmpty().withMessage('Date must not be empty'),

@@ -1,3 +1,5 @@
+import { toProperCase } from './helpers';
+
 const math = require('mathjs');
 
 const saveToMyStorage = ({
@@ -15,7 +17,7 @@ const saveToMyStorage = ({
 
   return postData('/addLastTrip', {
     tripId,
-    city,
+    city: toProperCase(city),
     cityInfo,
     weather,
     temperature,
