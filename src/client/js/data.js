@@ -3,10 +3,10 @@ import { filterByDay, checkIsToday, getDateDiff } from './helpers';
 import { saveToMyStorage } from './storage';
 
 /* GET Data for the Project */
-const processData = async (projectData) => {
+const processData = async (projectData, defaultCity) => {
   const now = new Date();
 
-  const city = document.getElementById('city').value || 'Paris';
+  const city = document.getElementById('city').value || defaultCity;
   const startDate =
     document.getElementById('start').value || now.toJSON().split('T')[0];
   const endDate = document.getElementById('end').value || startDate;

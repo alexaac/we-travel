@@ -6,6 +6,23 @@ import {
 } from './helpers';
 import { showMarker, showMarkers } from './map';
 
+/* Update UI */
+const displayTrip = async (parentId, mapboxApiKey, tripData) => {
+  if (tripData && tripData.errors) {
+    showErrors(tripData.errors);
+
+    return 0;
+  } else if (tripData) {
+    if (tripData.tripId) {
+      addTripDiv(parentId, [tripData], mapboxApiKey);
+
+      updateInputs(tripData);
+
+      return 1;
+    }
+  }
+};
+
 const displayTrips = async (parentId, mapboxApiKey) => {
   if (parentId === 'trips') {
     /* Get local storage data */
@@ -19,11 +36,8 @@ const displayTrips = async (parentId, mapboxApiKey) => {
     const tripsCount = tripsIds.length;
 
     if (tripsCount > 0) {
-      document.getElementById(
-        parentId
-      ).innerHTML = `You have ${tripsCount} saved trips.`;
-
       const coords = {};
+      const valid = [];
       const expired = [];
 
       tripsIds
@@ -33,7 +47,7 @@ const displayTrips = async (parentId, mapboxApiKey) => {
             JSON.parse(tripsData[a]).startDate
           )
         )
-        .forEach((tripId) => {
+        .map((tripId) => {
           const tripData = JSON.parse(tripsData[tripId]);
 
           const daysUntil = getDateDiff(new Date(), tripData.startDate);
@@ -41,7 +55,7 @@ const displayTrips = async (parentId, mapboxApiKey) => {
           if (daysUntil < 0) {
             expired.push(tripData);
           } else {
-            addTripDiv(tripData, parentId, mapboxApiKey);
+            valid.push(tripData);
           }
 
           coords[tripData.city] = [
@@ -50,14 +64,118 @@ const displayTrips = async (parentId, mapboxApiKey) => {
           ];
         });
 
-      expired.forEach((tripData) => {
-        addTripDiv(tripData, parentId, mapboxApiKey);
-      });
+      const allTripsArray = [...valid, ...expired];
+
+      // Add trip div to parent div
+      addTripDiv(parentId, allTripsArray, mapboxApiKey);
 
       /* Center map on locations */
       showMarkers(coords, mapboxApiKey);
     }
   }
+};
+
+const addTripDiv = async (parentId, tripsData, mapboxApiKey) => {
+  const parentDiv = document.getElementById(parentId);
+
+  const temp = document.createElement('div');
+  tripsData.map(async (tripData) => {
+    // Add trip div to a parent or a fragment
+    const alreadySaved = await checkAlreadySaved(tripData.tripId);
+
+    temp.appendChild(TripDiv(tripData, alreadySaved));
+  });
+
+  // Add trip div to parent div
+  parentDiv.appendChild(temp);
+
+  /* Add actions to trip divs */
+  tripsData.map(async (tripData) => {
+    const alreadySaved = await checkAlreadySaved(tripData.tripId);
+
+    /* Disable save button on already saved trips */
+    if (alreadySaved) {
+      document.getElementById(`savetrip-${tripData.tripId}`).disabled = true;
+      document.getElementById(`removetrip-${tripData.tripId}`).disabled = false;
+    }
+
+    /* Save / Remove trip from local storage */
+    document
+      .getElementById(`savetrip-${tripData.tripId}`)
+      .addEventListener('click', function () {
+        saveTrip(tripData);
+      });
+
+    document
+      .getElementById(`removetrip-${tripData.tripId}`)
+      .addEventListener('click', function () {
+        removeTrip(tripData);
+      });
+
+    // Center map on location
+    centerMap(tripData, mapboxApiKey);
+  });
+};
+
+const saveTrip = async (tripData) => {
+  const tripId = tripData.tripId;
+
+  if (tripData.city) {
+    /* Get local storage data */
+    let tripsData =
+      typeof localStorage !== 'undefined' &&
+      (await localStorage.getItem('trips'))
+        ? JSON.parse(localStorage.getItem('trips'))
+        : {};
+
+    const tripsIds = Object.keys(tripsData);
+    const tripsCount = tripsIds.length;
+
+    if (tripsCount < 100) {
+      tripsData[tripData.tripId] = JSON.stringify(tripData);
+      typeof localStorage !== 'undefined' &&
+        localStorage.setItem('trips', JSON.stringify(tripsData));
+
+      document.getElementById(`removetrip-${tripId}`).disabled = false;
+      document.getElementById(`savetrip-${tripId}`).disabled = true;
+    } else {
+      showErrors('You have reached the maximum limit of 100 saved trips.');
+      throw new Error('You have reached the maximum limit of 100 saved trips.');
+    }
+  }
+};
+
+const removeTrip = async (tripData) => {
+  const tripId = tripData.tripId;
+
+  if (tripId) {
+    /* Get local storage data */
+    let tripsData =
+      typeof localStorage !== 'undefined' &&
+      (await localStorage.getItem('trips'))
+        ? JSON.parse(localStorage.getItem('trips'))
+        : {};
+
+    delete tripsData[tripId];
+    typeof localStorage !== 'undefined' &&
+      localStorage.setItem('trips', JSON.stringify(tripsData));
+
+    document.getElementById(`savetrip-${tripId}`).disabled = false;
+    document.getElementById(`removetrip-${tripId}`).disabled = true;
+
+    //TODO: maybe reload page after removing trip
+  }
+};
+
+const centerMap = (tripData, mapboxApiKey) => {
+  const tripId = tripData.tripId;
+
+  /* Center map on location */
+  showMarker(
+    tripId,
+    [tripData.cityInfo.lon, tripData.cityInfo.lat],
+    mapboxApiKey
+  );
 };
 
 const checkAlreadySaved = async (tripId) => {
@@ -84,9 +202,8 @@ const checkAlreadySaved = async (tripId) => {
   return alreadySaved;
 };
 
-const addTripDiv = async (tripData, parentId, mapboxApiKey) => {
+const TripDiv = (tripData, alreadySaved) => {
   const tripId = tripData.tripId;
-  const alreadySaved = await checkAlreadySaved(tripData.tripId);
 
   const daysUntil = getDateDiff(new Date(), tripData.startDate);
 
@@ -94,12 +211,10 @@ const addTripDiv = async (tripData, parentId, mapboxApiKey) => {
   const isToday = checkIsToday(tripData.startDate);
   const weatherIcons = getWeatherIcons(tripData.weather.code);
 
-  const parentDiv = document.getElementById(parentId);
   const tripDiv = document.createElement('div');
-  tripDiv.id = tripId || math.floor(math.random() * 100);
-  parentDiv.appendChild(tripDiv);
+  tripDiv.id = tripId;
 
-  document.getElementById(tripId).innerHTML = `
+  tripDiv.innerHTML = `
         <div class="we-container bd lg ${daysUntil < 0 ? 'expired' : ''}">
           <div class="we-post-grid inversed">
             <div class="img-link we-inline-block">
@@ -122,9 +237,9 @@ const addTripDiv = async (tripData, parentId, mapboxApiKey) => {
               </div>
               <div class="we-post-link">
               <div id="trip-${tripId}">
-                <h5>My trip to: ${tripData.city}, ${
+                <span class="title">My trip to: ${tripData.city}, ${
     tripData.cityInfo.country
-  }</h5>
+  }</span>
                 <span class="helper-text">${
                   alreadySaved ? 'saved trip' : ''
                 }</span>
@@ -186,75 +301,7 @@ const addTripDiv = async (tripData, parentId, mapboxApiKey) => {
         </div>
       `;
 
-  /* Disable save button on already saved trips */
-  if (alreadySaved) {
-    document.getElementById(`savetrip-${tripId}`).disabled = true;
-    document.getElementById(`removetrip-${tripId}`).disabled = false;
-  }
-
-  /* Save / Remove trip from local storage */
-  document
-    .getElementById(`savetrip-${tripId}`)
-    .addEventListener('click', async function () {
-      const tripId = this.value;
-
-      if (tripData.city) {
-        /* Get local storage data */
-        let tripsData =
-          typeof localStorage !== 'undefined' &&
-          (await localStorage.getItem('trips'))
-            ? JSON.parse(localStorage.getItem('trips'))
-            : {};
-
-        const tripsIds = Object.keys(tripsData);
-        const tripsCount = tripsIds.length;
-
-        if (1) {
-          tripsData[tripData.tripId] = JSON.stringify(tripData);
-          typeof localStorage !== 'undefined' &&
-            localStorage.setItem('trips', JSON.stringify(tripsData));
-
-          document.getElementById(`removetrip-${tripId}`).disabled = false;
-          this.disabled = true;
-        } else {
-          showErrors('You have reached the maximum limit of 100 saved trips.');
-          throw new Error(
-            'You have reached the maximum limit of 100 saved trips.'
-          );
-        }
-      }
-    });
-
-  document
-    .getElementById(`removetrip-${tripId}`)
-    .addEventListener('click', async function () {
-      const tripId = this.value;
-
-      if (tripId) {
-        /* Get local storage data */
-        let tripsData =
-          typeof localStorage !== 'undefined' &&
-          (await localStorage.getItem('trips'))
-            ? JSON.parse(localStorage.getItem('trips'))
-            : {};
-
-        delete tripsData[tripId];
-        typeof localStorage !== 'undefined' &&
-          localStorage.setItem('trips', JSON.stringify(tripsData));
-
-        document.getElementById(`savetrip-${tripId}`).disabled = false;
-        this.disabled = true;
-
-        //TODO: maybe reload page after removing trip
-      }
-    });
-
-  /* Center map on location */
-  showMarker(
-    tripId,
-    [tripData.cityInfo.lon, tripData.cityInfo.lat],
-    mapboxApiKey
-  );
+  return tripDiv;
 };
 
 /* Update input fields based on last visited city */
@@ -272,21 +319,4 @@ const updateInputs = (tripData) => {
   endDate.style.color = 'inherit';
 };
 
-/* Update UI */
-const displayTrip = async (tripData, parentId, mapboxApiKey) => {
-  if (tripData && tripData.errors) {
-    showErrors(tripData.errors);
-
-    return 0;
-  } else if (tripData) {
-    if (tripData.tripId) {
-      addTripDiv(tripData, parentId, mapboxApiKey);
-
-      updateInputs(tripData);
-
-      return 1;
-    }
-  }
-};
-
-export { displayTrip, displayTrips, addTripDiv };
+export { displayTrip, displayTrips, TripDiv };

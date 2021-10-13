@@ -6,6 +6,7 @@ import { displayTrip, displayTrips } from './ui';
 /* Global variables */
 let projectData = {};
 const parentId = document.getElementById('parent-id').value;
+const defaultCity = 'Paris';
 
 /* Set Actions */
 const setActions = async () => {
@@ -28,13 +29,13 @@ const setActions = async () => {
         : {};
 
     if (!lastTripData.city) {
-      lastTripData = processData(projectData);
+      lastTripData = await processData(projectData, defaultCity);
     }
 
     // Clean error div, and update UI
     const errorDiv = document.getElementById('error');
     document.getElementById('error').innerHTML = '';
-    displayTrip(lastTripData, parentId, projectData.mapboxApiKey);
+    displayTrip(parentId, projectData.mapboxApiKey, lastTripData);
 
     /* Event listener */
     document
@@ -50,7 +51,7 @@ const setActions = async () => {
           // Clean error div, and update UI
           const errorDiv = document.getElementById('error');
           document.getElementById('error').innerHTML = '';
-          displayTrip(lastTripData, parentId, projectData.mapboxApiKey);
+          displayTrip(parentId, projectData.mapboxApiKey, lastTripData);
         } catch (error) {
           console.error('error', error);
           showErrors(error);
