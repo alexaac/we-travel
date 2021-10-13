@@ -24,6 +24,8 @@ Travel app - plan a trip by entering the city name, and find out about the weath
 - start date is checked not to go beyond the 16 days weather forecast interval
 - when the user revisits the page, the last visited trip will be displayed
 - trips page where the user can see all the locations on a main map, and each trip details listed below by start date
+- expired trips are listed at the bottom of the page, with a different background
+- there is a main map where all locations are displayed, and a popup with the city name on hover
 
 ## Project Setup
 
@@ -43,7 +45,8 @@ Travel app - plan a trip by entering the city name, and find out about the weath
 ```bash
 .
 ├── controllers
-│   └── dataController.js
+│   ├── dataController.js
+│   └── tripsController.js
 ├── middleware
 │   ├── validateParams.js
 │   └── validation.js
@@ -54,28 +57,46 @@ Travel app - plan a trip by entering the city name, and find out about the weath
 │   └── index.js
 ├── src
 │   ├── client
+│   │   ├── fonts
+│   │   │   ├── DejaVuSerif.ttf
+│   │   │   └── SourceSansPro-RyPo.ttf
 │   │   ├── index.js
 │   │   ├── js
 │   │   │   ├── api.js
 │   │   │   ├── app.js
+│   │   │   ├── data.js
 │   │   │   ├── helpers.js
 │   │   │   ├── map.js
+│   │   │   ├── storage.js
 │   │   │   └── ui.js
+│   │   ├── media
 │   │   ├── styles
-│   │   │   ├── base.scss
-│   │   │   ├── buttons.scss
-│   │   │   ├── colors.scss
-│   │   │   ├── footer.scss
-│   │   │   ├── form.scss
-│   │   │   ├── header.scss
-│   │   │   └── trip.scss
+│   │   │   ├── main.scss
+│   │   │   └── partials
+│   │   │       ├── _article.scss
+│   │   │       ├── _buttons.scss
+│   │   │       ├── _card.scss
+│   │   │       ├── _cover.scss
+│   │   │       ├── _design.scss
+│   │   │       ├── _footer.scss
+│   │   │       ├── _form.scss
+│   │   │       ├── _header.scss
+│   │   │       ├── _layout.scss
+│   │   │       ├── _map.scss
+│   │   │       ├── _section.scss
+│   │   │       ├── _social.scss
+│   │   │       ├── _topbtn.scss
+│   │   │       ├── _typography.scss
+│   │   │       └── _variables.scss
 │   │   └── views
-│   │       └── index.html
+│   │       ├── index.html
+│   │       └── trips.html
 │   └── server
 │       └── server.js
 ├── __test__
 │   ├── mockData.js
-│   └── testApi.spec.js
+│   ├── testApi.spec.js
+│   └── testData.spec.js
 ├── variables.env
 ├── webpack.common.js
 ├── webpack.dev.js
@@ -84,8 +105,8 @@ Travel app - plan a trip by entering the city name, and find out about the weath
 
 ### TODO
 
-Code cleaning
+More tests, Code cleaning
 
 ### Credits
 
-Alexa Cristina | Udacity
+Alexa Cristina
