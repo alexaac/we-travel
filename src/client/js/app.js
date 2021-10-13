@@ -8,8 +8,36 @@ let projectData = {};
 const parentId = document.getElementById('parent-id').value;
 const defaultCity = 'Paris';
 
+const setMenuToggle = () => {
+  const navbar = document.getElementById('navbar-collapse');
+  const navbarWrap = document.getElementById('navbar-collapse-wrap');
+  const togglerButton = document.getElementById('navbar-toggler');
+
+  togglerButton.addEventListener('click', () => {
+    if (navbar.style.display === 'block') {
+      navbar.style.display = 'none';
+      navbarWrap.style.display = 'none';
+    } else {
+      navbar.style.display = 'block';
+      navbarWrap.style.display = 'block';
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 576) {
+      navbar.style.display = 'block';
+      navbarWrap.style.display = 'block';
+    } else {
+      navbar.style.display = 'none';
+      navbarWrap.style.display = 'none';
+    }
+  });
+};
+
 /* Set Actions */
 const setActions = async () => {
+  setMenuToggle();
+
   if (parentId === 'trips') {
     // we are on the trips page
     /* Show saved trips */

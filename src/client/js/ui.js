@@ -67,6 +67,7 @@ const displayTrips = async (parentId, mapboxApiKey) => {
       const allTripsArray = [...valid, ...expired];
 
       // Add trip div to parent div
+      document.getElementById(parentId).textContent = '';
       addTripDiv(parentId, allTripsArray, mapboxApiKey);
 
       /* Center map on locations */
