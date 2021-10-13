@@ -67,6 +67,9 @@ const displayTrips = async (parentId, mapboxApiKey) => {
       const allTripsArray = [...valid, ...expired];
 
       // Add trip div to parent div
+      document.getElementById(
+        parentId
+      ).textContent = `You have ${tripsCount} saved trips`;
       addTripDiv(parentId, allTripsArray, mapboxApiKey);
 
       /* Center map on locations */

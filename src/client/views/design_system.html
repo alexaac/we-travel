@@ -29,17 +29,17 @@
                 class="nav-brand"
             /></a>
           </div>
-          <div class="nav-mobile-button">
-            <span></span> <span></span> <span></span> <span></span>
-          </div>
-          <nav role="navigation" class="nav-menu-flex">
-            <div class="nav-menu-wrap">
-              <div role="list" class="nav-menu-list-flex">
+          <nav id="navbar-collapse" role="navigation" class="nav-menu-flex">
+            <div id="navbar-collapse-wrap" class="nav-menu-wrap">
+              <div
+                role="list"
+                class="nav-menu-list-flex collapse navbar-collapse"
+              >
                 <div role="listitem" class="nav-menu-item">
                   <a href="#" class="nav-link we-link">WE Travel</a>
                 </div>
                 <div role="listitem" class="nav-menu-item">
-                  <a href="#" class="nav-link we-link">Trips</a>
+                  <a href="./trips.html" class="nav-link we-link">Trips</a>
                 </div>
                 <div role="listitem" class="nav-menu-item">
                   <a href="design_system.html" class="nav-link we-link"
@@ -49,6 +49,18 @@
               </div>
             </div>
           </nav>
+          <button
+            class="nav-mobile-button navbar-toggler"
+            type="button"
+            id="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#navbar-collapse"
+            aria-controls="navbar-collapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span></span> <span></span> <span></span> <span></span>
+          </button>
           <div class="nav-menu-wrap nav-right">
             <div role="list" class="nav-menu-list-flex">
               <div role="listitem" class="nav-menu-item">
