@@ -4,6 +4,7 @@ import {
   showErrors,
   getWeatherIcons,
 } from './helpers';
+
 import { showMarker, showMarkers } from './map';
 
 /* Update UI */
