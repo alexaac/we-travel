@@ -84,7 +84,7 @@ Travel app - plan a trip by entering the city name, and find out about the weath
 
 ### TODO
 
-Design system, code cleaning
+Code cleaning
 
 ### Credits
 

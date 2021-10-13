@@ -8,11 +8,6 @@ const htmlPlugin = new HtmlWebPackPlugin({
   template: path.join(__dirname, './src/client/views/index.html'),
 });
 
-const htmlPlugin_design = new HtmlWebPackPlugin({
-  filename: 'design_system.html',
-  template: path.join(__dirname, './src/client/views/design_system.html'),
-});
-
 const htmlPlugin_trips = new HtmlWebPackPlugin({
   filename: 'trips.html',
   template: path.join(__dirname, './src/client/views/trips.html'),
@@ -35,5 +30,5 @@ module.exports = {
     ],
   },
 
-  plugins: [htmlPlugin, htmlPlugin_design, htmlPlugin_trips],
+  plugins: [htmlPlugin, htmlPlugin_trips],
 };
