@@ -1,6 +1,5 @@
 import * as maplibregl from 'maplibre-gl'; //version 1.13.2 BSD-3-Clause
 import bbox from '@turf/bbox';
-import * as L from 'leaflet';
 
 /**
  * @description Pan map to zipcode
@@ -49,109 +48,101 @@ const showMarker = async (tripId, coords, maptilerApiKey) => {
 };
 
 const showMarkers = (coords, maptilerApiKey) => {
-  var map = L.map('map-all').setView([45.84, 24.98], 3);
-
-  L.tileLayer(
-    `https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=${maptilerApiKey}`,
-    {
-      attribution:
-        '<a href="https://www.maptiler.com/copyright/">Maptiler</a> <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      crossOrigin: true,
-      maxZoom: 18,
-      id: 'map-all',
-      tileSize: 512,
-      zoomOffset: -1,
-    }
-  ).addTo(map);
-
   var features = [];
   Object.keys(coords).forEach((city) => {
     features.push(
       JSON.parse(
-        `{"type": "Feature", "geometry": {"type": "Point", "coordinates": [${coords[city][0]},${coords[city][1]}]}}`
+        `{"type": "Feature", "properties": { "description": "${city}"}, "geometry": {"type": "Point", "coordinates": [${coords[city][0]},${coords[city][1]}]}}`
       )
     );
   });
 
-  var citiesLayer = new L.geoJSON(features, {});
+  /* Initialize MapLibre GL map */
+  maplibregl.accessToken = maptilerApiKey;
 
-  citiesLayer.addTo(map);
+  const map = new maplibregl.Map({
+    container: 'map-all',
+    style: `https://api.maptiler.com/maps/streets/style.json?key=${maptilerApiKey}`,
+    center: [45.84, 24.98],
+    zoom: 3,
+    pitch: 77,
+    bearing: -39.2,
+    hash: true,
+  });
 
-  // /* Initialize MapLibre GL map */
-  // maplibregl.accessToken = maptilerApiKey;
+  map.on('load', function () {
+    map.addSource('wms-test-source', {
+      type: 'raster',
+      tiles: [
+        `https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=${maptilerApiKey}`,
+      ],
+      tileSize: 512,
+      maxzoom: 17,
+    });
+    map.addLayer(
+      {
+        id: 'wms-test-layer',
+        type: 'raster',
+        source: 'wms-test-source',
+        paint: {},
+      },
+      'aeroway_fill'
+    );
 
-  // const map = new maplibregl.Map({
-  //   container: 'map-all',
-  //   style: `https://api.maptiler.com/maps/streets/style.json?key=${maptilerApiKey}`,
-  //   center: [45.84, 24.98],
-  //   zoom: 3,
-  //   pitch: 77,
-  //   bearing: -39.2,
-  //   hash: true,
-  // });
+    map.addControl(new maplibregl.NavigationControl());
 
-  // map.on('load', function () {
-  //   map.addSource('wms-test-source', {
-  //     type: 'raster',
-  //     tiles: [
-  //       `https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=${maptilerApiKey}`,
-  //     ],
-  //     tileSize: 512,
-  //     maxzoom: 17,
-  //   });
-  //   map.addLayer(
-  //     {
-  //       id: 'wms-test-layer',
-  //       type: 'raster',
-  //       source: 'wms-test-source',
-  //       paint: {},
-  //     },
-  //     'aeroway_fill'
-  //   );
+    map.addSource('point', {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: features,
+      },
+    });
 
-  //   map.addControl(new maplibregl.NavigationControl());
+    map.addLayer({
+      id: 'point',
+      type: 'circle',
+      source: 'point',
+      paint: {
+        'circle-color': '#f61708',
+        'circle-radius': 8,
+        'circle-stroke-width': 2,
+        'circle-stroke-color': '#ffffff',
+      },
+    });
+  });
 
-  //   map.addSource('point', {
-  //     type: 'geojson',
-  //     data: {
-  //       type: 'FeatureCollection',
-  //       features: features,
-  //     },
-  //   });
+  // Center map on bounding box for all markers
+  var bounds = bbox({ type: 'FeatureCollection', features });
+  map.fitBounds(bounds, { padding: 100 });
 
-  //   map.addLayer({
-  //     id: 'point',
-  //     type: 'circle',
-  //     source: 'point',
-  //     paint: {
-  //       'circle-color': '#f61708',
-  //       'circle-radius': 8,
-  //       'circle-stroke-width': 2,
-  //       'circle-stroke-color': '#ffffff',
-  //     },
-  //   });
-  // });
+  // Center the map on the coordinates of any clicked circle from the 'circle' layer.
+  map.on('click', 'point', (e) => {
+    map.flyTo({
+      center: e.features[0].geometry.coordinates,
+    });
+  });
 
-  // // Center map on bounding box for all markers
-  // var bounds = bbox({ type: 'FeatureCollection', features });
-  // map.fitBounds(bounds, { padding: 100 });
+  // Create a popup, but don't add it to the map yet.
+  const popup = new maplibregl.Popup({
+    closeButton: false,
+    closeOnClick: false,
+  });
 
-  // // Center the map on the coordinates of any clicked circle from the 'circle' layer.
-  // map.on('click', 'point', (e) => {
-  //   map.flyTo({
-  //     center: e.features[0].geometry.coordinates,
-  //   });
-  // });
+  // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
+  map.on('mouseenter', 'point', (e) => {
+    map.getCanvas().style.cursor = 'pointer';
 
-  // // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
-  // map.on('mouseenter', 'point', () => {
-  //   map.getCanvas().style.cursor = 'pointer';
-  // });
+    const coordinates = e.features[0].geometry.coordinates.slice();
+    const description = e.features[0].properties.description;
 
-  // // Change it back to a pointer when it leaves.
-  // map.on('mouseleave', 'point', () => {
-  //   map.getCanvas().style.cursor = '';
-  // });
+    popup.setLngLat(coordinates).setHTML(description).addTo(map);
+  });
+
+  // Change it back to a pointer when it leaves.
+  map.on('mouseleave', 'point', () => {
+    map.getCanvas().style.cursor = '';
+  });
 };
 
 export { showMarker, showMarkers };

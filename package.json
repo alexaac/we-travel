@@ -48,7 +48,6 @@
     "jest": "^27.0.6",
     "jest-fetch-mock": "^3.0.3",
     "jsdom": "^16.7.0",
-    "leaflet": "^1.7.1",
     "maplibre-gl": "^1.15.2",
     "mathjs": "^9.5.0",
     "mini-css-extract-plugin": "^2.3.0",
