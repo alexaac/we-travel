@@ -4,7 +4,7 @@ import {
   showErrors,
   getWeatherIcons,
 } from './helpers';
-import { showMarker, showMarkers } from './map';
+import { showMarker, showMarkers, show3D } from './map';
 
 /* Update UI */
 const displayTrip = async (parentId, maptilerApiKey, tripData) => {
@@ -74,7 +74,8 @@ const displayTrips = async (parentId, maptilerApiKey) => {
       addTripDiv(parentId, allTripsArray, maptilerApiKey);
 
       /* Center map on locations */
-      showMarkers(coords, maptilerApiKey);
+      show3D(coords);
+      // showMarkers(coords, maptilerApiKey);
     }
   }
 };

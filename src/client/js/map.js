@@ -1,5 +1,7 @@
 import bbox from '@turf/bbox';
 import * as maplibregl from 'maplibre-gl'; //version 1.13.2 BSD-3-Clause
+import Procedural from 'procedural-gl';
+
 /**
  * @description Pan map to zipcode
  * @param {string} city - location name
@@ -44,6 +46,51 @@ const showMarker = async (tripId, coords, maptilerApiKey) => {
   } catch (error) {
     console.error('error', error);
   }
+};
+
+const show3D = (coords) => {
+  var features = { features: [] };
+  Object.keys(coords).forEach((city) => {
+    features.features.push(
+      JSON.parse(
+        `{"type": "Feature", "properties": {}, "geometry": {"type": "Point", "coordinates": [${coords[city][0]},${coords[city][1]}]}}`
+      )
+    );
+  });
+
+  console.log(features);
+  var container = document.getElementById('map-all');
+  var datasource = {
+    elevation: {
+      apiKey: '1d0228ae1590c434c8fddc7aeeb20ee98',
+    },
+    imagery: {
+      apiKey: 'NmDVsZUfeF9WqIvqVlrF',
+      urlFormat:
+        'https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key={apiKey}',
+      attribution:
+        '<a href="https://www.maptiler.com/copyright/">Maptiler</a> <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    },
+  };
+  Procedural.init({ container, datasource });
+  Procedural.setCameraModeControlVisible(true);
+  Procedural.setCompassVisible(true);
+  Procedural.setUserLocationControlVisible(true);
+  Procedural.setRotationControlVisible(true);
+  Procedural.setZoomControlVisible(true);
+
+  // demo
+  var latitude = 46.377158038;
+  var longitude = 23.582637334;
+
+  Procedural.displayLocation({
+    latitude: latitude,
+    longitude: longitude,
+  });
+  Procedural.addBuiltinOverlay(['peaks', 'places']);
+  window.Procedural = Procedural;
+
+  Procedural.addOverlay(features);
 };
 
 const showMarkers = (coords, maptilerApiKey) => {
@@ -133,4 +180,4 @@ const showMarkers = (coords, maptilerApiKey) => {
   });
 };
 
-export { showMarker, showMarkers };
+export { showMarker, showMarkers, show3D };
