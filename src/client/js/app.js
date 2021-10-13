@@ -41,7 +41,7 @@ const setActions = async () => {
   if (parentId === 'trips') {
     // we are on the trips page
     /* Show saved trips */
-    displayTrips(parentId, projectData.mapboxApiKey);
+    displayTrips(parentId, projectData.maptilerApiKey);
   } else if (parentId === 'last-trip') {
     // we are on homepage
     /* Initialize date input fields */
@@ -63,7 +63,7 @@ const setActions = async () => {
     // Clean error div, and update UI
     const errorDiv = document.getElementById('error');
     document.getElementById('error').innerHTML = '';
-    displayTrip(parentId, projectData.mapboxApiKey, lastTripData);
+    displayTrip(parentId, projectData.maptilerApiKey, lastTripData);
 
     /* Event listener */
     document
@@ -79,7 +79,7 @@ const setActions = async () => {
           // Clean error div, and update UI
           const errorDiv = document.getElementById('error');
           document.getElementById('error').innerHTML = '';
-          displayTrip(parentId, projectData.mapboxApiKey, lastTripData);
+          displayTrip(parentId, projectData.maptilerApiKey, lastTripData);
         } catch (error) {
           console.error('error', error);
           showErrors(error);

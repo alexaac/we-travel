@@ -17,8 +17,7 @@ projectData = {
   weatherBaseUrl: 'https://api.weatherbit.io/v2.0/forecast/daily?',
   weatherApiKey: process.env.WEATHER_APP_ID,
   currWeatherBaseUrl: 'https://api.weatherbit.io/v2.0/current?',
-  mapboxBaseUrl: 'https://api.mapbox.com/geocoding/v5/mapbox.places/',
-  mapboxApiKey: process.env.MAPBOX_API_KEY,
+  maptilerApiKey: process.env.MAPTILER_API_KEY,
   pixabayBaseUrl: 'https://pixabay.com/api/?',
   pixabayApiKey: process.env.PIXABAY_API_KEY,
 };

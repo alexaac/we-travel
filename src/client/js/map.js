@@ -1,5 +1,5 @@
 import bbox from '@turf/bbox';
-import * as mapboxgl from 'mapbox-gl'; //version 1.13.2 BSD-3-Clause
+import * as maplibregl from 'maplibre-gl'; //version 1.13.2 BSD-3-Clause
 /**
  * @description Pan map to zipcode
  * @param {string} city - location name
@@ -11,16 +11,16 @@ const panToLatLon = (map, coords) => {
   map.flyTo({ center: coords, zoom: 12 });
 };
 
-const showMarker = async (tripId, coords, mapboxApiKey) => {
+const showMarker = async (tripId, coords, maptilerApiKey) => {
   try {
-    /* Initialize MapBox map */
-    mapboxgl.accessToken = mapboxApiKey;
+    /* Initialize MapLibre GL map */
+    maplibregl.accessToken = maptilerApiKey;
 
     const maps = {};
 
-    maps[`map-${tripId}`] = new mapboxgl.Map({
+    maps[`map-${tripId}`] = new maplibregl.Map({
       container: `map-${tripId}`,
-      style: 'mapbox://styles/mapbox/streets-v11',
+      style: `https://api.maptiler.com/maps/streets/style.json?key=${maptilerApiKey}`,
       center: [45.84, 24.98], // starting position
       zoom: 5, // starting zoom
     });
@@ -36,7 +36,7 @@ const showMarker = async (tripId, coords, mapboxApiKey) => {
       el.style.height = `${height}px`;
       el.style.backgroundSize = '100%';
 
-      new mapboxgl.Marker(el).setLngLat(coords).addTo(maps[`map-${tripId}`]);
+      new maplibregl.Marker(el).setLngLat(coords).addTo(maps[`map-${tripId}`]);
 
       // Center map on marker
       panToLatLon(maps[`map-${tripId}`], coords);
@@ -46,13 +46,13 @@ const showMarker = async (tripId, coords, mapboxApiKey) => {
   }
 };
 
-const showMarkers = (coords, mapboxApiKey) => {
-  /* Initialize MapBox map */
-  mapboxgl.accessToken = mapboxApiKey;
+const showMarkers = (coords, maptilerApiKey) => {
+  /* Initialize MapLibre GL map */
+  maplibregl.accessToken = maptilerApiKey;
 
-  const map = new mapboxgl.Map({
+  const map = new maplibregl.Map({
     container: 'map-all',
-    style: 'mapbox://styles/mapbox/satellite-streets-v11',
+    style: `https://api.maptiler.com/maps/streets/style.json?key=${maptilerApiKey}`,
     center: [45.84, 24.98],
     zoom: 3,
     pitch: 77,
@@ -70,14 +70,25 @@ const showMarkers = (coords, mapboxApiKey) => {
   });
 
   map.on('load', function () {
-    map.addSource('mapbox-dem', {
-      type: 'raster-dem',
-      url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+    map.addSource('wms-test-source', {
+      type: 'raster',
+      tiles: [
+        `https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=${maptilerApiKey}`,
+      ],
       tileSize: 512,
       maxzoom: 17,
     });
+    map.addLayer(
+      {
+        id: 'wms-test-layer',
+        type: 'raster',
+        source: 'wms-test-source',
+        paint: {},
+      },
+      'aeroway_fill'
+    );
 
-    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new maplibregl.NavigationControl());
 
     map.addSource('point', {
       type: 'geojson',

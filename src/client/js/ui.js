@@ -7,14 +7,14 @@ import {
 import { showMarker, showMarkers } from './map';
 
 /* Update UI */
-const displayTrip = async (parentId, mapboxApiKey, tripData) => {
+const displayTrip = async (parentId, maptilerApiKey, tripData) => {
   if (tripData && tripData.errors) {
     showErrors(tripData.errors);
 
     return 0;
   } else if (tripData) {
     if (tripData.tripId) {
-      addTripDiv(parentId, [tripData], mapboxApiKey);
+      addTripDiv(parentId, [tripData], maptilerApiKey);
 
       updateInputs(tripData);
 
@@ -23,7 +23,7 @@ const displayTrip = async (parentId, mapboxApiKey, tripData) => {
   }
 };
 
-const displayTrips = async (parentId, mapboxApiKey) => {
+const displayTrips = async (parentId, maptilerApiKey) => {
   if (parentId === 'trips') {
     /* Get local storage data */
     let tripsData =
@@ -71,15 +71,15 @@ const displayTrips = async (parentId, mapboxApiKey) => {
         parentId
       ).textContent = `You have ${tripsCount} saved trips`;
 
-      addTripDiv(parentId, allTripsArray, mapboxApiKey);
+      addTripDiv(parentId, allTripsArray, maptilerApiKey);
 
       /* Center map on locations */
-      showMarkers(coords, mapboxApiKey);
+      showMarkers(coords, maptilerApiKey);
     }
   }
 };
 
-const addTripDiv = async (parentId, tripsData, mapboxApiKey) => {
+const addTripDiv = async (parentId, tripsData, maptilerApiKey) => {
   const parentDiv = document.getElementById(parentId);
 
   const temp = document.createElement('div');
@@ -117,7 +117,7 @@ const addTripDiv = async (parentId, tripsData, mapboxApiKey) => {
       });
 
     // Center map on location
-    centerMap(tripData, mapboxApiKey);
+    centerMap(tripData, maptilerApiKey);
   });
 };
 
@@ -171,14 +171,14 @@ const removeTrip = async (tripData) => {
   }
 };
 
-const centerMap = (tripData, mapboxApiKey) => {
+const centerMap = (tripData, maptilerApiKey) => {
   const tripId = tripData.tripId;
 
   /* Center map on location */
   showMarker(
     tripId,
     [tripData.cityInfo.lon, tripData.cityInfo.lat],
-    mapboxApiKey
+    maptilerApiKey
   );
 };
 
