@@ -70,6 +70,7 @@ const displayTrips = async (parentId, mapboxApiKey) => {
       document.getElementById(
         parentId
       ).textContent = `You have ${tripsCount} saved trips`;
+
       addTripDiv(parentId, allTripsArray, mapboxApiKey);
 
       /* Center map on locations */
