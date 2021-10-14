@@ -1,3 +1,11 @@
 language: node_js
 node_js:
-  - 16
+- 16
+deploy:
+  provider: heroku
+  api_key:
+    secure: pTuEddafi/CzOjnQjP0YwL6+lXwsPIZD/oP8AheYOkopt63nBdhSc9GLm5VskLadF4ZMxsf0duOLzd81gX6ryZadD+SMEKzUVPTrK+hZKnBW9Kw79B2Nvqk/yFw3Eo1vY+lwVjLxrkeB5BnqNIx2RZX8PguLFMdhA2QfvuOj/WuFnf6i1MpyMnWWJZexboz2QPGmbcRIL8g+rog2slgQxn3EPd7TdgwXQ8xTsMNRiBfevfqx3UoDymTTkzsvV8l6yEImK8VbR4BAZQLJPdlFNXxndZVa6i5QxZOhF7AOUq0xT+BvR3t1yf4/8N7+BJYo0djUcGvXKZyEewFFtrJnyWVmoaq2V3ps3AAArDqW5hcMzF1wGbgj7GRfvSVQ4GNhvM03rcg+E9aZiVNQ8nbhLMk3OULylWbqDohfi/CXcrhB6FSGVPASHCkArokhFLC65DbWV5MApAbfJHv5PuZk3Cklc9xWgrbGCVQu2JIWgHaOhrq+FHwpqqwJJUH+fX7PeCE53C5+4r+1UtGOHTSLYZJK/YrUpyQodimXAUKYhbtrdR9Bs37exaK4Fs9v1fl5JKDBivXiw5Fq+ia7tGoSYxvKRQ02iQiy/lUfZg/9t8gg1P329j6khVI4VL5+YN7cUwAvXvYhWkMYabzGOH0xf1j1XpVum5gaeO5W++nOfhQ=
+  app: we-travel-more
+  on:
+    repo: alexaac/we-travel
+  skip_cleanup: 'true'

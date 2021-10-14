@@ -97,6 +97,7 @@
     "style-loader": "^3.2.1",
     "svg-url-loader": "^7.1.1",
     "terser-webpack-plugin": "^5.1.4",
+    "travis-ci": "^2.2.0",
     "turf-extent": "^1.0.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.48.0",
