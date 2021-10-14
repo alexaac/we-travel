@@ -8,6 +8,8 @@ We Travel - Trip Planner
 
 [![build status](https://img.shields.io/travis/alexaac/we-travel/master.svg)](https://travis-ci.org/alexaac/we-travel)
 
+[![build status](https://img.shields.io/travis/alexaac/we-travel/master.svg)](https://travis-ci.org/alexaac/we-travel)
+
 ### Description
 
 Travel app - plan a trip by entering the city name, and find out about the weather.
