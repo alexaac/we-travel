@@ -4,7 +4,9 @@
 
 ### Project Title
 
-We Travel App Project
+We Travel - Trip Planner
+
+[![build status](https://img.shields.io/travis/alexaac/we-travel/master.svg)](https://travis-ci.org/alexaac/we-travel)
 
 ### Description
 
