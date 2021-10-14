@@ -6,7 +6,7 @@
 
 We Travel - Trip Planner
 
-[![build status](https://app.travis-ci.com/alexaac/we-travel.svg)](https://app.travis-ci.com/alexaac/we-travel.svg)
+[![build status](https://app.travis-ci.com/alexaac/we-travel.svg)](https://app.travis-ci.com/alexaac/we-travel)
 
 ### Description
 
