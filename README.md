@@ -105,7 +105,7 @@ Travel app - plan a trip by entering the city name, and find out about the weath
 
 ### TODO
 
-More tests, Code cleaning
+More TDD
 
 ### Credits
 
