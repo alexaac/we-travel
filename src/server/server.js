@@ -7,8 +7,8 @@ const cors = require('cors');
 const validation = require('../../middleware/validation');
 const routes = require('../../routes/index');
 
-// Import environmental variables from our variables.env file
-require('dotenv').config({ path: 'variables.env' });
+// Import environmental variables from our .env file
+require('dotenv').config({ path: '.env' });
 
 // Setup JS object to act as endpoint for all routes
 projectData = {
