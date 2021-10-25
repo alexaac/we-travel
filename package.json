@@ -18,7 +18,7 @@
     "start": "node src/server/server.js",
     "dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false webpack --config webpack.prod.js"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false NODE_OPTIONS=--openssl-legacy-provider webpack --config webpack.prod.js"
   },
   "browserslist": "last 3 versions",
   "keywords": [
