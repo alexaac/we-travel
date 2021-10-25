@@ -286,7 +286,10 @@ const TripDiv = (tripData, alreadySaved) => {
                             }:<br />
                             <span class="helper-text">${
                               tripData.temperature
-                            }°F ${tripData.weather.description}</span>
+                            }°F (${(
+    ((tripData.temperature - 32) * 5) /
+    9
+  ).toFixed(1)}°C) ${tripData.weather.description}</span>
                         <img alt="${
                           tripData.weather.description
                         }" style="" src="https://mps-ph.s3.us-east-2.amazonaws.com/we/icons/${

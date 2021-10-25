@@ -110,7 +110,7 @@ const getWeatherData = async (
 ) => {
   // Check if forecast data includes 'today'
   let data = await getLastTrip(weatherBaseUrl, {
-    units: 'M', //TODO: add weather units option on form
+    units: 'I', //TODO: add weather units option on form
     lat: cityInfo && cityInfo.lat,
     lon: cityInfo && cityInfo.lon,
     key: weatherApiKey,
